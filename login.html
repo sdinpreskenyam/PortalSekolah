@@ -1,0 +1,11915 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <base target="_top">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+
+      margin: 0;
+
+      font-family:
+        Arial,
+        sans-serif;
+
+      background:
+        #f3f6fb;
+
+      color:
+        #1f2937;
+
+    }
+
+
+    /* =====================================================
+       LOGIN
+       ===================================================== */
+
+    #loginPage {
+
+      min-height: 100vh;
+
+      display: flex;
+
+      justify-content: center;
+
+      align-items: center;
+
+      padding: 20px;
+
+    }
+
+
+    .login-card {
+
+      width: 100%;
+
+      max-width: 430px;
+
+      background: white;
+
+      padding: 32px;
+
+      border-radius: 20px;
+
+      box-shadow:
+        0 10px 35px
+        rgba(0,0,0,.10);
+
+    }
+
+
+    .logo {
+
+      width: 80px;
+
+      height: 80px;
+
+      margin:
+        0 auto 15px;
+
+      border-radius: 50%;
+
+      background:
+        #2638b8;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      font-size: 38px;
+
+    }
+
+
+    .login-title {
+
+      text-align: center;
+
+      font-size: 25px;
+
+      font-weight: bold;
+
+      margin-bottom: 5px;
+
+    }
+
+
+    .login-subtitle {
+
+      text-align: center;
+
+      color:
+        #6b7280;
+
+      margin-bottom: 28px;
+
+    }
+
+
+    label {
+
+      display: block;
+
+      margin-bottom: 7px;
+
+      font-weight: bold;
+
+      font-size: 14px;
+
+    }
+
+
+    input,
+    select {
+
+      width: 100%;
+
+      padding: 13px;
+
+      border:
+        1px solid #d1d5db;
+
+      border-radius: 10px;
+
+      font-size: 15px;
+
+      margin-bottom: 17px;
+
+      outline: none;
+
+      background: white;
+
+    }
+
+
+    input:focus,
+    select:focus {
+
+      border-color:
+        #2563eb;
+
+    }
+
+
+    button {
+
+      border: none;
+
+      cursor: pointer;
+
+      border-radius: 10px;
+
+      font-weight: bold;
+
+    }
+
+
+    button:disabled {
+
+      opacity: .6;
+
+      cursor: wait;
+
+    }
+
+
+    .login-button {
+
+      width: 100%;
+
+      padding: 14px;
+
+      background:
+        #2563eb;
+
+      color: white;
+
+      font-size: 15px;
+
+    }
+
+
+    #loginMessage {
+
+      margin-top: 15px;
+
+      padding: 12px;
+
+      border-radius: 10px;
+
+      display: none;
+
+      font-size: 14px;
+
+      text-align: center;
+
+    }
+
+
+    .success {
+
+      display: block !important;
+
+      background:
+        #dcfce7;
+
+      color:
+        #166534;
+
+    }
+
+
+    .error {
+
+      display: block !important;
+
+      background:
+        #fee2e2;
+
+      color:
+        #991b1b;
+
+    }
+
+
+    .info {
+
+      display: block !important;
+
+      background:
+        #dbeafe;
+
+      color:
+        #1e40af;
+
+    }
+
+
+    /* =====================================================
+       DASHBOARD
+       ===================================================== */
+
+    #dashboardPage {
+
+      display: none;
+
+      min-height: 100vh;
+
+    }
+
+
+    .topbar {
+
+      background: white;
+
+      padding:
+        18px 25px;
+
+      display: flex;
+
+      justify-content:
+        space-between;
+
+      align-items: center;
+
+      box-shadow:
+        0 2px 10px
+        rgba(0,0,0,.06);
+
+      position: sticky;
+
+      top: 0;
+
+      z-index: 10;
+
+    }
+
+
+    .school-name {
+
+      font-size: 20px;
+
+      font-weight: bold;
+
+    }
+
+
+    .admin-name {
+
+      color:
+        #6b7280;
+
+      font-size: 13px;
+
+      margin-top: 3px;
+
+    }
+
+
+    .logout-button {
+
+      padding:
+        10px 15px;
+
+      background:
+        #ef4444;
+
+      color: white;
+
+    }
+
+
+    .dashboard-container {
+
+      padding: 25px;
+
+      max-width: 1200px;
+
+      margin: auto;
+
+    }
+
+
+    .welcome {
+
+      margin-bottom: 25px;
+
+    }
+
+
+    .welcome h1 {
+
+      margin:
+        0 0 7px;
+
+      font-size: 28px;
+
+    }
+
+
+    .welcome p {
+
+      margin: 0;
+
+      color:
+        #6b7280;
+
+    }
+
+
+    /* =====================================================
+       STATISTIK
+       ===================================================== */
+
+    .stats {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(
+          auto-fit,
+          minmax(180px, 1fr)
+        );
+
+      gap: 15px;
+
+      margin-bottom: 30px;
+
+    }
+
+
+    .stat-card {
+
+      background: white;
+
+      border-radius: 15px;
+
+      padding: 20px;
+
+      box-shadow:
+        0 5px 18px
+        rgba(0,0,0,.06);
+
+    }
+
+
+    .stat-icon {
+
+      font-size: 28px;
+
+      margin-bottom: 10px;
+
+    }
+
+
+    .stat-title {
+
+      color:
+        #6b7280;
+
+      font-size: 13px;
+
+    }
+
+
+    .stat-number {
+
+      font-size: 28px;
+
+      font-weight: bold;
+
+      margin-top: 5px;
+
+    }
+
+
+    /* =====================================================
+       MENU
+       ===================================================== */
+
+    .section-title {
+
+      font-size: 20px;
+
+      font-weight: bold;
+
+      margin-bottom: 15px;
+
+    }
+
+
+    .menu-grid {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(
+          auto-fit,
+          minmax(220px, 1fr)
+        );
+
+      gap: 15px;
+
+    }
+
+
+    .menu-card {
+
+      background: white;
+
+      border-radius: 15px;
+
+      padding: 22px;
+
+      box-shadow:
+        0 5px 18px
+        rgba(0,0,0,.06);
+
+      cursor: pointer;
+
+      transition: .2s;
+
+    }
+
+
+    .menu-card:hover {
+
+      transform:
+        translateY(-2px);
+
+      box-shadow:
+        0 8px 22px
+        rgba(0,0,0,.10);
+
+    }
+
+
+    .menu-icon {
+
+      font-size: 32px;
+
+      margin-bottom: 12px;
+
+    }
+
+
+    .menu-title {
+
+      font-weight: bold;
+
+      font-size: 16px;
+
+      margin-bottom: 5px;
+
+    }
+
+
+    .menu-description {
+
+      color:
+        #6b7280;
+
+      font-size: 13px;
+
+      line-height: 1.4;
+
+    }
+
+
+    /* =====================================================
+       HALAMAN DATA
+       ===================================================== */
+
+    #guruPage,
+    #siswaPage,
+    #kelasPage,
+    #mapelPage,
+    #jadwalPage,
+    #absensiGuruPage,
+    #absensiSiswaPage {
+
+      display: none;
+
+      min-height: 100vh;
+
+    }
+
+
+    .page-container {
+
+      padding: 20px;
+
+      max-width: 1200px;
+
+      margin: auto;
+
+    }
+
+
+    .page-header {
+
+      display: flex;
+
+      justify-content:
+        space-between;
+
+      align-items: center;
+
+      gap: 15px;
+
+      margin-bottom: 20px;
+
+    }
+
+
+    .page-title {
+
+      font-size: 25px;
+
+      font-weight: bold;
+
+    }
+
+
+    .back-button {
+
+      padding:
+        10px 15px;
+
+      background:
+        #6b7280;
+
+      color: white;
+
+      margin-right: 5px;
+
+    }
+
+
+    .add-button {
+
+      padding:
+        11px 16px;
+
+      background:
+        #16a34a;
+
+      color: white;
+
+    }
+
+
+    .search-box {
+
+      background: white;
+
+      padding: 15px;
+
+      border-radius: 14px;
+
+      margin-bottom: 15px;
+
+      box-shadow:
+        0 4px 15px
+        rgba(0,0,0,.05);
+
+    }
+
+
+    .search-box input {
+
+      margin: 0;
+
+    }
+
+
+    .table-card {
+
+      background: white;
+
+      border-radius: 14px;
+
+      overflow-x: auto;
+
+      box-shadow:
+        0 4px 15px
+        rgba(0,0,0,.05);
+
+    }
+
+
+    table {
+
+      width: 100%;
+
+      border-collapse:
+        collapse;
+
+      min-width: 800px;
+
+    }
+
+
+    th {
+
+      background:
+        #f8fafc;
+
+      text-align: left;
+
+      padding: 13px;
+
+      font-size: 13px;
+
+      white-space: nowrap;
+
+    }
+
+
+    td {
+
+      padding: 13px;
+
+      border-top:
+        1px solid #e5e7eb;
+
+      font-size: 13px;
+
+      white-space: nowrap;
+
+    }
+
+
+    .badge {
+
+      display: inline-block;
+
+      padding:
+        5px 9px;
+
+      border-radius: 20px;
+
+      font-size: 11px;
+
+      font-weight: bold;
+
+    }
+
+
+    .badge-aktif {
+
+      background:
+        #dcfce7;
+
+      color:
+        #166534;
+
+    }
+
+
+    .badge-nonaktif {
+
+      background:
+        #fee2e2;
+
+      color:
+        #991b1b;
+
+    }
+
+
+    .action-button {
+
+      padding:
+        7px 9px;
+
+      margin-right: 4px;
+
+      color: white;
+
+      font-size: 12px;
+
+    }
+
+
+    .edit-button {
+
+      background:
+        #2563eb;
+
+    }
+
+
+    .delete-button {
+
+      background:
+        #dc2626;
+
+    }
+
+
+    /* =====================================================
+       MODAL
+       ===================================================== */
+
+    .modal {
+
+      display: none;
+
+      position: fixed;
+
+      inset: 0;
+
+      background:
+        rgba(0,0,0,.45);
+
+      z-index: 100;
+
+      align-items: center;
+
+      justify-content: center;
+
+      padding: 20px;
+
+    }
+
+
+    .modal-content {
+
+      width: 100%;
+
+      max-width: 500px;
+
+      max-height: 90vh;
+
+      overflow-y: auto;
+
+      background: white;
+
+      border-radius: 18px;
+
+      padding: 24px;
+
+    }
+
+
+    .modal-title {
+
+      font-size: 21px;
+
+      font-weight: bold;
+
+      margin-bottom: 20px;
+
+    }
+
+
+    .form-buttons {
+
+      display: flex;
+
+      gap: 10px;
+
+      margin-top: 10px;
+
+    }
+
+
+    .save-button {
+
+      flex: 1;
+
+      padding: 13px;
+
+      background:
+        #2563eb;
+
+      color: white;
+
+    }
+
+
+    .cancel-button {
+
+      flex: 1;
+
+      padding: 13px;
+
+      background:
+        #6b7280;
+
+      color: white;
+
+    }
+
+
+    #guruMessage,
+    #siswaMessage,
+    #kelasMessage,
+    #mapelMessage,
+    #jadwalMessage,
+    #absensiGuruMessage,
+    #absensiSiswaMessage {
+
+      margin-top: 10px;
+
+      padding: 10px;
+
+      border-radius: 9px;
+
+      display: none;
+
+      font-size: 13px;
+
+    }
+
+
+    .status-hadir {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .status-izin {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .status-sakit {
+      background: #dbeafe;
+      color: #1e40af;
+    }
+
+    .status-alpa {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+
+    /* =====================================================
+       MOBILE
+       ===================================================== */
+
+    @media (max-width: 600px) {
+
+      .topbar {
+
+        padding: 15px;
+
+      }
+
+      .school-name {
+
+        font-size: 16px;
+
+      }
+
+      .dashboard-container {
+
+        padding: 15px;
+
+      }
+
+      .welcome h1 {
+
+        font-size: 23px;
+
+      }
+
+      .login-card {
+
+        padding: 25px;
+
+      }
+
+      .page-header {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+      }
+
+    }
+
+  
+/* =====================================================
+   HALAMAN AKUN / IMPORT / PENGATURAN
+   ===================================================== */
+
+#akunPage,
+#importPage,
+#pengaturanPage {
+  display: none;
+  min-height: 100vh;
+}
+
+.portal-card {
+  background: white;
+  border-radius: 15px;
+  padding: 22px;
+  box-shadow: 0 5px 18px rgba(0,0,0,.06);
+  margin-bottom: 18px;
+}
+
+.portal-note {
+  background: #eff6ff;
+  color: #1e40af;
+  padding: 12px 14px;
+  border-radius: 10px;
+  font-size: 13px;
+  line-height: 1.5;
+  margin-bottom: 18px;
+}
+
+.portal-message {
+  margin-top: 12px;
+  padding: 11px;
+  border-radius: 9px;
+  display: none;
+  font-size: 13px;
+}
+
+.portal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 15px;
+}
+
+.portal-import-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.portal-import-button {
+  padding: 12px;
+  background: #f8fafc;
+  border: 1px solid #d1d5db;
+  color: #1f2937;
+}
+
+.portal-import-button.active {
+  background: #dbeafe;
+  border-color: #2563eb;
+  color: #1e40af;
+}
+
+.portal-file-box {
+  border: 2px dashed #cbd5e1;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.portal-file-box input[type="file"] {
+  margin: 10px auto 0;
+  display: block;
+}
+
+.portal-table-wrap {
+  overflow-x: auto;
+  margin-top: 15px;
+}
+
+.portal-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 650px;
+}
+
+.portal-table th,
+.portal-table td {
+  padding: 10px;
+  border: 1px solid #e5e7eb;
+  text-align: left;
+  font-size: 12px;
+}
+
+.portal-table th {
+  background: #f8fafc;
+}
+
+.danger-note {
+  background: #fff7ed;
+  color: #9a3412;
+  padding: 11px;
+  border-radius: 9px;
+  font-size: 12px;
+  margin-top: 12px;
+}
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     LOGIN
+     ===================================================== -->
+
+<div id="loginPage">
+
+  <div class="login-card">
+
+    <div class="logo">
+      🏫
+    </div>
+
+    <div class="login-title">
+      Admin Portal
+    </div>
+
+    <div class="login-subtitle">
+      SD Inpres Kenyam
+    </div>
+
+
+    <label>
+      Username
+    </label>
+
+    <input
+      id="username"
+      type="text"
+      placeholder="Masukkan username"
+      autocomplete="username"
+    >
+
+
+    <label>
+      Password
+    </label>
+
+    <input
+      id="password"
+      type="password"
+      placeholder="Masukkan password"
+      autocomplete="current-password"
+    >
+
+
+    <button
+      id="loginButton"
+      class="login-button"
+      onclick="login()"
+    >
+      🔐 Masuk
+    </button>
+
+
+    <div id="loginMessage"></div>
+
+  </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     DASHBOARD
+     ===================================================== -->
+
+<div id="dashboardPage">
+
+
+  <div class="topbar">
+
+    <div>
+
+      <div class="school-name">
+        🏫 SD INPRES KENYAM
+      </div>
+
+      <div class="admin-name">
+        Admin Portal:
+        <span id="adminUsername">-</span>
+      </div>
+
+    </div>
+
+
+    <button
+      class="logout-button"
+      onclick="logout()"
+    >
+      Keluar
+    </button>
+
+  </div>
+
+
+  <div class="dashboard-container">
+
+
+    <div class="welcome">
+
+      <h1>
+        Dashboard Admin Portal
+      </h1>
+
+      <p>
+        Kelola data sekolah, guru, siswa,
+        kelas, jadwal, dan sistem absensi.
+      </p>
+
+    </div>
+
+
+    <!-- STATISTIK -->
+
+    <div class="stats">
+
+
+      <div class="stat-card">
+
+        <div class="stat-icon">
+          👨‍🏫
+        </div>
+
+        <div class="stat-title">
+          Guru
+        </div>
+
+        <div
+          id="jumlahGuru"
+          class="stat-number"
+        >
+          ...
+        </div>
+
+      </div>
+
+
+      <div class="stat-card">
+
+        <div class="stat-icon">
+          👨‍🎓
+        </div>
+
+        <div class="stat-title">
+          Siswa
+        </div>
+
+        <div
+          id="jumlahSiswa"
+          class="stat-number"
+        >
+          ...
+        </div>
+
+      </div>
+
+
+      <div class="stat-card">
+
+        <div class="stat-icon">
+          🏫
+        </div>
+
+        <div class="stat-title">
+          Kelas
+        </div>
+
+        <div
+          id="jumlahKelas"
+          class="stat-number"
+        >
+          ...
+        </div>
+
+      </div>
+
+
+      <div class="stat-card">
+
+        <div class="stat-icon">
+          📚
+        </div>
+
+        <div class="stat-title">
+          Mata Pelajaran
+        </div>
+
+        <div
+          id="jumlahMapel"
+          class="stat-number"
+        >
+          ...
+        </div>
+
+      </div>
+
+
+    </div>
+
+
+    <!-- DATA SEKOLAH -->
+
+    <div class="section-title">
+      📊 Data Sekolah
+    </div>
+
+
+    <div class="menu-grid">
+
+
+      <!-- DATA GURU -->
+
+      <div
+        class="menu-card"
+        onclick="bukaGuru()"
+      >
+
+        <div class="menu-icon">
+          👨‍🏫
+        </div>
+
+        <div class="menu-title">
+          Data Guru
+        </div>
+
+        <div class="menu-description">
+          Tambah, edit, hapus, dan kelola
+          data guru.
+        </div>
+
+      </div>
+
+
+      <!-- DATA SISWA -->
+
+      <div
+        class="menu-card"
+        onclick="bukaSiswa()"
+      >
+
+        <div class="menu-icon">
+          👨‍🎓
+        </div>
+
+        <div class="menu-title">
+          Data Siswa
+        </div>
+
+        <div class="menu-description">
+          Tambah, edit, hapus, cari, dan kelola
+          seluruh data siswa sekolah.
+        </div>
+
+      </div>
+
+
+      <!-- KELAS -->
+
+      <div
+        class="menu-card"
+        onclick="bukaKelas()"
+      >
+
+        <div class="menu-icon">
+          🏫
+        </div>
+
+        <div class="menu-title">
+          Data Kelas
+        </div>
+
+        <div class="menu-description">
+          Tambah, edit, hapus, dan kelola
+          kelas serta wali kelas.
+        </div>
+
+      </div>
+
+
+      <!-- MAPEL -->
+
+      <div
+        class="menu-card"
+        onclick="bukaMapel()"
+      >
+
+        <div class="menu-icon">
+          📚
+        </div>
+
+        <div class="menu-title">
+          Mata Pelajaran
+        </div>
+
+        <div class="menu-description">
+          Kelola daftar mata pelajaran.
+        </div>
+
+      </div>
+
+
+      <!-- JADWAL -->
+
+      <div
+        class="menu-card"
+        onclick="bukaJadwal()"
+      >
+
+        <div class="menu-icon">
+          🕐
+        </div>
+
+        <div class="menu-title">
+          Jadwal
+        </div>
+
+        <div class="menu-description">
+          Kelola jadwal pelajaran setiap kelas.
+        </div>
+
+      </div>
+
+
+    </div>
+
+
+    <br>
+
+
+    <!-- ABSENSI -->
+
+    <div class="section-title">
+      📝 Absensi
+    </div>
+
+
+    <div class="menu-grid">
+
+
+      <div
+        class="menu-card"
+        onclick="bukaAbsensiGuru()"
+      >
+
+        <div class="menu-icon">
+          👨‍🏫
+        </div>
+
+        <div class="menu-title">
+          Absensi Guru
+        </div>
+
+        <div class="menu-description">
+          Lihat dan kelola data kehadiran guru.
+        </div>
+
+      </div>
+
+
+      <div
+        class="menu-card"
+        onclick="bukaAbsensiSiswa()"
+      >
+
+        <div class="menu-icon">
+          👨‍🎓
+        </div>
+
+        <div class="menu-title">
+          Absensi Siswa
+        </div>
+
+        <div class="menu-description">
+          Lihat dan kelola data kehadiran siswa.
+        </div>
+
+      </div>
+
+
+    </div>
+
+
+    <br>
+
+
+    <!-- MANAJEMEN -->
+
+    <div class="section-title">
+      ⚙️ Manajemen Portal
+    </div>
+
+
+    <div class="menu-grid">
+
+
+      <div
+        class="menu-card"
+        onclick="bukaAkun()"
+      >
+
+        <div class="menu-icon">
+          👤
+        </div>
+
+        <div class="menu-title">
+          Akun
+        </div>
+
+        <div class="menu-description">
+          Kelola akun Admin Portal dan akun guru.
+        </div>
+
+      </div>
+
+
+      <div
+        class="menu-card"
+        onclick="bukaImportData()"
+      >
+
+        <div class="menu-icon">
+          📥
+        </div>
+
+        <div class="menu-title">
+          Import Data
+        </div>
+
+        <div class="menu-description">
+          Tambahkan data sekolah tanpa
+          mengubah kode.
+        </div>
+
+      </div>
+
+
+      <div
+        class="menu-card"
+        onclick="bukaPengaturan()"
+      >
+
+        <div class="menu-icon">
+          ⚙️
+        </div>
+
+        <div class="menu-title">
+          Pengaturan
+        </div>
+
+        <div class="menu-description">
+          Pengaturan dasar Portal SD Inpres Kenyam.
+        </div>
+
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+</div>
+
+
+
+
+<!-- =====================================================
+     HALAMAN AKUN ADMIN
+     ===================================================== -->
+
+<div id="akunPage">
+
+  <div class="topbar">
+    <div>
+      <div class="school-name">👤 AKUN ADMIN PORTAL</div>
+      <div class="admin-name">Kelola akun Admin yang sedang aktif</div>
+    </div>
+
+    <button class="logout-button" onclick="logout()">
+      Keluar
+    </button>
+  </div>
+
+  <div class="page-container">
+
+    <div class="page-header">
+      <div class="page-title">Akun Admin</div>
+
+      <button
+        class="back-button"
+        onclick="kembaliDashboardDariPortal('akunPage')"
+      >
+        ← Dashboard
+      </button>
+    </div>
+
+    <div class="portal-card">
+
+      <div class="portal-note">
+        🔐 Password tidak pernah ditampilkan. Kosongkan password baru
+        jika hanya ingin mengganti username.
+      </div>
+
+      <label>Username</label>
+      <input
+        id="akunUsername"
+        type="text"
+        placeholder="Username Admin"
+        autocomplete="username"
+      >
+
+      <label>Password Baru</label>
+      <input
+        id="akunPassword"
+        type="password"
+        placeholder="Kosongkan jika tidak ingin mengubah password"
+        autocomplete="new-password"
+      >
+
+      <label>Konfirmasi Password Baru</label>
+      <input
+        id="akunPasswordKonfirmasi"
+        type="password"
+        placeholder="Ulangi password baru"
+        autocomplete="new-password"
+      >
+
+      <div id="akunMessage" class="portal-message"></div>
+
+      <div class="form-buttons">
+        <button
+          class="cancel-button"
+          onclick="kembaliDashboardDariPortal('akunPage')"
+        >
+          Batal
+        </button>
+
+        <button
+          class="save-button"
+          id="simpanAkunButton"
+          onclick="simpanAkun()"
+        >
+          Simpan Perubahan
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================================
+     HALAMAN IMPORT DATA
+     ===================================================== -->
+
+<div id="importPage">
+
+  <div class="topbar">
+    <div>
+      <div class="school-name">📥 IMPORT DATA</div>
+      <div class="admin-name">Import data sekolah dari CSV</div>
+    </div>
+
+    <button class="logout-button" onclick="logout()">
+      Keluar
+    </button>
+  </div>
+
+  <div class="page-container">
+
+    <div class="page-header">
+      <div class="page-title">Import Data</div>
+
+      <button
+        class="back-button"
+        onclick="kembaliDashboardDariPortal('importPage')"
+      >
+        ← Dashboard
+      </button>
+    </div>
+
+    <div class="portal-card">
+
+      <div class="portal-note">
+        📌 Pilih jenis data terlebih dahulu. File CSV harus mengikuti
+        urutan kolom pada Sheet tujuan. Baris pertama/header tidak perlu
+        dimasukkan karena sistem langsung menggunakan data mulai baris kedua.
+      </div>
+
+      <label>Jenis Data</label>
+
+      <div class="portal-import-options">
+
+        <button
+          type="button"
+          class="portal-import-button active"
+          id="importJenisGuru"
+          onclick="pilihJenisImport('GURU')"
+        >
+          👨‍🏫 Guru
+        </button>
+
+        <button
+          type="button"
+          class="portal-import-button"
+          id="importJenisSiswa"
+          onclick="pilihJenisImport('SISWA')"
+        >
+          👨‍🎓 Siswa
+        </button>
+
+        <button
+          type="button"
+          class="portal-import-button"
+          id="importJenisKelas"
+          onclick="pilihJenisImport('KELAS')"
+        >
+          🏫 Kelas
+        </button>
+
+        <button
+          type="button"
+          class="portal-import-button"
+          id="importJenisMapel"
+          onclick="pilihJenisImport('MAPEL')"
+        >
+          📚 Mapel
+        </button>
+
+        <button
+          type="button"
+          class="portal-import-button"
+          id="importJenisJadwal"
+          onclick="pilihJenisImport('JADWAL')"
+        >
+          🕐 Jadwal
+        </button>
+
+      </div>
+
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px">
+        <button type="button" class="back-button" onclick="downloadTemplateImport()">
+          📄 Download Template CSV
+        </button>
+      </div>
+
+      <div class="portal-file-box">
+
+        <div>
+          📄 Pilih file CSV
+        </div>
+
+        <input
+          id="importFile"
+          type="file"
+          accept=".csv,text/csv"
+          onchange="bacaFileImport(this)"
+        >
+
+        <div
+          id="importNamaFile"
+          style="margin-top:8px;color:#6b7280;font-size:12px"
+        >
+          Belum ada file dipilih.
+        </div>
+
+      </div>
+
+      <div id="importPreview"></div>
+
+      <div class="danger-note">
+        ⚠️ Import akan menambahkan baris baru ke Sheet. Data lama tidak
+        dihapus. Untuk sementara kita sengaja membatasi import ke CSV
+        agar data Excel tidak masuk setengah-setengah.
+      </div>
+
+      <div id="importMessage" class="portal-message"></div>
+
+      <div class="form-buttons">
+
+        <button
+          class="cancel-button"
+          onclick="kembaliDashboardDariPortal('importPage')"
+        >
+          Batal
+        </button>
+
+        <button
+          class="save-button"
+          id="importButton"
+          onclick="jalankanImportData()"
+        >
+          📥 Import Data
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================================
+     HALAMAN PENGATURAN
+     ===================================================== -->
+
+<div id="pengaturanPage">
+
+  <div class="topbar">
+    <div>
+      <div class="school-name">⚙️ PENGATURAN PORTAL</div>
+      <div class="admin-name">Pengaturan dasar sistem sekolah</div>
+    </div>
+
+    <button class="logout-button" onclick="logout()">
+      Keluar
+    </button>
+  </div>
+
+  <div class="page-container">
+
+    <div class="page-header">
+      <div class="page-title">Pengaturan</div>
+
+      <button
+        class="back-button"
+        onclick="kembaliDashboardDariPortal('pengaturanPage')"
+      >
+        ← Dashboard
+      </button>
+    </div>
+
+    <div class="portal-card">
+
+      <div class="portal-grid">
+
+        <div>
+          <label>Nama Sekolah</label>
+          <input
+            id="pengaturanNamaSekolah"
+            type="text"
+            placeholder="Nama sekolah"
+          >
+        </div>
+
+        <div>
+          <label>Tahun Ajaran</label>
+          <input
+            id="pengaturanTahunAjaran"
+            type="text"
+            placeholder="Contoh: 2026/2027"
+          >
+        </div>
+
+        <div>
+          <label>Semester</label>
+          <select id="pengaturanSemester">
+            <option value="">Pilih semester</option>
+            <option value="GANJIL">GANJIL</option>
+            <option value="GENAP">GENAP</option>
+          </select>
+        </div>
+
+        <div>
+          <label>Jam Masuk</label>
+          <input
+            id="pengaturanJamMasuk"
+            type="time"
+          >
+        </div>
+
+        <div>
+          <label>Batas Absensi</label>
+          <input
+            id="pengaturanBatasAbsensi"
+            type="time"
+          >
+        </div>
+
+      </div>
+
+      <div id="pengaturanMessage" class="portal-message"></div>
+
+      <div class="form-buttons">
+
+        <button
+          class="cancel-button"
+          onclick="kembaliDashboardDariPortal('pengaturanPage')"
+        >
+          Batal
+        </button>
+
+        <button
+          class="save-button"
+          id="simpanPengaturanButton"
+          onclick="simpanPengaturan()"
+        >
+          Simpan Pengaturan
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================================
+     HALAMAN DATA GURU
+     ===================================================== -->
+
+<div id="guruPage">
+
+
+  <div class="topbar">
+
+    <div>
+
+      <div class="school-name">
+        👨‍🏫 DATA GURU
+      </div>
+
+      <div class="admin-name">
+        SD Inpres Kenyam
+      </div>
+
+    </div>
+
+
+    <button
+      class="logout-button"
+      onclick="logout()"
+    >
+      Keluar
+    </button>
+
+  </div>
+
+
+  <div class="page-container">
+
+
+    <div class="page-header">
+
+      <div class="page-title">
+        Data Guru
+      </div>
+
+
+      <div>
+
+        <button
+          class="back-button"
+          onclick="kembaliDashboard()"
+        >
+          ← Dashboard
+        </button>
+
+
+        <button
+          class="add-button"
+          onclick="bukaFormGuru()"
+        >
+          ＋ Tambah Guru
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div class="search-box">
+
+      <input
+        id="cariGuru"
+        type="text"
+        placeholder="🔎 Cari nama, username, ID, atau kelas wali..."
+        oninput="filterGuru()"
+      >
+
+    </div>
+
+
+    <div class="table-card">
+
+      <table>
+
+        <thead>
+
+          <tr>
+
+            <th>ID</th>
+
+            <th>Nama Guru</th>
+
+            <th>Username</th>
+
+            <th>Role</th>
+
+            <th>Kelas Wali</th>
+
+            <th>Status</th>
+
+            <th>Aksi</th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody id="tabelGuru">
+
+          <tr>
+
+            <td
+              colspan="7"
+              style="text-align:center;padding:30px"
+            >
+              Memuat data guru...
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+
+  </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     HALAMAN DATA SISWA
+     ===================================================== -->
+
+<div id="siswaPage">
+
+
+  <div class="topbar">
+
+    <div>
+
+      <div class="school-name">
+        👨‍🎓 DATA SISWA
+      </div>
+
+      <div class="admin-name">
+        SD Inpres Kenyam
+      </div>
+
+    </div>
+
+
+    <button
+      class="logout-button"
+      onclick="logout()"
+    >
+      Keluar
+    </button>
+
+  </div>
+
+
+  <div class="page-container">
+
+
+    <div class="page-header">
+
+      <div class="page-title">
+        Data Siswa
+      </div>
+
+
+      <div>
+
+        <button
+          class="back-button"
+          onclick="kembaliDashboardDariSiswa()"
+        >
+          ← Dashboard
+        </button>
+
+
+        <button
+          class="add-button"
+          onclick="bukaFormSiswa()"
+        >
+          ＋ Tambah Siswa
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div class="search-box">
+
+      <input
+        id="cariSiswa"
+        type="text"
+        placeholder="🔎 Cari nama, NIS, NISN, ID, atau kelas..."
+        oninput="filterSiswa()"
+      >
+
+    </div>
+
+
+    <div class="table-card">
+
+      <table>
+
+        <thead>
+
+          <tr>
+
+            <th>ID</th>
+
+            <th>NIS</th>
+
+            <th>NISN</th>
+
+            <th>Nama Siswa</th>
+
+            <th>JK</th>
+
+            <th>Kelas</th>
+
+            <th>Status</th>
+
+            <th>Aksi</th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody id="tabelSiswa">
+
+          <tr>
+
+            <td
+              colspan="8"
+              style="text-align:center;padding:30px"
+            >
+              Memuat data siswa...
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+
+  </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     HALAMAN DATA KELAS
+     ===================================================== -->
+
+<div id="kelasPage">
+
+
+  <div class="topbar">
+
+    <div>
+
+      <div class="school-name">
+        🏫 DATA KELAS
+      </div>
+
+      <div class="admin-name">
+        SD Inpres Kenyam
+      </div>
+
+    </div>
+
+
+    <button
+      class="logout-button"
+      onclick="logout()"
+    >
+      Keluar
+    </button>
+
+  </div>
+
+
+  <div class="page-container">
+
+
+    <div class="page-header">
+
+      <div class="page-title">
+        Data Kelas
+      </div>
+
+
+      <div>
+
+        <button
+          class="back-button"
+          onclick="kembaliDashboardDariKelas()"
+        >
+          ← Dashboard
+        </button>
+
+
+        <button
+          class="add-button"
+          onclick="bukaFormKelas()"
+        >
+          ＋ Tambah Kelas
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div class="search-box">
+
+      <input
+        id="cariKelas"
+        type="text"
+        placeholder="🔎 Cari ID, nama kelas, wali kelas, atau status..."
+        oninput="filterKelas()"
+      >
+
+    </div>
+
+
+    <div class="table-card">
+
+      <table>
+
+        <thead>
+
+          <tr>
+
+            <th>ID Kelas</th>
+
+            <th>Nama Kelas</th>
+
+            <th>Wali Kelas</th>
+
+            <th>Status</th>
+
+            <th>Aksi</th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody id="tabelKelas">
+
+          <tr>
+
+            <td
+              colspan="5"
+              style="text-align:center;padding:30px"
+            >
+              Memuat data kelas...
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+
+  </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     HALAMAN MATA PELAJARAN
+     ===================================================== -->
+
+<div
+  id="mapelPage"
+>
+
+
+  <div class="topbar">
+
+    <div>
+
+      <div class="school-name">
+        📚 DATA MATA PELAJARAN
+      </div>
+
+      <div class="admin-name">
+        SD Inpres Kenyam
+      </div>
+
+    </div>
+
+
+    <button
+      class="logout-button"
+      onclick="logout()"
+    >
+      Keluar
+    </button>
+
+  </div>
+
+
+  <div class="page-container">
+
+
+    <div class="page-header">
+
+      <div class="page-title">
+        Data Mata Pelajaran
+      </div>
+
+
+      <div>
+
+        <button
+          class="back-button"
+          onclick="kembaliDashboardDariMapel()"
+        >
+          ← Dashboard
+        </button>
+
+
+        <button
+          class="add-button"
+          onclick="bukaFormMapel()"
+        >
+          ＋ Tambah Mata Pelajaran
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div class="search-box">
+
+      <input
+        id="cariMapel"
+        type="text"
+        placeholder="🔎 Cari ID, nama mata pelajaran, atau status..."
+        oninput="filterMapel()"
+      >
+
+    </div>
+
+
+    <div class="table-card">
+
+      <table>
+
+        <thead>
+
+          <tr>
+
+            <th>ID Mapel</th>
+
+            <th>Nama Mata Pelajaran</th>
+
+            <th>Status</th>
+
+            <th>Aksi</th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody id="tabelMapel">
+
+          <tr>
+
+            <td
+              colspan="4"
+              style="text-align:center;padding:30px"
+            >
+              Memuat data mata pelajaran...
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+
+  </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     HALAMAN JADWAL
+     ===================================================== -->
+
+<div
+  id="jadwalPage"
+>
+
+
+  <div class="topbar">
+
+    <div>
+
+      <div class="school-name">
+        🕐 DATA JADWAL
+      </div>
+
+      <div class="admin-name">
+        SD Inpres Kenyam
+      </div>
+
+    </div>
+
+
+    <button
+      class="logout-button"
+      onclick="logout()"
+    >
+      Keluar
+    </button>
+
+  </div>
+
+
+  <div class="page-container">
+
+
+    <div class="page-header">
+
+      <div class="page-title">
+        Data Jadwal
+      </div>
+
+
+      <div>
+
+        <button
+          class="back-button"
+          onclick="kembaliDashboardDariJadwal()"
+        >
+          ← Dashboard
+        </button>
+
+
+        <button
+          class="add-button"
+          onclick="bukaFormJadwal()"
+        >
+          ＋ Tambah Jadwal
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div class="search-box">
+
+      <input
+        id="cariJadwal"
+        type="text"
+        placeholder="🔎 Cari hari, guru, kelas, mata pelajaran, atau jam..."
+        oninput="filterJadwal()"
+      >
+
+    </div>
+
+
+    <div class="table-card">
+
+      <table>
+
+        <thead>
+
+          <tr>
+
+            <th>ID Jadwal</th>
+
+            <th>Hari</th>
+
+            <th>Jam Pelajaran</th>
+
+            <th>Guru</th>
+
+            <th>Kelas</th>
+
+            <th>Mata Pelajaran</th>
+
+            <th>Aksi</th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody id="tabelJadwal">
+
+          <tr>
+
+            <td
+              colspan="7"
+              style="text-align:center;padding:30px"
+            >
+              Memuat data jadwal...
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+
+  </div>
+
+</div>
+
+
+<!-- =====================================================
+     HALAMAN ABSENSI GURU
+     ===================================================== -->
+
+<div id="absensiGuruPage">
+
+  <div class="topbar">
+
+    <div>
+      <div class="school-name">
+        📝 ABSENSI GURU
+      </div>
+
+      <div class="admin-name">
+        SD Inpres Kenyam
+      </div>
+    </div>
+
+    <button
+      class="logout-button"
+      onclick="logout()"
+    >
+      Keluar
+    </button>
+
+  </div>
+
+
+  <div class="page-container">
+
+    <div class="page-header">
+
+      <div class="page-title">
+        Absensi Guru
+      </div>
+
+      <div>
+
+        <button
+          class="back-button"
+          onclick="kembaliDashboardDariAbsensiGuru()"
+        >
+          ← Dashboard
+        </button>
+
+        <button
+          class="add-button"
+          onclick="bukaFormAbsensiGuru()"
+        >
+          ＋ Tambah Absensi
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- FILTER -->
+
+    <div class="search-box">
+
+      <input
+        id="cariAbsensiGuru"
+        type="text"
+        placeholder="🔎 Cari tanggal, nama guru, status, jam..."
+        oninput="filterAbsensiGuru()"
+      >
+
+    </div>
+
+
+    <!-- TABEL -->
+
+    <div class="table-card">
+
+      <table>
+
+        <thead>
+
+          <tr>
+
+            <th>ID</th>
+
+            <th>Tanggal</th>
+
+            <th>Jam</th>
+
+            <th>Guru</th>
+
+            <th>Jam Pelajaran</th>
+
+            <th>Status</th>
+
+            <th>Keterangan</th>
+
+            <th>Aksi</th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody id="tabelAbsensiGuru">
+
+          <tr>
+
+            <td
+              colspan="8"
+              style="
+                text-align:center;
+                padding:30px
+              "
+            >
+              Memuat data absensi guru...
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================================
+     MODAL FORM ABSENSI GURU
+     ===================================================== -->
+
+<div
+  id="absensiGuruModal"
+  class="modal"
+>
+
+  <div class="modal-content">
+
+    <div
+      id="absensiGuruModalTitle"
+      class="modal-title"
+    >
+      Tambah Absensi Guru
+    </div>
+
+
+    <input
+      id="absensiGuruId"
+      type="hidden"
+    >
+
+
+    <label>
+      Tanggal
+    </label>
+
+    <input
+      id="absensiGuruTanggal"
+      type="date"
+    >
+
+
+    <label>
+      Guru
+    </label>
+
+    <select id="absensiGuruGuru">
+
+      <option value="">
+        Pilih guru
+      </option>
+
+    </select>
+
+
+    <label>
+      Jam Absen
+    </label>
+
+    <input
+      id="absensiGuruJam"
+      type="time"
+    >
+
+
+    <label>
+      Jam Pelajaran
+    </label>
+
+    <input
+      id="absensiGuruJamPelajaran"
+      type="text"
+      placeholder="Contoh: 07:00 - 08:00"
+    >
+
+
+    <label>
+      Jadwal
+    </label>
+
+    <select id="absensiGuruJadwal">
+
+      <option value="">
+        Tidak menggunakan jadwal
+      </option>
+
+    </select>
+
+
+    <label>
+      Status Kehadiran
+    </label>
+
+    <select id="absensiGuruStatus">
+
+      <option value="HADIR">
+        HADIR
+      </option>
+
+      <option value="IZIN">
+        IZIN
+      </option>
+
+      <option value="SAKIT">
+        SAKIT
+      </option>
+
+      <option value="ALPA">
+        ALPA
+      </option>
+
+    </select>
+
+
+    <label>
+      Keterangan
+    </label>
+
+    <input
+      id="absensiGuruKeterangan"
+      type="text"
+      placeholder="Keterangan (opsional)"
+    >
+
+
+    <div id="absensiGuruMessage"></div>
+
+
+    <div class="form-buttons">
+
+      <button
+        class="cancel-button"
+        onclick="tutupFormAbsensiGuru()"
+      >
+        Batal
+      </button>
+
+
+      <button
+        class="save-button"
+        id="simpanAbsensiGuruButton"
+        onclick="simpanAbsensiGuru()"
+      >
+        Simpan Absensi
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+<!-- =====================================================
+     HALAMAN ABSENSI SISWA
+     ===================================================== -->
+
+<div id="absensiSiswaPage">
+
+  <div class="topbar">
+    <div>
+      <div class="school-name">
+        📝 ABSENSI SISWA
+      </div>
+      <div class="admin-name">
+        SD Inpres Kenyam
+      </div>
+    </div>
+
+    <button
+      class="logout-button"
+      onclick="logout()"
+    >
+      Keluar
+    </button>
+  </div>
+
+  <div class="page-container">
+
+    <div class="page-header">
+      <div class="page-title">
+        Absensi Siswa
+      </div>
+
+      <div>
+        <button
+          class="back-button"
+          onclick="kembaliDashboardDariAbsensiSiswa()"
+        >
+          ← Dashboard
+        </button>
+
+        <button
+          class="add-button"
+          onclick="bukaFormAbsensiSiswa()"
+        >
+          ＋ Tambah Absensi
+        </button>
+      </div>
+    </div>
+
+    <div class="search-box">
+      <input
+        id="cariAbsensiSiswa"
+        type="text"
+        placeholder="🔎 Cari tanggal, siswa, guru, kelas, status..."
+        oninput="filterAbsensiSiswa()"
+      >
+    </div>
+
+    <div class="table-card">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Tanggal</th>
+            <th>Jam</th>
+            <th>Siswa</th>
+            <th>Guru</th>
+            <th>Kelas</th>
+            <th>Jam Pelajaran</th>
+            <th>Status</th>
+            <th>Keterangan</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody id="tabelAbsensiSiswa">
+          <tr>
+            <td colspan="10" style="text-align:center;padding:30px">
+              Memuat data absensi siswa...
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- =====================================================
+     MODAL FORM ABSENSI SISWA
+     ===================================================== -->
+
+<div id="absensiSiswaModal" class="modal">
+
+  <div class="modal-content">
+
+    <div id="absensiSiswaModalTitle" class="modal-title">
+      Tambah Absensi Siswa
+    </div>
+
+    <input id="absensiSiswaId" type="hidden">
+
+    <label>Tanggal</label>
+    <input id="absensiSiswaTanggal" type="date">
+
+    <label>Jam Absen</label>
+    <input id="absensiSiswaJam" type="time">
+
+    <label>Siswa</label>
+    <select id="absensiSiswaSiswa">
+      <option value="">Pilih siswa</option>
+    </select>
+
+    <label>Guru</label>
+    <select id="absensiSiswaGuru">
+      <option value="">Pilih guru</option>
+    </select>
+
+    <label>Kelas</label>
+    <select id="absensiSiswaKelas">
+      <option value="">Pilih kelas</option>
+    </select>
+
+    <label>Jam Pelajaran</label>
+    <input
+      id="absensiSiswaJamPelajaran"
+      type="text"
+      placeholder="Contoh: 1 atau 1-2"
+    >
+
+    <label>Jadwal</label>
+    <select id="absensiSiswaJadwal">
+      <option value="">Tidak menggunakan jadwal</option>
+    </select>
+
+    <label>Status Kehadiran</label>
+    <select id="absensiSiswaStatus">
+      <option value="HADIR">HADIR</option>
+      <option value="IZIN">IZIN</option>
+      <option value="SAKIT">SAKIT</option>
+      <option value="ALPA">ALPA</option>
+    </select>
+
+    <label>Keterangan</label>
+    <input
+      id="absensiSiswaKeterangan"
+      type="text"
+      placeholder="Keterangan (opsional)"
+    >
+
+    <div id="absensiSiswaMessage"></div>
+
+    <div class="form-buttons">
+      <button
+        class="cancel-button"
+        onclick="tutupFormAbsensiSiswa()"
+      >
+        Batal
+      </button>
+
+      <button
+        class="save-button"
+        id="simpanAbsensiSiswaButton"
+        onclick="simpanAbsensiSiswa()"
+      >
+        Simpan Absensi
+      </button>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- =====================================================
+     MODAL FORM GURU
+     ===================================================== -->
+
+<div
+  id="guruModal"
+  class="modal"
+>
+
+  <div class="modal-content">
+
+
+    <div
+      id="guruModalTitle"
+      class="modal-title"
+    >
+      Tambah Guru
+    </div>
+
+
+    <input
+      id="guruId"
+      type="hidden"
+    >
+
+
+    <label>
+      Nama Guru
+    </label>
+
+    <input
+      id="guruNama"
+      type="text"
+      placeholder="Nama lengkap guru"
+    >
+
+
+    <label>
+      Username
+    </label>
+
+    <input
+      id="guruUsername"
+      type="text"
+      placeholder="Username login guru"
+    >
+
+
+    <label>
+      Password
+    </label>
+
+    <input
+      id="guruPassword"
+      type="password"
+      placeholder="Password guru"
+    >
+
+
+    <small
+      id="passwordInfo"
+      style="
+        display:block;
+        margin-top:-10px;
+        margin-bottom:15px;
+        color:#6b7280;
+      "
+    >
+      Saat edit, kosongkan jika password
+      tidak ingin diubah.
+    </small>
+
+
+    <label>
+      Role
+    </label>
+
+    <select id="guruRole">
+
+      <option value="GURU">
+        GURU
+      </option>
+
+      <option value="GURU_MAPEL">
+        GURU_MAPEL
+      </option>
+
+      <option value="WALI_KELAS">
+        WALI_KELAS
+      </option>
+
+    </select>
+
+
+    <label>
+      Kelas Wali
+    </label>
+
+    <select id="guruKelasWali">
+
+      <option value="">
+        Tidak menjadi wali kelas
+      </option>
+
+    </select>
+
+
+    <label>
+      Status
+    </label>
+
+    <select id="guruStatus">
+
+      <option value="AKTIF">
+        AKTIF
+      </option>
+
+      <option value="NONAKTIF">
+        NONAKTIF
+      </option>
+
+    </select>
+
+
+    <div id="guruMessage"></div>
+
+
+    <div class="form-buttons">
+
+      <button
+        class="cancel-button"
+        onclick="tutupFormGuru()"
+      >
+        Batal
+      </button>
+
+
+      <button
+        class="save-button"
+        id="simpanGuruButton"
+        onclick="simpanGuru()"
+      >
+        Simpan Guru
+      </button>
+
+    </div>
+
+
+  </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     MODAL FORM SISWA
+     ===================================================== -->
+
+<div
+  id="siswaModal"
+  class="modal"
+>
+
+  <div class="modal-content">
+
+
+    <div
+      id="siswaModalTitle"
+      class="modal-title"
+    >
+      Tambah Siswa
+    </div>
+
+
+    <input
+      id="siswaId"
+      type="hidden"
+    >
+
+
+    <label>
+      NIS
+    </label>
+
+    <input
+      id="siswaNis"
+      type="text"
+      placeholder="Nomor Induk Siswa"
+    >
+
+
+    <label>
+      NISN
+    </label>
+
+    <input
+      id="siswaNisn"
+      type="text"
+      placeholder="Nomor Induk Siswa Nasional"
+    >
+
+
+    <label>
+      Nama Siswa
+    </label>
+
+    <input
+      id="siswaNama"
+      type="text"
+      placeholder="Nama lengkap siswa"
+    >
+
+
+    <label>
+      Jenis Kelamin
+    </label>
+
+    <select id="siswaJk">
+
+      <option value="">
+        Pilih jenis kelamin
+      </option>
+
+      <option value="L">
+        L - Laki-laki
+      </option>
+
+      <option value="P">
+        P - Perempuan
+      </option>
+
+    </select>
+
+
+    <label>
+      Kelas
+    </label>
+
+    <select id="siswaKelas">
+
+      <option value="">
+        Pilih kelas
+      </option>
+
+    </select>
+
+
+    <label>
+      Tempat Tanggal Lahir
+    </label>
+
+    <input
+      id="siswaTempatTanggalLahir"
+      type="text"
+      placeholder="Contoh: Kenyam, 12 Januari 2015"
+    >
+
+
+    <label>
+      Agama
+    </label>
+
+    <select id="siswaAgama">
+
+      <option value="">
+        Pilih agama
+      </option>
+
+      <option value="ISLAM">
+        Islam
+      </option>
+
+      <option value="KRISTEN">
+        Kristen
+      </option>
+
+      <option value="KATOLIK">
+        Katolik
+      </option>
+
+      <option value="HINDU">
+        Hindu
+      </option>
+
+      <option value="BUDDHA">
+        Buddha
+      </option>
+
+      <option value="KONGHUCU">
+        Konghucu
+      </option>
+
+    </select>
+
+
+    <label>
+      Nama Orang Tua
+    </label>
+
+    <input
+      id="siswaNamaOrangTua"
+      type="text"
+      placeholder="Nama orang tua/wali"
+    >
+
+
+    <label>
+      Status
+    </label>
+
+    <select id="siswaStatus">
+
+      <option value="AKTIF">
+        AKTIF
+      </option>
+
+      <option value="NONAKTIF">
+        NONAKTIF
+      </option>
+
+    </select>
+
+
+    <div id="siswaMessage"></div>
+
+
+    <div class="form-buttons">
+
+      <button
+        class="cancel-button"
+        onclick="tutupFormSiswa()"
+      >
+        Batal
+      </button>
+
+
+      <button
+        class="save-button"
+        id="simpanSiswaButton"
+        onclick="simpanSiswa()"
+      >
+        Simpan Siswa
+      </button>
+
+    </div>
+
+
+  </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     MODAL FORM KELAS
+     ===================================================== -->
+
+<div
+  id="kelasModal"
+  class="modal"
+>
+
+  <div class="modal-content">
+
+
+    <div
+      id="kelasModalTitle"
+      class="modal-title"
+    >
+      Tambah Kelas
+    </div>
+
+
+    <input
+      id="kelasId"
+      type="hidden"
+    >
+
+
+    <label>
+      Nama Kelas
+    </label>
+
+    <input
+      id="kelasNama"
+      type="text"
+      placeholder="Contoh: 7A"
+    >
+
+
+    <label>
+      Wali Kelas
+    </label>
+
+    <select id="kelasWali">
+
+      <option value="">
+        Tidak ada wali kelas
+      </option>
+
+    </select>
+
+
+    <label>
+      Status
+    </label>
+
+    <select id="kelasStatus">
+
+      <option value="AKTIF">
+        AKTIF
+      </option>
+
+      <option value="NONAKTIF">
+        NONAKTIF
+      </option>
+
+    </select>
+
+
+    <div id="kelasMessage"></div>
+
+
+    <div class="form-buttons">
+
+      <button
+        class="cancel-button"
+        onclick="tutupFormKelas()"
+      >
+        Batal
+      </button>
+
+
+      <button
+        class="save-button"
+        id="simpanKelasButton"
+        onclick="simpanKelas()"
+      >
+        Simpan Kelas
+      </button>
+
+    </div>
+
+
+  </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     MODAL FORM MATA PELAJARAN
+     ===================================================== -->
+
+<div
+  id="mapelModal"
+  class="modal"
+>
+
+  <div class="modal-content">
+
+
+    <div
+      id="mapelModalTitle"
+      class="modal-title"
+    >
+      Tambah Mata Pelajaran
+    </div>
+
+
+    <input
+      id="mapelId"
+      type="hidden"
+    >
+
+
+    <label>
+      Nama Mata Pelajaran
+    </label>
+
+    <input
+      id="mapelNama"
+      type="text"
+      placeholder="Contoh: MATEMATIKA"
+    >
+
+
+    <label>
+      Status
+    </label>
+
+    <select id="mapelStatus">
+
+      <option value="AKTIF">
+        AKTIF
+      </option>
+
+      <option value="NONAKTIF">
+        NONAKTIF
+      </option>
+
+    </select>
+
+
+    <div id="mapelMessage"></div>
+
+
+    <div class="form-buttons">
+
+      <button
+        class="cancel-button"
+        onclick="tutupFormMapel()"
+      >
+        Batal
+      </button>
+
+
+      <button
+        class="save-button"
+        id="simpanMapelButton"
+        onclick="simpanMapel()"
+      >
+        Simpan Mata Pelajaran
+      </button>
+
+    </div>
+
+
+  </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     MODAL FORM JADWAL
+     ===================================================== -->
+
+<div
+  id="jadwalModal"
+  class="modal"
+>
+
+  <div class="modal-content">
+
+
+    <div
+      id="jadwalModalTitle"
+      class="modal-title"
+    >
+      Tambah Jadwal
+    </div>
+
+
+    <input
+      id="jadwalId"
+      type="hidden"
+    >
+
+
+    <label>
+      Hari
+    </label>
+
+    <select id="jadwalHari">
+
+      <option value="">
+        Pilih hari
+      </option>
+
+      <option value="SENIN">
+        SENIN
+      </option>
+
+      <option value="SELASA">
+        SELASA
+      </option>
+
+      <option value="RABU">
+        RABU
+      </option>
+
+      <option value="KAMIS">
+        KAMIS
+      </option>
+
+      <option value="JUMAT">
+        JUMAT
+      </option>
+
+      <option value="SABTU">
+        SABTU
+      </option>
+
+    </select>
+
+
+    <label>
+      Jam Pelajaran
+    </label>
+
+    <input
+      id="jadwalJam"
+      type="text"
+      placeholder="Contoh: 1 atau 1-2"
+    >
+
+
+    <label>
+      Guru
+    </label>
+
+    <select id="jadwalGuru">
+
+      <option value="">
+        Pilih guru
+      </option>
+
+    </select>
+
+
+    <label>
+      Kelas
+    </label>
+
+    <select id="jadwalKelas" multiple size="6"
+      style="min-height:150px;">
+
+      <option value="">
+        Pilih satu atau beberapa kelas
+      </option>
+
+    </select>
+
+    <small style="display:block;margin-top:-10px;margin-bottom:15px;color:#6b7280;">
+      Gunakan Ctrl + klik (Windows) untuk memilih lebih dari satu kelas.
+    </small>
+
+
+    <label>
+      Mata Pelajaran
+    </label>
+
+    <select id="jadwalMapel">
+
+      <option value="">
+        Pilih mata pelajaran
+      </option>
+
+    </select>
+
+
+    <div id="jadwalMessage"></div>
+
+
+    <div class="form-buttons">
+
+      <button
+        class="cancel-button"
+        onclick="tutupFormJadwal()"
+      >
+        Batal
+      </button>
+
+
+      <button
+        class="save-button"
+        id="simpanJadwalButton"
+        onclick="simpanJadwal()"
+      >
+        Simpan Jadwal
+      </button>
+
+    </div>
+
+
+  </div>
+
+</div>
+
+
+
+<script>
+
+
+// ========================================================
+// VARIABEL
+// ========================================================
+
+let semuaGuru = [];
+
+let modeGuru = "tambah";
+
+let semuaSiswa = [];
+
+let modeSiswa = "tambah";
+
+let semuaKelas = [];
+
+let modeKelas = "tambah";
+
+let semuaMapel = [];
+
+let modeMapel = "tambah";
+
+let semuaJadwal = [];
+
+let modeJadwal = "tambah";
+
+
+// ========================================================
+// LOGIN
+// ========================================================
+
+// ========================================================
+// LOGIN
+// ========================================================
+
+function login() {
+
+  const username =
+    document
+      .getElementById("username")
+      .value
+      .trim();
+
+  const password =
+    document
+      .getElementById("password")
+      .value;
+
+  const button =
+    document
+      .getElementById("loginButton");
+
+  const message =
+    document
+      .getElementById("loginMessage");
+
+  message.className = "";
+  message.innerText = "";
+
+  if (!username) {
+    message.className = "error";
+    message.innerText = "Username wajib diisi.";
+    return;
+  }
+
+  if (!password) {
+    message.className = "error";
+    message.innerText = "Password wajib diisi.";
+    return;
+  }
+
+  button.disabled = true;
+  button.innerText = "⏳ Memeriksa...";
+  message.className = "info";
+  message.innerText = "Sedang memeriksa akun...";
+
+  /*
+   * Login sekarang mencoba akun guru terlebih dahulu.
+   * Admin tetap menggunakan loginAdmin() sebagai fallback.
+   */
+
+  google.script.run
+    .withSuccessHandler(function(guru) {
+
+      if (guru && guru.success) {
+
+        sessionStorage.setItem(
+          "idGuru",
+          guru.idGuru || ""
+        );
+
+        sessionStorage.setItem(
+          "namaGuru",
+          guru.namaGuru || ""
+        );
+
+        sessionStorage.setItem(
+          "roleGuru",
+          guru.role || ""
+        );
+
+        sessionStorage.setItem(
+          "kelasWali",
+          guru.kelasWali || ""
+        );
+
+        if (
+          String(guru.role || "")
+            .trim()
+            .toUpperCase() === "WALI_KELAS"
+        ) {
+
+          message.className = "success";
+          message.innerText =
+            "✓ Login berhasil. Membuka Dashboard Wali Kelas...";
+
+          setTimeout(function() {
+
+            google.script.run
+              .withSuccessHandler(function(url) {
+
+                window.top.location.href =
+                  url + "?page=wali";
+
+              })
+              .withFailureHandler(function(error) {
+
+                message.className = "error";
+                message.innerText =
+                  "Gagal membuka Dashboard Wali Kelas: " +
+                  error.message;
+
+                button.disabled = false;
+                button.innerText = "🔐 Masuk";
+
+              })
+              .getWebAppUrl();
+
+          }, 400);
+
+          return;
+        }
+
+        /*
+         * Guru biasa / guru mapel sementara tetap
+         * diarahkan ke dashboard guru yang sudah ada.
+         * Kita tidak mengubah dashboard Admin.
+         */
+
+        message.className = "success";
+        message.innerText =
+          "✓ Login guru berhasil.";
+
+        button.disabled = false;
+        button.innerText = "🔐 Masuk";
+
+        return;
+      }
+
+      /*
+       * Jika bukan akun guru, coba akun Admin.
+       */
+
+      google.script.run
+        .withSuccessHandler(function(result) {
+
+          if (
+            result &&
+            result.success
+          ) {
+
+            message.className = "success";
+            message.innerText =
+              "✓ Login berhasil. Membuka Dashboard...";
+
+            document
+              .getElementById("adminUsername")
+              .innerText =
+              result.username;
+
+            setTimeout(function() {
+
+              document
+                .getElementById("loginPage")
+                .style.display = "none";
+
+              document
+                .getElementById("dashboardPage")
+                .style.display = "block";
+
+              document
+                .getElementById("guruPage")
+                .style.display = "none";
+
+              document
+                .getElementById("siswaPage")
+                .style.display = "none";
+
+              document
+                .getElementById("kelasPage")
+                .style.display = "none";
+
+              document
+                .getElementById("absensiGuruPage")
+                .style.display = "none";
+
+              document
+                .getElementById("absensiSiswaPage")
+                .style.display = "none";
+
+              loadStatistics();
+
+            }, 400);
+
+          } else {
+
+            message.className = "error";
+            message.innerText =
+              result && result.message
+                ? result.message
+                : "Username atau password salah.";
+
+            button.disabled = false;
+            button.innerText = "🔐 Masuk";
+          }
+
+        })
+        .withFailureHandler(function(error) {
+
+          message.className = "error";
+          message.innerText =
+            "Terjadi kesalahan: " +
+            error.message;
+
+          button.disabled = false;
+          button.innerText = "🔐 Masuk";
+
+        })
+        .loginAdmin(
+          username,
+          password
+        );
+
+    })
+    .withFailureHandler(function(error) {
+
+      /*
+       * Jika fungsi loginGuru belum tersedia/bermasalah,
+       * jangan langsung menghilangkan akses Admin.
+       * Coba login Admin.
+       */
+
+      google.script.run
+        .withSuccessHandler(function(result) {
+
+          if (
+            result &&
+            result.success
+          ) {
+
+            message.className = "success";
+            message.innerText =
+              "✓ Login berhasil. Membuka Dashboard...";
+
+            document
+              .getElementById("adminUsername")
+              .innerText =
+              result.username;
+
+            setTimeout(function() {
+
+              document
+                .getElementById("loginPage")
+                .style.display = "none";
+
+              document
+                .getElementById("dashboardPage")
+                .style.display = "block";
+
+              loadStatistics();
+
+            }, 400);
+
+          } else {
+
+            message.className = "error";
+            message.innerText =
+              result && result.message
+                ? result.message
+                : "Username atau password salah.";
+
+            button.disabled = false;
+            button.innerText = "🔐 Masuk";
+          }
+
+        })
+        .withFailureHandler(function(adminError) {
+
+          message.className = "error";
+          message.innerText =
+            "Terjadi kesalahan: " +
+            adminError.message;
+
+          button.disabled = false;
+          button.innerText = "🔐 Masuk";
+
+        })
+        .loginAdmin(
+          username,
+          password
+        );
+
+    })
+    .loginGuru(
+      username,
+      password
+    );
+}
+
+
+// ========================================================
+// STATISTIK
+// ========================================================
+
+function loadStatistics() {
+
+
+  google.script.run
+
+    .withSuccessHandler(
+      function(data) {
+
+        document
+          .getElementById(
+            "jumlahGuru"
+          )
+          .innerText =
+          Array.isArray(data)
+            ? data.length
+            : 0;
+
+      }
+    )
+
+    .withFailureHandler(
+      function() {
+
+        document
+          .getElementById(
+            "jumlahGuru"
+          )
+          .innerText =
+          "-";
+
+      }
+    )
+
+    .getGuru();
+
+
+  google.script.run
+
+    .withSuccessHandler(
+      function(data) {
+
+        document
+          .getElementById(
+            "jumlahSiswa"
+          )
+          .innerText =
+          Array.isArray(data)
+            ? data.length
+            : 0;
+
+      }
+    )
+
+    .withFailureHandler(
+      function() {
+
+        document
+          .getElementById(
+            "jumlahSiswa"
+          )
+          .innerText =
+          "-";
+
+      }
+    )
+
+    .getSiswa();
+
+
+  google.script.run
+
+    .withSuccessHandler(
+      function(data) {
+
+        document
+          .getElementById(
+            "jumlahKelas"
+          )
+          .innerText =
+          Array.isArray(data)
+            ? data.length
+            : 0;
+
+      }
+    )
+
+    .withFailureHandler(
+      function() {
+
+        document
+          .getElementById(
+            "jumlahKelas"
+          )
+          .innerText =
+          "-";
+
+      }
+    )
+
+    .getKelas();
+
+
+  google.script.run
+
+    .withSuccessHandler(
+      function(data) {
+
+        document
+          .getElementById(
+            "jumlahMapel"
+          )
+          .innerText =
+          Array.isArray(data)
+            ? data.length
+            : 0;
+
+      }
+    )
+
+    .withFailureHandler(
+      function() {
+
+        document
+          .getElementById(
+            "jumlahMapel"
+          )
+          .innerText =
+          "-";
+
+      }
+    )
+
+    .getMapel();
+
+}
+
+
+// ========================================================
+// DATA GURU
+// ========================================================
+
+function bukaGuru() {
+
+  document
+    .getElementById("dashboardPage")
+    .style.display =
+    "none";
+
+
+  document
+    .getElementById("siswaPage")
+    .style.display =
+    "none";
+
+
+  document
+    .getElementById("kelasPage")
+    .style.display =
+    "none";
+
+
+  document
+    .getElementById("guruPage")
+    .style.display =
+    "block";
+
+
+  loadGuru();
+
+}
+
+
+function kembaliDashboard() {
+
+  document
+    .getElementById("guruPage")
+    .style.display =
+    "none";
+
+
+  document
+    .getElementById("dashboardPage")
+    .style.display =
+    "block";
+
+
+  loadStatistics();
+
+}
+
+
+function loadGuru() {
+
+  const tbody =
+    document.getElementById(
+      "tabelGuru"
+    );
+
+
+  tbody.innerHTML = `
+
+    <tr>
+
+      <td
+        colspan="7"
+        style="
+          text-align:center;
+          padding:30px
+        "
+      >
+        ⏳ Memuat data guru...
+      </td>
+
+    </tr>
+
+  `;
+
+
+  google.script.run
+
+    .withSuccessHandler(
+      function(data) {
+
+        semuaGuru =
+          Array.isArray(data)
+            ? data
+            : [];
+
+
+        tampilkanGuru(
+          semuaGuru
+        );
+
+      }
+    )
+
+    .withFailureHandler(
+      function(error) {
+
+        tbody.innerHTML = `
+
+          <tr>
+
+            <td
+              colspan="7"
+              style="
+                text-align:center;
+                padding:30px;
+                color:#dc2626
+              "
+            >
+              Gagal mengambil data guru:
+              ${escapeHtml(error.message)}
+            </td>
+
+          </tr>
+
+        `;
+
+      }
+    )
+
+    .adminGetGuru();
+
+}
+
+
+function tampilkanGuru(data) {
+
+  const tbody =
+    document.getElementById(
+      "tabelGuru"
+    );
+
+
+  if (
+    !data ||
+    data.length === 0
+  ) {
+
+    tbody.innerHTML = `
+
+      <tr>
+
+        <td
+          colspan="7"
+          style="
+            text-align:center;
+            padding:35px;
+            color:#6b7280
+          "
+        >
+
+          Belum ada data guru.
+
+          <br><br>
+
+          Silakan klik
+          <b>＋ Tambah Guru</b>
+          untuk menambahkan guru pertama.
+
+        </td>
+
+      </tr>
+
+    `;
+
+    return;
+
+  }
+
+
+  tbody.innerHTML =
+    data
+      .map(function(guru, index) {
+
+        const status =
+          String(
+            guru.status || "AKTIF"
+          ).toUpperCase();
+
+
+        const badge =
+          status === "AKTIF"
+            ? "badge badge-aktif"
+            : "badge badge-nonaktif";
+
+
+        return `
+
+          <tr>
+
+            <td>
+              ${escapeHtml(
+                guru.id_guru
+              )}
+            </td>
+
+            <td>
+              <b>
+                ${escapeHtml(
+                  guru.nama_guru
+                )}
+              </b>
+            </td>
+
+            <td>
+              ${escapeHtml(
+                guru.username
+              )}
+            </td>
+
+            <td>
+              ${escapeHtml(
+                guru.role
+              )}
+            </td>
+
+            <td>
+              ${escapeHtml(
+                guru.kelas_wali || "-"
+              )}
+            </td>
+
+            <td>
+
+              <span class="${badge}">
+                ${escapeHtml(status)}
+              </span>
+
+            </td>
+
+            <td>
+
+              <button
+                class="action-button edit-button"
+                onclick="editGuruByIndex(${index})"
+              >
+                ✏️ Edit
+              </button>
+
+              <button
+                class="action-button delete-button"
+                onclick="hapusGuruByIndex(${index})"
+              >
+                🗑️ Hapus
+              </button>
+
+            </td>
+
+          </tr>
+
+        `;
+
+      })
+      .join("");
+
+}
+
+
+function filterGuru() {
+
+  const keyword =
+    document
+      .getElementById("cariGuru")
+      .value
+      .trim()
+      .toLowerCase();
+
+
+  if (!keyword) {
+
+    tampilkanGuru(
+      semuaGuru
+    );
+
+    return;
+
+  }
+
+
+  const hasil =
+    semuaGuru.filter(
+      function(guru) {
+
+        const gabungan = [
+
+          guru.id_guru,
+
+          guru.nama_guru,
+
+          guru.username,
+
+          guru.role,
+
+          guru.kelas_wali,
+
+          guru.status
+
+        ]
+          .join(" ")
+          .toLowerCase();
+
+
+        return gabungan
+          .includes(keyword);
+
+      }
+    );
+
+
+  tampilkanGuru(
+    hasil
+  );
+
+}
+
+
+function bukaFormGuru() {
+
+  modeGuru =
+    "tambah";
+
+
+  document
+    .getElementById("guruModalTitle")
+    .innerText =
+    "Tambah Guru";
+
+
+  document
+    .getElementById("guruId")
+    .value =
+    "";
+
+
+  document
+    .getElementById("guruNama")
+    .value =
+    "";
+
+
+  document
+    .getElementById("guruUsername")
+    .value =
+    "";
+
+
+  document
+    .getElementById("guruPassword")
+    .value =
+    "";
+
+
+  document
+    .getElementById("guruRole")
+    .value =
+    "GURU";
+
+
+  document
+    .getElementById("guruStatus")
+    .value =
+    "AKTIF";
+
+
+  document
+    .getElementById("passwordInfo")
+    .style
+    .display =
+    "none";
+
+
+  document
+    .getElementById("guruMessage")
+    .style
+    .display =
+    "none";
+
+
+  loadPilihanKelas("");
+
+
+  document
+    .getElementById("guruModal")
+    .style
+    .display =
+    "flex";
+
+}
+
+
+function editGuruByIndex(index) {
+
+  const guru =
+    semuaGuru[index];
+
+
+  if (!guru) {
+
+    return;
+
+  }
+
+
+  editGuru(guru);
+
+}
+
+
+function hapusGuruByIndex(index) {
+
+  const guru =
+    semuaGuru[index];
+
+
+  if (!guru) {
+
+    return;
+
+  }
+
+
+  hapusGuru(
+    guru.id_guru
+  );
+
+}
+
+
+function editGuru(guru) {
+
+  modeGuru =
+    "edit";
+
+
+  document
+    .getElementById("guruModalTitle")
+    .innerText =
+    "Edit Guru";
+
+
+  document
+    .getElementById("guruId")
+    .value =
+    guru.id_guru || "";
+
+
+  document
+    .getElementById("guruNama")
+    .value =
+    guru.nama_guru || "";
+
+
+  document
+    .getElementById("guruUsername")
+    .value =
+    guru.username || "";
+
+
+  document
+    .getElementById("guruPassword")
+    .value =
+    "";
+
+
+  document
+    .getElementById("guruRole")
+    .value =
+    guru.role || "GURU";
+
+
+  document
+    .getElementById("guruStatus")
+    .value =
+    guru.status || "AKTIF";
+
+
+  document
+    .getElementById("passwordInfo")
+    .style
+    .display =
+    "block";
+
+
+  document
+    .getElementById("guruMessage")
+    .style
+    .display =
+    "none";
+
+
+  loadPilihanKelas(
+    guru.kelas_wali || ""
+  );
+
+
+  document
+    .getElementById("guruModal")
+    .style
+    .display =
+    "flex";
+
+}
+
+
+function loadPilihanKelas(
+  nilaiTerpilih
+) {
+
+  const select =
+    document.getElementById(
+      "guruKelasWali"
+    );
+
+
+  select.innerHTML = `
+
+    <option value="">
+      Tidak menjadi wali kelas
+    </option>
+
+  `;
+
+
+  google.script.run
+
+    .withSuccessHandler(
+      function(data) {
+
+        if (
+          !Array.isArray(data)
+        ) {
+
+          return;
+
+        }
+
+
+        data.forEach(
+          function(namaKelas) {
+
+            const option =
+              document.createElement(
+                "option"
+              );
+
+
+            option.value =
+              namaKelas;
+
+            option.textContent =
+              namaKelas;
+
+
+            if (
+              String(namaKelas) ===
+              String(nilaiTerpilih)
+            ) {
+
+              option.selected =
+                true;
+
+            }
+
+
+            select.appendChild(
+              option
+            );
+
+          }
+        );
+
+      }
+    )
+
+    .withFailureHandler(
+      function(error) {
+
+        console.error(error);
+
+      }
+    )
+
+    .adminGetKelasUntukGuru();
+
+}
+
+
+function simpanGuru() {
+
+  const idGuru =
+    document
+      .getElementById("guruId")
+      .value;
+
+
+  const nama =
+    document
+      .getElementById("guruNama")
+      .value
+      .trim();
+
+
+  const username =
+    document
+      .getElementById("guruUsername")
+      .value
+      .trim();
+
+
+  const password =
+    document
+      .getElementById("guruPassword")
+      .value;
+
+
+  const role =
+    document
+      .getElementById("guruRole")
+      .value;
+
+
+  const kelasWali =
+    document
+      .getElementById("guruKelasWali")
+      .value;
+
+
+  const status =
+    document
+      .getElementById("guruStatus")
+      .value;
+
+
+  const button =
+    document
+      .getElementById("simpanGuruButton");
+
+
+  if (!nama) {
+
+    tampilkanPesanGuru(
+      "Nama guru wajib diisi.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  if (!username) {
+
+    tampilkanPesanGuru(
+      "Username guru wajib diisi.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  if (
+    modeGuru === "tambah" &&
+    !password
+  ) {
+
+    tampilkanPesanGuru(
+      "Password guru wajib diisi.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  const data = {
+
+    id_guru:
+      idGuru,
+
+    nama_guru:
+      nama,
+
+    username:
+      username,
+
+    password:
+      password,
+
+    role:
+      role,
+
+    kelas_wali:
+      kelasWali,
+
+    status:
+      status
+
+  };
+
+
+  button.disabled =
+    true;
+
+  button.innerText =
+    "Menyimpan...";
+
+
+  const selesai =
+    function(result) {
+
+      if (
+        result &&
+        result.success
+      ) {
+
+        tampilkanPesanGuru(
+          result.message,
+          "success"
+        );
+
+
+        setTimeout(
+          function() {
+
+            tutupFormGuru();
+
+            loadGuru();
+
+            loadStatistics();
+
+          },
+          500
+        );
+
+
+      } else {
+
+        tampilkanPesanGuru(
+          result &&
+          result.message
+            ? result.message
+            : "Gagal menyimpan data.",
+          "error"
+        );
+
+
+        button.disabled =
+          false;
+
+        button.innerText =
+          "Simpan Guru";
+
+      }
+
+    };
+
+
+  const gagal =
+    function(error) {
+
+      tampilkanPesanGuru(
+        "Terjadi kesalahan: " +
+        error.message,
+        "error"
+      );
+
+
+      button.disabled =
+        false;
+
+      button.innerText =
+        "Simpan Guru";
+
+    };
+
+
+  if (
+    modeGuru === "tambah"
+  ) {
+
+    google.script.run
+      .withSuccessHandler(selesai)
+      .withFailureHandler(gagal)
+      .adminTambahGuru(data);
+
+  } else {
+
+    google.script.run
+      .withSuccessHandler(selesai)
+      .withFailureHandler(gagal)
+      .adminEditGuru(data);
+
+  }
+
+}
+
+
+function hapusGuru(idGuru) {
+
+  const yakin =
+    confirm(
+      "Yakin ingin menghapus guru dengan ID " +
+      idGuru +
+      "?"
+    );
+
+
+  if (!yakin) {
+
+    return;
+
+  }
+
+
+  google.script.run
+
+    .withSuccessHandler(
+      function(result) {
+
+        if (
+          result &&
+          result.success
+        ) {
+
+          alert(
+            result.message
+          );
+
+          loadGuru();
+
+          loadStatistics();
+
+        } else {
+
+          alert(
+            result &&
+            result.message
+              ? result.message
+              : "Gagal menghapus guru."
+          );
+
+        }
+
+      }
+    )
+
+    .withFailureHandler(
+      function(error) {
+
+        alert(
+          "Terjadi kesalahan: " +
+          error.message
+        );
+
+      }
+    )
+
+    .adminHapusGuru(
+      idGuru
+    );
+
+}
+
+
+function tutupFormGuru() {
+
+  document
+    .getElementById("guruModal")
+    .style
+    .display =
+    "none";
+
+
+  document
+    .getElementById(
+      "simpanGuruButton"
+    )
+    .disabled =
+    false;
+
+
+  document
+    .getElementById(
+      "simpanGuruButton"
+    )
+    .innerText =
+    "Simpan Guru";
+
+}
+
+
+function tampilkanPesanGuru(
+  pesan,
+  tipe
+) {
+
+  const element =
+    document.getElementById(
+      "guruMessage"
+    );
+
+
+  element.style.display =
+    "block";
+
+
+  element.className =
+    tipe === "success"
+      ? "success"
+      : "error";
+
+
+  element.innerText =
+    pesan;
+
+}
+
+
+// ========================================================
+// DATA SISWA
+// ========================================================
+
+function bukaSiswa() {
+
+  document
+    .getElementById("dashboardPage")
+    .style.display =
+    "none";
+
+
+  document
+    .getElementById("guruPage")
+    .style.display =
+    "none";
+
+
+  document
+    .getElementById("kelasPage")
+    .style.display =
+    "none";
+
+
+  document
+    .getElementById("siswaPage")
+    .style.display =
+    "block";
+
+
+  loadSiswa();
+
+}
+
+
+function kembaliDashboardDariSiswa() {
+
+  document
+    .getElementById("siswaPage")
+    .style.display =
+    "none";
+
+
+  document
+    .getElementById("dashboardPage")
+    .style.display =
+    "block";
+
+
+  loadStatistics();
+
+}
+
+
+function loadSiswa() {
+
+  const tbody =
+    document.getElementById(
+      "tabelSiswa"
+    );
+
+
+  tbody.innerHTML = `
+
+    <tr>
+
+      <td
+        colspan="8"
+        style="
+          text-align:center;
+          padding:30px
+        "
+      >
+        ⏳ Memuat data siswa...
+      </td>
+
+    </tr>
+
+  `;
+
+
+  google.script.run
+
+    .withSuccessHandler(
+      function(data) {
+
+        semuaSiswa =
+          Array.isArray(data)
+            ? data
+            : [];
+
+
+        tampilkanSiswa(
+          semuaSiswa
+        );
+
+      }
+    )
+
+    .withFailureHandler(
+      function(error) {
+
+        tbody.innerHTML = `
+
+          <tr>
+
+            <td
+              colspan="8"
+              style="
+                text-align:center;
+                padding:30px;
+                color:#dc2626
+              "
+            >
+
+              Gagal mengambil data siswa:
+
+              <br><br>
+
+              ${escapeHtml(
+                error.message
+              )}
+
+            </td>
+
+          </tr>
+
+        `;
+
+      }
+    )
+
+    .adminGetSiswa();
+
+}
+
+
+function tampilkanSiswa(data) {
+
+  const tbody =
+    document.getElementById(
+      "tabelSiswa"
+    );
+
+
+  if (
+    !data ||
+    data.length === 0
+  ) {
+
+    tbody.innerHTML = `
+
+      <tr>
+
+        <td
+          colspan="8"
+          style="
+            text-align:center;
+            padding:35px;
+            color:#6b7280
+          "
+        >
+
+          Belum ada data siswa.
+
+          <br><br>
+
+          Silakan klik
+          <b>＋ Tambah Siswa</b>
+          untuk menambahkan siswa pertama.
+
+        </td>
+
+      </tr>
+
+    `;
+
+    return;
+
+  }
+
+
+  tbody.innerHTML =
+    data
+      .map(function(siswa, index) {
+
+        const status =
+          String(
+            siswa.status || "AKTIF"
+          ).toUpperCase();
+
+
+        const badge =
+          status === "AKTIF"
+            ? "badge badge-aktif"
+            : "badge badge-nonaktif";
+
+
+        return `
+
+          <tr>
+
+            <td>
+              ${escapeHtml(
+                siswa.id_siswa
+              )}
+            </td>
+
+            <td>
+              ${escapeHtml(
+                siswa.nis || "-"
+              )}
+            </td>
+
+            <td>
+              ${escapeHtml(
+                siswa.nisn || "-"
+              )}
+            </td>
+
+            <td>
+              <b>
+                ${escapeHtml(
+                  siswa.nama
+                )}
+              </b>
+            </td>
+
+            <td>
+              ${escapeHtml(
+                siswa.jk || "-"
+              )}
+            </td>
+
+            <td>
+              ${escapeHtml(
+                siswa.kelas || "-"
+              )}
+            </td>
+
+            <td>
+
+              <span
+                class="${badge}"
+              >
+                ${escapeHtml(status)}
+              </span>
+
+            </td>
+
+            <td>
+
+              <button
+                class="action-button edit-button"
+                onclick="editSiswaByIndex(${index})"
+              >
+                ✏️ Edit
+              </button>
+
+              <button
+                class="action-button delete-button"
+                onclick="hapusSiswaByIndex(${index})"
+              >
+                🗑️ Hapus
+              </button>
+
+            </td>
+
+          </tr>
+
+        `;
+
+      })
+      .join("");
+
+}
+
+
+function filterSiswa() {
+
+  const keyword =
+    document
+      .getElementById("cariSiswa")
+      .value
+      .trim()
+      .toLowerCase();
+
+
+  if (!keyword) {
+
+    tampilkanSiswa(
+      semuaSiswa
+    );
+
+    return;
+
+  }
+
+
+  const hasil =
+    semuaSiswa.filter(
+      function(siswa) {
+
+        const gabungan = [
+
+          siswa.id_siswa,
+
+          siswa.nis,
+
+          siswa.nisn,
+
+          siswa.nama,
+
+          siswa.jk,
+
+          siswa.kelas,
+
+          siswa.tempat_tanggal_lahir,
+
+          siswa.agama,
+
+          siswa.nama_orang_tua,
+
+          siswa.status
+
+        ]
+          .join(" ")
+          .toLowerCase();
+
+
+        return gabungan
+          .includes(keyword);
+
+      }
+    );
+
+
+  tampilkanSiswa(
+    hasil
+  );
+
+}
+
+
+function bukaFormSiswa() {
+
+  modeSiswa =
+    "tambah";
+
+
+  document
+    .getElementById("siswaModalTitle")
+    .innerText =
+    "Tambah Siswa";
+
+
+  document
+    .getElementById("siswaId")
+    .value =
+    "";
+
+
+  document
+    .getElementById("siswaNis")
+    .value =
+    "";
+
+
+  document
+    .getElementById("siswaNisn")
+    .value =
+    "";
+
+
+  document
+    .getElementById("siswaNama")
+    .value =
+    "";
+
+
+  document
+    .getElementById("siswaJk")
+    .value =
+    "";
+
+
+  document
+    .getElementById(
+      "siswaTempatTanggalLahir"
+    )
+    .value =
+    "";
+
+
+  document
+    .getElementById("siswaAgama")
+    .value =
+    "";
+
+
+  document
+    .getElementById(
+      "siswaNamaOrangTua"
+    )
+    .value =
+    "";
+
+
+  document
+    .getElementById("siswaStatus")
+    .value =
+    "AKTIF";
+
+
+  document
+    .getElementById("siswaMessage")
+    .style
+    .display =
+    "none";
+
+
+  loadPilihanKelasSiswa("");
+
+
+  document
+    .getElementById("siswaModal")
+    .style
+    .display =
+    "flex";
+
+}
+
+
+function editSiswaByIndex(index) {
+
+  const siswa =
+    semuaSiswa[index];
+
+
+  if (!siswa) {
+
+    return;
+
+  }
+
+
+  editSiswa(siswa);
+
+}
+
+
+function hapusSiswaByIndex(index) {
+
+  const siswa =
+    semuaSiswa[index];
+
+
+  if (!siswa) {
+
+    return;
+
+  }
+
+
+  hapusSiswa(
+    siswa.id_siswa
+  );
+
+}
+
+
+function editSiswa(siswa) {
+
+  modeSiswa =
+    "edit";
+
+
+  document
+    .getElementById("siswaModalTitle")
+    .innerText =
+    "Edit Siswa";
+
+
+  document
+    .getElementById("siswaId")
+    .value =
+    siswa.id_siswa || "";
+
+
+  document
+    .getElementById("siswaNis")
+    .value =
+    siswa.nis || "";
+
+
+  document
+    .getElementById("siswaNisn")
+    .value =
+    siswa.nisn || "";
+
+
+  document
+    .getElementById("siswaNama")
+    .value =
+    siswa.nama || "";
+
+
+  document
+    .getElementById("siswaJk")
+    .value =
+    siswa.jk || "";
+
+
+  document
+    .getElementById(
+      "siswaTempatTanggalLahir"
+    )
+    .value =
+    siswa.tempat_tanggal_lahir || "";
+
+
+  document
+    .getElementById("siswaAgama")
+    .value =
+    siswa.agama || "";
+
+
+  document
+    .getElementById(
+      "siswaNamaOrangTua"
+    )
+    .value =
+    siswa.nama_orang_tua || "";
+
+
+  document
+    .getElementById("siswaStatus")
+    .value =
+    siswa.status || "AKTIF";
+
+
+  document
+    .getElementById("siswaMessage")
+    .style
+    .display =
+    "none";
+
+
+  loadPilihanKelasSiswa(
+    siswa.kelas || ""
+  );
+
+
+  document
+    .getElementById("siswaModal")
+    .style
+    .display =
+    "flex";
+
+}
+
+
+function loadPilihanKelasSiswa(
+  nilaiTerpilih
+) {
+
+  const select =
+    document.getElementById(
+      "siswaKelas"
+    );
+
+
+  select.innerHTML = `
+
+    <option value="">
+      Pilih kelas
+    </option>
+
+  `;
+
+
+  google.script.run
+
+    .withSuccessHandler(
+      function(data) {
+
+        if (
+          !Array.isArray(data)
+        ) {
+
+          return;
+
+        }
+
+
+        data.forEach(
+          function(namaKelas) {
+
+            const option =
+              document.createElement(
+                "option"
+              );
+
+
+            option.value =
+              namaKelas;
+
+            option.textContent =
+              namaKelas;
+
+
+            if (
+              String(namaKelas) ===
+              String(nilaiTerpilih)
+            ) {
+
+              option.selected =
+                true;
+
+            }
+
+
+            select.appendChild(
+              option
+            );
+
+          }
+        );
+
+      }
+    )
+
+    .withFailureHandler(
+      function(error) {
+
+        console.error(error);
+
+      }
+    )
+
+    .adminGetKelasUntukSiswa();
+
+}
+
+
+function simpanSiswa() {
+
+  const idSiswa =
+    document
+      .getElementById("siswaId")
+      .value;
+
+
+  const nis =
+    document
+      .getElementById("siswaNis")
+      .value
+      .trim();
+
+
+  const nisn =
+    document
+      .getElementById("siswaNisn")
+      .value
+      .trim();
+
+
+  const nama =
+    document
+      .getElementById("siswaNama")
+      .value
+      .trim();
+
+
+  const jk =
+    document
+      .getElementById("siswaJk")
+      .value;
+
+
+  const kelas =
+    document
+      .getElementById("siswaKelas")
+      .value;
+
+
+  const tempatTanggalLahir =
+    document
+      .getElementById(
+        "siswaTempatTanggalLahir"
+      )
+      .value
+      .trim();
+
+
+  const agama =
+    document
+      .getElementById("siswaAgama")
+      .value;
+
+
+  const namaOrangTua =
+    document
+      .getElementById(
+        "siswaNamaOrangTua"
+      )
+      .value
+      .trim();
+
+
+  const status =
+    document
+      .getElementById("siswaStatus")
+      .value;
+
+
+  const button =
+    document
+      .getElementById(
+        "simpanSiswaButton"
+      );
+
+
+  if (!nama) {
+
+    tampilkanPesanSiswa(
+      "Nama siswa wajib diisi.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  if (!jk) {
+
+    tampilkanPesanSiswa(
+      "Jenis kelamin wajib dipilih.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  if (!kelas) {
+
+    tampilkanPesanSiswa(
+      "Kelas wajib dipilih.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  const data = {
+
+    id_siswa:
+      idSiswa,
+
+    nis:
+      nis,
+
+    nisn:
+      nisn,
+
+    nama:
+      nama,
+
+    jk:
+      jk,
+
+    kelas:
+      kelas,
+
+    tempat_tanggal_lahir:
+      tempatTanggalLahir,
+
+    agama:
+      agama,
+
+    nama_orang_tua:
+      namaOrangTua,
+
+    status:
+      status
+
+  };
+
+
+  button.disabled =
+    true;
+
+  button.innerText =
+    "Menyimpan...";
+
+
+  const selesai =
+    function(result) {
+
+      if (
+        result &&
+        result.success
+      ) {
+
+        tampilkanPesanSiswa(
+          result.message,
+          "success"
+        );
+
+
+        setTimeout(
+          function() {
+
+            tutupFormSiswa();
+
+            loadSiswa();
+
+            loadStatistics();
+
+          },
+          500
+        );
+
+
+      } else {
+
+        tampilkanPesanSiswa(
+          result &&
+          result.message
+            ? result.message
+            : "Gagal menyimpan data siswa.",
+          "error"
+        );
+
+
+        button.disabled =
+          false;
+
+        button.innerText =
+          "Simpan Siswa";
+
+      }
+
+    };
+
+
+  const gagal =
+    function(error) {
+
+      tampilkanPesanSiswa(
+        "Terjadi kesalahan: " +
+        error.message,
+        "error"
+      );
+
+
+      button.disabled =
+        false;
+
+      button.innerText =
+        "Simpan Siswa";
+
+    };
+
+
+  if (
+    modeSiswa === "tambah"
+  ) {
+
+    google.script.run
+      .withSuccessHandler(selesai)
+      .withFailureHandler(gagal)
+      .adminTambahSiswa(data);
+
+  } else {
+
+    google.script.run
+      .withSuccessHandler(selesai)
+      .withFailureHandler(gagal)
+      .adminEditSiswa(data);
+
+  }
+
+}
+
+
+function hapusSiswa(idSiswa) {
+
+  const yakin =
+    confirm(
+      "Yakin ingin menghapus siswa dengan ID " +
+      idSiswa +
+      "?"
+    );
+
+
+  if (!yakin) {
+
+    return;
+
+  }
+
+
+  google.script.run
+
+    .withSuccessHandler(
+      function(result) {
+
+        if (
+          result &&
+          result.success
+        ) {
+
+          alert(
+            result.message
+          );
+
+          loadSiswa();
+
+          loadStatistics();
+
+        } else {
+
+          alert(
+            result &&
+            result.message
+              ? result.message
+              : "Gagal menghapus siswa."
+          );
+
+        }
+
+      }
+    )
+
+    .withFailureHandler(
+      function(error) {
+
+        alert(
+          "Terjadi kesalahan: " +
+          error.message
+        );
+
+      }
+    )
+
+    .adminHapusSiswa(
+      idSiswa
+    );
+
+}
+
+
+function tutupFormSiswa() {
+
+  document
+    .getElementById("siswaModal")
+    .style
+    .display =
+    "none";
+
+
+  document
+    .getElementById(
+      "simpanSiswaButton"
+    )
+    .disabled =
+    false;
+
+
+  document
+    .getElementById(
+      "simpanSiswaButton"
+    )
+    .innerText =
+    "Simpan Siswa";
+
+}
+
+
+function tampilkanPesanSiswa(
+  pesan,
+  tipe
+) {
+
+  const element =
+    document.getElementById(
+      "siswaMessage"
+    );
+
+
+  element.style.display =
+    "block";
+
+
+  element.className =
+    tipe === "success"
+      ? "success"
+      : "error";
+
+
+  element.innerText =
+    pesan;
+
+}
+
+
+// ========================================================
+// DATA KELAS
+// ========================================================
+
+function bukaKelas() {
+
+  document
+    .getElementById("dashboardPage")
+    .style.display =
+    "none";
+
+
+  document
+    .getElementById("guruPage")
+    .style.display =
+    "none";
+
+
+  document
+    .getElementById("siswaPage")
+    .style.display =
+    "none";
+
+
+  document
+    .getElementById("kelasPage")
+    .style.display =
+    "block";
+
+
+  loadKelas();
+
+}
+
+
+function kembaliDashboardDariKelas() {
+
+  document
+    .getElementById("kelasPage")
+    .style.display =
+    "none";
+
+
+  document
+    .getElementById("dashboardPage")
+    .style.display =
+    "block";
+
+
+  loadStatistics();
+
+}
+
+
+function loadKelas() {
+
+  const tbody =
+    document.getElementById(
+      "tabelKelas"
+    );
+
+
+  tbody.innerHTML = `
+
+    <tr>
+
+      <td
+        colspan="5"
+        style="
+          text-align:center;
+          padding:30px
+        "
+      >
+        ⏳ Memuat data kelas...
+      </td>
+
+    </tr>
+
+  `;
+
+
+  google.script.run
+
+    .withSuccessHandler(
+      function(data) {
+
+        semuaKelas =
+          Array.isArray(data)
+            ? data
+            : [];
+
+
+        tampilkanKelas(
+          semuaKelas
+        );
+
+      }
+    )
+
+    .withFailureHandler(
+      function(error) {
+
+        tbody.innerHTML = `
+
+          <tr>
+
+            <td
+              colspan="5"
+              style="
+                text-align:center;
+                padding:30px;
+                color:#dc2626
+              "
+            >
+
+              Gagal mengambil data kelas:
+
+              <br><br>
+
+              ${escapeHtml(
+                error.message
+              )}
+
+            </td>
+
+          </tr>
+
+        `;
+
+      }
+    )
+
+    .adminGetKelas();
+
+}
+
+
+function tampilkanKelas(data) {
+
+  const tbody =
+    document.getElementById(
+      "tabelKelas"
+    );
+
+
+  if (
+    !data ||
+    data.length === 0
+  ) {
+
+    tbody.innerHTML = `
+
+      <tr>
+
+        <td
+          colspan="5"
+          style="
+            text-align:center;
+            padding:35px;
+            color:#6b7280
+          "
+        >
+
+          Belum ada data kelas.
+
+          <br><br>
+
+          Silakan klik
+          <b>＋ Tambah Kelas</b>
+          untuk menambahkan kelas pertama.
+
+        </td>
+
+      </tr>
+
+    `;
+
+    return;
+
+  }
+
+
+  tbody.innerHTML =
+    data
+      .map(function(kelas, index) {
+
+        const status =
+          String(
+            kelas.status || "AKTIF"
+          ).toUpperCase();
+
+
+        const badge =
+          status === "AKTIF"
+            ? "badge badge-aktif"
+            : "badge badge-nonaktif";
+
+
+        const namaWali =
+          kelas.nama_wali ||
+          kelas.wali_kelas ||
+          kelas.nama_guru ||
+          "-";
+
+
+        return `
+
+          <tr>
+
+            <td>
+              ${escapeHtml(
+                kelas.id_kelas
+              )}
+            </td>
+
+            <td>
+              <b>
+                ${escapeHtml(
+                  kelas.nama_kelas
+                )}
+              </b>
+            </td>
+
+            <td>
+              ${escapeHtml(
+                namaWali
+              )}
+            </td>
+
+            <td>
+
+              <span class="${badge}">
+                ${escapeHtml(status)}
+              </span>
+
+            </td>
+
+            <td>
+
+              <button
+                class="action-button edit-button"
+                onclick="editKelasByIndex(${index})"
+              >
+                ✏️ Edit
+              </button>
+
+              <button
+                class="action-button delete-button"
+                onclick="hapusKelasByIndex(${index})"
+              >
+                🗑️ Hapus
+              </button>
+
+            </td>
+
+          </tr>
+
+        `;
+
+      })
+      .join("");
+
+}
+
+
+function filterKelas() {
+
+  const keyword =
+    document
+      .getElementById("cariKelas")
+      .value
+      .trim()
+      .toLowerCase();
+
+
+  if (!keyword) {
+
+    tampilkanKelas(
+      semuaKelas
+    );
+
+    return;
+
+  }
+
+
+  const hasil =
+    semuaKelas.filter(
+      function(kelas) {
+
+        const gabungan = [
+
+          kelas.id_kelas,
+
+          kelas.nama_kelas,
+
+          kelas.id_wali_kelas,
+
+          kelas.nama_wali,
+
+          kelas.nama_guru,
+
+          kelas.wali_kelas,
+
+          kelas.status
+
+        ]
+          .join(" ")
+          .toLowerCase();
+
+
+        return gabungan
+          .includes(keyword);
+
+      }
+    );
+
+
+  tampilkanKelas(
+    hasil
+  );
+
+}
+
+
+function bukaFormKelas() {
+
+  modeKelas =
+    "tambah";
+
+
+  document
+    .getElementById(
+      "kelasModalTitle"
+    )
+    .innerText =
+    "Tambah Kelas";
+
+
+  document
+    .getElementById(
+      "kelasId"
+    )
+    .value =
+    "";
+
+
+  document
+    .getElementById(
+      "kelasNama"
+    )
+    .value =
+    "";
+
+
+  document
+    .getElementById(
+      "kelasStatus"
+    )
+    .value =
+    "AKTIF";
+
+
+  document
+    .getElementById(
+      "kelasMessage"
+    )
+    .style
+    .display =
+    "none";
+
+
+  loadPilihanWaliKelas("");
+
+
+  document
+    .getElementById(
+      "kelasModal"
+    )
+    .style
+    .display =
+    "flex";
+
+}
+
+
+function editKelasByIndex(index) {
+
+  const kelas =
+    semuaKelas[index];
+
+
+  if (!kelas) {
+
+    return;
+
+  }
+
+
+  editKelas(kelas);
+
+}
+
+
+function hapusKelasByIndex(index) {
+
+  const kelas =
+    semuaKelas[index];
+
+
+  if (!kelas) {
+
+    return;
+
+  }
+
+
+  hapusKelas(
+    kelas.id_kelas
+  );
+
+}
+
+
+function editKelas(kelas) {
+
+  modeKelas =
+    "edit";
+
+
+  document
+    .getElementById(
+      "kelasModalTitle"
+    )
+    .innerText =
+    "Edit Kelas";
+
+
+  document
+    .getElementById(
+      "kelasId"
+    )
+    .value =
+    kelas.id_kelas || "";
+
+
+  document
+    .getElementById(
+      "kelasNama"
+    )
+    .value =
+    kelas.nama_kelas || "";
+
+
+  document
+    .getElementById(
+      "kelasStatus"
+    )
+    .value =
+    kelas.status || "AKTIF";
+
+
+  document
+    .getElementById(
+      "kelasMessage"
+    )
+    .style
+    .display =
+    "none";
+
+
+  loadPilihanWaliKelas(
+    kelas.id_wali_kelas || ""
+  );
+
+
+  document
+    .getElementById(
+      "kelasModal"
+    )
+    .style
+    .display =
+    "flex";
+
+}
+
+
+function loadPilihanWaliKelas(
+  nilaiTerpilih
+) {
+
+  const select =
+    document
+      .getElementById(
+        "kelasWali"
+      );
+
+
+  select.innerHTML = `
+
+    <option value="">
+      Tidak ada wali kelas
+    </option>
+
+  `;
+
+
+  google.script.run
+
+    .withSuccessHandler(
+      function(data) {
+
+        if (
+          !Array.isArray(data)
+        ) {
+
+          return;
+
+        }
+
+
+        data.forEach(
+          function(guru) {
+
+            const option =
+              document
+                .createElement(
+                  "option"
+                );
+
+
+            const idGuru =
+              guru.id_guru || "";
+
+
+            const namaGuru =
+              guru.nama_guru ||
+              guru.nama ||
+              "";
+
+
+            option.value =
+              idGuru;
+
+
+            option.textContent =
+              namaGuru;
+
+
+            if (
+              String(idGuru) ===
+              String(nilaiTerpilih)
+            ) {
+
+              option.selected =
+                true;
+
+            }
+
+
+            select
+              .appendChild(
+                option
+              );
+
+          }
+        );
+
+      }
+    )
+
+    .withFailureHandler(
+      function(error) {
+
+        console.error(error);
+
+      }
+    )
+
+    .adminGetGuru();
+
+}
+
+
+function simpanKelas() {
+
+  const idKelas =
+    document
+      .getElementById(
+        "kelasId"
+      )
+      .value;
+
+
+  const namaKelas =
+    document
+      .getElementById(
+        "kelasNama"
+      )
+      .value
+      .trim();
+
+
+  const idWaliKelas =
+    document
+      .getElementById(
+        "kelasWali"
+      )
+      .value;
+
+
+  const status =
+    document
+      .getElementById(
+        "kelasStatus"
+      )
+      .value;
+
+
+  const button =
+    document
+      .getElementById(
+        "simpanKelasButton"
+      );
+
+
+  if (!namaKelas) {
+
+    tampilkanPesanKelas(
+      "Nama kelas wajib diisi.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  const data = {
+
+    id_kelas:
+      idKelas,
+
+    nama_kelas:
+      namaKelas,
+
+    id_wali_kelas:
+      idWaliKelas,
+
+    status:
+      status
+
+  };
+
+
+  button.disabled =
+    true;
+
+  button.innerText =
+    "Menyimpan...";
+
+
+  const selesai =
+    function(result) {
+
+      if (
+        result &&
+        result.success
+      ) {
+
+        tampilkanPesanKelas(
+          result.message,
+          "success"
+        );
+
+
+        setTimeout(
+          function() {
+
+            tutupFormKelas();
+
+            loadKelas();
+
+            loadStatistics();
+
+          },
+          500
+        );
+
+
+      } else {
+
+        tampilkanPesanKelas(
+          result &&
+          result.message
+            ? result.message
+            : "Gagal menyimpan data kelas.",
+          "error"
+        );
+
+
+        button.disabled =
+          false;
+
+        button.innerText =
+          "Simpan Kelas";
+
+      }
+
+    };
+
+
+  const gagal =
+    function(error) {
+
+      tampilkanPesanKelas(
+        "Terjadi kesalahan: " +
+        error.message,
+        "error"
+      );
+
+
+      button.disabled =
+        false;
+
+      button.innerText =
+        "Simpan Kelas";
+
+    };
+
+
+  if (
+    modeKelas === "tambah"
+  ) {
+
+    google.script.run
+      .withSuccessHandler(selesai)
+      .withFailureHandler(gagal)
+      .adminTambahKelas(data);
+
+  } else {
+
+    google.script.run
+      .withSuccessHandler(selesai)
+      .withFailureHandler(gagal)
+      .adminEditKelas(data);
+
+  }
+
+}
+
+
+function hapusKelas(idKelas) {
+
+  const yakin =
+    confirm(
+      "Yakin ingin menghapus kelas dengan ID " +
+      idKelas +
+      "?"
+    );
+
+
+  if (!yakin) {
+
+    return;
+
+  }
+
+
+  google.script.run
+
+    .withSuccessHandler(
+      function(result) {
+
+        if (
+          result &&
+          result.success
+        ) {
+
+          alert(
+            result.message
+          );
+
+          loadKelas();
+
+          loadStatistics();
+
+        } else {
+
+          alert(
+            result &&
+            result.message
+              ? result.message
+              : "Gagal menghapus kelas."
+          );
+
+        }
+
+      }
+    )
+
+    .withFailureHandler(
+      function(error) {
+
+        alert(
+          "Terjadi kesalahan: " +
+          error.message
+        );
+
+      }
+    )
+
+    .adminHapusKelas(
+      idKelas
+    );
+
+}
+
+
+function tutupFormKelas() {
+
+  document
+    .getElementById(
+      "kelasModal"
+    )
+    .style
+    .display =
+    "none";
+
+
+  document
+    .getElementById(
+      "simpanKelasButton"
+    )
+    .disabled =
+    false;
+
+
+  document
+    .getElementById(
+      "simpanKelasButton"
+    )
+    .innerText =
+    "Simpan Kelas";
+
+}
+
+
+function tampilkanPesanKelas(
+  pesan,
+  tipe
+) {
+
+  const element =
+    document.getElementById(
+      "kelasMessage"
+    );
+
+
+  element.style.display =
+    "block";
+
+
+  element.className =
+    tipe === "success"
+      ? "success"
+      : "error";
+
+
+  element.innerText =
+    pesan;
+
+}
+
+
+// ========================================================
+// DATA MATA PELAJARAN
+// ========================================================
+
+function bukaMapel() {
+
+  document
+    .getElementById("dashboardPage")
+    .style.display =
+    "none";
+
+
+  document
+    .getElementById("guruPage")
+    .style.display =
+    "none";
+
+
+  document
+    .getElementById("siswaPage")
+    .style.display =
+    "none";
+
+
+  document
+    .getElementById("kelasPage")
+    .style.display =
+    "none";
+
+
+  document
+    .getElementById("mapelPage")
+    .style.display =
+    "block";
+
+
+  loadMapel();
+
+}
+
+
+function kembaliDashboardDariMapel() {
+
+  document
+    .getElementById("mapelPage")
+    .style.display =
+    "none";
+
+
+  document
+    .getElementById("dashboardPage")
+    .style.display =
+    "block";
+
+
+  loadStatistics();
+
+}
+
+
+function loadMapel() {
+
+  const tbody =
+    document.getElementById(
+      "tabelMapel"
+    );
+
+
+  tbody.innerHTML = `
+
+    <tr>
+
+      <td
+        colspan="4"
+        style="
+          text-align:center;
+          padding:30px
+        "
+      >
+        ⏳ Memuat data mata pelajaran...
+      </td>
+
+    </tr>
+
+  `;
+
+
+  google.script.run
+
+    .withSuccessHandler(
+      function(data) {
+
+        semuaMapel =
+          Array.isArray(data)
+            ? data
+            : [];
+
+
+        tampilkanMapel(
+          semuaMapel
+        );
+
+      }
+    )
+
+    .withFailureHandler(
+      function(error) {
+
+        tbody.innerHTML = `
+
+          <tr>
+
+            <td
+              colspan="4"
+              style="
+                text-align:center;
+                padding:30px;
+                color:#dc2626
+              "
+            >
+
+              Gagal mengambil data mata pelajaran:
+
+              <br><br>
+
+              ${escapeHtml(
+                error.message
+              )}
+
+            </td>
+
+          </tr>
+
+        `;
+
+      }
+    )
+
+    .adminGetMapel();
+
+}
+
+
+function tampilkanMapel(data) {
+
+  const tbody =
+    document.getElementById(
+      "tabelMapel"
+    );
+
+
+  if (
+    !data ||
+    data.length === 0
+  ) {
+
+    tbody.innerHTML = `
+
+      <tr>
+
+        <td
+          colspan="4"
+          style="
+            text-align:center;
+            padding:35px;
+            color:#6b7280
+          "
+        >
+
+          Belum ada data mata pelajaran.
+
+          <br><br>
+
+          Silakan klik
+          <b>＋ Tambah Mata Pelajaran</b>
+          untuk menambahkan mata pelajaran pertama.
+
+        </td>
+
+      </tr>
+
+    `;
+
+    return;
+
+  }
+
+
+  tbody.innerHTML =
+    data
+      .map(function(mapel, index) {
+
+        const status =
+          String(
+            mapel.status || "AKTIF"
+          ).toUpperCase();
+
+
+        const badge =
+          status === "AKTIF"
+            ? "badge badge-aktif"
+            : "badge badge-nonaktif";
+
+
+        return `
+
+          <tr>
+
+            <td>
+              ${escapeHtml(
+                mapel.id_mapel
+              )}
+            </td>
+
+            <td>
+              <b>
+                ${escapeHtml(
+                  mapel.nama_mapel
+                )}
+              </b>
+            </td>
+
+            <td>
+
+              <span class="${badge}">
+                ${escapeHtml(status)}
+              </span>
+
+            </td>
+
+            <td>
+
+              <button
+                class="action-button edit-button"
+                onclick="editMapelByIndex(${index})"
+              >
+                ✏️ Edit
+              </button>
+
+              <button
+                class="action-button delete-button"
+                onclick="hapusMapelByIndex(${index})"
+              >
+                🗑️ Hapus
+              </button>
+
+            </td>
+
+          </tr>
+
+        `;
+
+      })
+      .join("");
+
+}
+
+
+function filterMapel() {
+
+  const keyword =
+    document
+      .getElementById("cariMapel")
+      .value
+      .trim()
+      .toLowerCase();
+
+
+  if (!keyword) {
+
+    tampilkanMapel(
+      semuaMapel
+    );
+
+    return;
+
+  }
+
+
+  const hasil =
+    semuaMapel.filter(
+      function(mapel) {
+
+        const gabungan = [
+
+          mapel.id_mapel,
+
+          mapel.nama_mapel,
+
+          mapel.status
+
+        ]
+          .join(" ")
+          .toLowerCase();
+
+
+        return gabungan
+          .includes(keyword);
+
+      }
+    );
+
+
+  tampilkanMapel(
+    hasil
+  );
+
+}
+
+
+function bukaFormMapel() {
+
+  modeMapel =
+    "tambah";
+
+
+  document
+    .getElementById(
+      "mapelModalTitle"
+    )
+    .innerText =
+    "Tambah Mata Pelajaran";
+
+
+  document
+    .getElementById(
+      "mapelId"
+    )
+    .value =
+    "";
+
+
+  document
+    .getElementById(
+      "mapelNama"
+    )
+    .value =
+    "";
+
+
+  document
+    .getElementById(
+      "mapelStatus"
+    )
+    .value =
+    "AKTIF";
+
+
+  document
+    .getElementById(
+      "mapelMessage"
+    )
+    .style
+    .display =
+    "none";
+
+
+  document
+    .getElementById(
+      "mapelModal"
+    )
+    .style
+    .display =
+    "flex";
+
+
+  setTimeout(
+    function() {
+
+      document
+        .getElementById(
+          "mapelNama"
+        )
+        .focus();
+
+    },
+    50
+  );
+
+}
+
+
+function editMapelByIndex(index) {
+
+  const mapel =
+    semuaMapel[index];
+
+
+  if (!mapel) {
+
+    return;
+
+  }
+
+
+  editMapel(mapel);
+
+}
+
+
+function hapusMapelByIndex(index) {
+
+  const mapel =
+    semuaMapel[index];
+
+
+  if (!mapel) {
+
+    return;
+
+  }
+
+
+  hapusMapel(
+    mapel.id_mapel
+  );
+
+}
+
+
+function editMapel(mapel) {
+
+  modeMapel =
+    "edit";
+
+
+  document
+    .getElementById(
+      "mapelModalTitle"
+    )
+    .innerText =
+    "Edit Mata Pelajaran";
+
+
+  document
+    .getElementById(
+      "mapelId"
+    )
+    .value =
+    mapel.id_mapel || "";
+
+
+  document
+    .getElementById(
+      "mapelNama"
+    )
+    .value =
+    mapel.nama_mapel || "";
+
+
+  document
+    .getElementById(
+      "mapelStatus"
+    )
+    .value =
+    mapel.status || "AKTIF";
+
+
+  document
+    .getElementById(
+      "mapelMessage"
+    )
+    .style
+    .display =
+    "none";
+
+
+  document
+    .getElementById(
+      "mapelModal"
+    )
+    .style
+    .display =
+    "flex";
+
+
+  setTimeout(
+    function() {
+
+      document
+        .getElementById(
+          "mapelNama"
+        )
+        .focus();
+
+    },
+    50
+  );
+
+}
+
+
+function simpanMapel() {
+
+  const idMapel =
+    document
+      .getElementById(
+        "mapelId"
+      )
+      .value;
+
+
+  const namaMapel =
+    document
+      .getElementById(
+        "mapelNama"
+      )
+      .value
+      .trim();
+
+
+  const status =
+    document
+      .getElementById(
+        "mapelStatus"
+      )
+      .value;
+
+
+  const button =
+    document
+      .getElementById(
+        "simpanMapelButton"
+      );
+
+
+  if (!namaMapel) {
+
+    tampilkanPesanMapel(
+      "Nama mata pelajaran wajib diisi.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  const data = {
+
+    id_mapel:
+      idMapel,
+
+    nama_mapel:
+      namaMapel,
+
+    status:
+      status
+
+  };
+
+
+  button.disabled =
+    true;
+
+
+  button.innerText =
+    "Menyimpan...";
+
+
+  const selesai =
+    function(result) {
+
+      if (
+        result &&
+        result.success
+      ) {
+
+        tampilkanPesanMapel(
+          result.message,
+          "success"
+        );
+
+
+        setTimeout(
+          function() {
+
+            tutupFormMapel();
+
+            loadMapel();
+
+            loadStatistics();
+
+          },
+          500
+        );
+
+
+      } else {
+
+        tampilkanPesanMapel(
+          result &&
+          result.message
+            ? result.message
+            : "Gagal menyimpan data mata pelajaran.",
+          "error"
+        );
+
+
+        button.disabled =
+          false;
+
+
+        button.innerText =
+          "Simpan Mata Pelajaran";
+
+      }
+
+    };
+
+
+  const gagal =
+    function(error) {
+
+      tampilkanPesanMapel(
+        "Terjadi kesalahan: " +
+        error.message,
+        "error"
+      );
+
+
+      button.disabled =
+        false;
+
+
+      button.innerText =
+        "Simpan Mata Pelajaran";
+
+    };
+
+
+  if (
+    modeMapel === "tambah"
+  ) {
+
+    google.script.run
+      .withSuccessHandler(selesai)
+      .withFailureHandler(gagal)
+      .adminTambahMapel(data);
+
+  } else {
+
+    google.script.run
+      .withSuccessHandler(selesai)
+      .withFailureHandler(gagal)
+      .adminEditMapel(data);
+
+  }
+
+}
+
+
+function hapusMapel(idMapel) {
+
+  const yakin =
+    confirm(
+      "Yakin ingin menghapus mata pelajaran dengan ID " +
+      idMapel +
+      "?"
+    );
+
+
+  if (!yakin) {
+
+    return;
+
+  }
+
+
+  google.script.run
+
+    .withSuccessHandler(
+      function(result) {
+
+        if (
+          result &&
+          result.success
+        ) {
+
+          alert(
+            result.message
+          );
+
+
+          loadMapel();
+
+          loadStatistics();
+
+        } else {
+
+          alert(
+            result &&
+            result.message
+              ? result.message
+              : "Gagal menghapus mata pelajaran."
+          );
+
+        }
+
+      }
+    )
+
+    .withFailureHandler(
+      function(error) {
+
+        alert(
+          "Terjadi kesalahan: " +
+          error.message
+        );
+
+      }
+    )
+
+    .adminHapusMapel(
+      idMapel
+    );
+
+}
+
+
+function tutupFormMapel() {
+
+  document
+    .getElementById(
+      "mapelModal"
+    )
+    .style
+    .display =
+    "none";
+
+
+  document
+    .getElementById(
+      "simpanMapelButton"
+    )
+    .disabled =
+    false;
+
+
+  document
+    .getElementById(
+      "simpanMapelButton"
+    )
+    .innerText =
+    "Simpan Mata Pelajaran";
+
+}
+
+
+function tampilkanPesanMapel(
+  pesan,
+  tipe
+) {
+
+  const element =
+    document.getElementById(
+      "mapelMessage"
+    );
+
+
+  element.style.display =
+    "block";
+
+
+  element.className =
+    tipe === "success"
+      ? "success"
+      : "error";
+
+
+  element.innerText =
+    pesan;
+
+}
+
+
+// ========================================================
+// DATA JADWAL
+// ========================================================
+
+function bukaJadwal() {
+
+  document
+    .getElementById("dashboardPage")
+    .style.display =
+    "none";
+
+
+  document
+    .getElementById("guruPage")
+    .style.display =
+    "none";
+
+
+  document
+    .getElementById("siswaPage")
+    .style.display =
+    "none";
+
+
+  document
+    .getElementById("kelasPage")
+    .style.display =
+    "none";
+
+
+  document
+    .getElementById("mapelPage")
+    .style.display =
+    "none";
+
+
+  document
+    .getElementById("jadwalPage")
+    .style.display =
+    "block";
+
+
+  loadJadwal();
+
+}
+
+
+function kembaliDashboardDariJadwal() {
+
+  document
+    .getElementById("jadwalPage")
+    .style.display =
+    "none";
+
+
+  document
+    .getElementById("dashboardPage")
+    .style.display =
+    "block";
+
+
+  loadStatistics();
+
+}
+
+
+function loadJadwal() {
+
+  const tbody =
+    document.getElementById(
+      "tabelJadwal"
+    );
+
+
+  tbody.innerHTML = `
+
+    <tr>
+
+      <td
+        colspan="7"
+        style="
+          text-align:center;
+          padding:30px
+        "
+      >
+        ⏳ Memuat data jadwal...
+      </td>
+
+    </tr>
+
+  `;
+
+
+  google.script.run
+
+    .withSuccessHandler(
+      function(data) {
+
+        semuaJadwal =
+          Array.isArray(data)
+            ? data
+            : [];
+
+
+        tampilkanJadwal(
+          semuaJadwal
+        );
+
+      }
+    )
+
+    .withFailureHandler(
+      function(error) {
+
+        tbody.innerHTML = `
+
+          <tr>
+
+            <td
+              colspan="7"
+              style="
+                text-align:center;
+                padding:30px;
+                color:#dc2626
+              "
+            >
+
+              Gagal mengambil data jadwal:
+
+              <br><br>
+
+              ${escapeHtml(
+                error.message
+              )}
+
+            </td>
+
+          </tr>
+
+        `;
+
+      }
+    )
+
+    .adminGetJadwal();
+
+}
+
+
+function tampilkanJadwal(data) {
+
+  const tbody =
+    document.getElementById(
+      "tabelJadwal"
+    );
+
+
+  if (
+    !data ||
+    data.length === 0
+  ) {
+
+    tbody.innerHTML = `
+
+      <tr>
+
+        <td
+          colspan="7"
+          style="
+            text-align:center;
+            padding:35px;
+            color:#6b7280
+          "
+        >
+
+          Belum ada data jadwal.
+
+          <br><br>
+
+          Silakan klik
+          <b>＋ Tambah Jadwal</b>
+          untuk menambahkan jadwal pertama.
+
+        </td>
+
+      </tr>
+
+    `;
+
+    return;
+
+  }
+
+
+  tbody.innerHTML =
+    data
+      .map(function(jadwal, index) {
+
+        return `
+
+          <tr>
+
+            <td>
+              ${escapeHtml(
+                jadwal.id_jadwal
+              )}
+            </td>
+
+            <td>
+              <b>
+                ${escapeHtml(
+                  jadwal.hari || "-"
+                )}
+              </b>
+            </td>
+
+            <td>
+              ${escapeHtml(
+                jadwal.jam_pelajaran || "-"
+              )}
+            </td>
+
+            <td>
+              ${escapeHtml(
+                jadwal.nama_guru ||
+                jadwal.id_guru ||
+                "-"
+              )}
+            </td>
+
+            <td>
+              ${escapeHtml(
+                jadwal.nama_kelas ||
+                jadwal.id_kelas ||
+                "-"
+              )}
+            </td>
+
+            <td>
+              ${escapeHtml(
+                jadwal.nama_mapel ||
+                jadwal.id_mapel ||
+                "-"
+              )}
+            </td>
+
+            <td>
+
+              <button
+                class="action-button edit-button"
+                onclick="editJadwalByIndex(${index})"
+              >
+                ✏️ Edit
+              </button>
+
+              <button
+                class="action-button delete-button"
+                onclick="hapusJadwalByIndex(${index})"
+              >
+                🗑️ Hapus
+              </button>
+
+            </td>
+
+          </tr>
+
+        `;
+
+      })
+      .join("");
+
+}
+
+
+function filterJadwal() {
+
+  const keyword =
+    document
+      .getElementById("cariJadwal")
+      .value
+      .trim()
+      .toLowerCase();
+
+
+  if (!keyword) {
+
+    tampilkanJadwal(
+      semuaJadwal
+    );
+
+    return;
+
+  }
+
+
+  const hasil =
+    semuaJadwal.filter(
+      function(jadwal) {
+
+        const gabungan = [
+
+          jadwal.id_jadwal,
+
+          jadwal.hari,
+
+          jadwal.jam_pelajaran,
+
+          jadwal.id_guru,
+
+          jadwal.nama_guru,
+
+          jadwal.id_kelas,
+
+          jadwal.nama_kelas,
+
+          jadwal.id_mapel,
+
+          jadwal.nama_mapel
+
+        ]
+          .join(" ")
+          .toLowerCase();
+
+
+        return gabungan
+          .includes(keyword);
+
+      }
+    );
+
+
+  tampilkanJadwal(
+    hasil
+  );
+
+}
+
+
+function bukaFormJadwal() {
+
+  modeJadwal =
+    "tambah";
+
+
+  document
+    .getElementById(
+      "jadwalModalTitle"
+    )
+    .innerText =
+    "Tambah Jadwal";
+
+
+  document
+    .getElementById(
+      "jadwalId"
+    )
+    .value =
+    "";
+
+
+  document
+    .getElementById(
+      "jadwalHari"
+    )
+    .value =
+    "";
+
+
+  document
+    .getElementById(
+      "jadwalJam"
+    )
+    .value =
+    "";
+
+
+  document
+    .getElementById(
+      "jadwalGuru"
+    )
+    .innerHTML = `
+      <option value="">
+        Memuat guru...
+      </option>
+    `;
+
+
+  document
+    .getElementById(
+      "jadwalKelas"
+    )
+    .innerHTML = `
+      <option value="">
+        Memuat kelas...
+      </option>
+    `;
+
+
+  document
+    .getElementById(
+      "jadwalMapel"
+    )
+    .innerHTML = `
+      <option value="">
+        Memuat mata pelajaran...
+      </option>
+    `;
+
+
+  document
+    .getElementById(
+      "jadwalMessage"
+    )
+    .style
+    .display =
+    "none";
+
+
+  document
+    .getElementById(
+      "jadwalModal"
+    )
+    .style
+    .display =
+    "flex";
+
+
+  carregarDadosFormularioJadwal(
+    "",
+    "",
+    ""
+  );
+
+}
+
+
+function editJadwalByIndex(index) {
+
+  const jadwal =
+    semuaJadwal[index];
+
+
+  if (!jadwal) {
+
+    return;
+
+  }
+
+
+  editJadwal(jadwal);
+
+}
+
+
+function hapusJadwalByIndex(index) {
+
+  const jadwal =
+    semuaJadwal[index];
+
+
+  if (!jadwal) {
+
+    return;
+
+  }
+
+
+  hapusJadwal(
+    jadwal.id_jadwal
+  );
+
+}
+
+
+function editJadwal(jadwal) {
+
+  modeJadwal =
+    "edit";
+
+
+  document
+    .getElementById(
+      "jadwalModalTitle"
+    )
+    .innerText =
+    "Edit Jadwal";
+
+
+  document
+    .getElementById(
+      "jadwalId"
+    )
+    .value =
+    jadwal.id_jadwal || "";
+
+
+  document
+    .getElementById(
+      "jadwalHari"
+    )
+    .value =
+    jadwal.hari || "";
+
+
+  document
+    .getElementById(
+      "jadwalJam"
+    )
+    .value =
+    jadwal.jam_pelajaran || "";
+
+
+  document
+    .getElementById(
+      "jadwalMessage"
+    )
+    .style
+    .display =
+    "none";
+
+
+  document
+    .getElementById(
+      "jadwalModal"
+    )
+    .style
+    .display =
+    "flex";
+
+
+  carregarDadosFormularioJadwal(
+    jadwal.id_guru || "",
+    jadwal.id_kelas || "",
+    jadwal.id_mapel || ""
+  );
+
+}
+
+
+function carregarDadosFormularioJadwal(
+  guruTerpilih,
+  kelasTerpilih,
+  mapelTerpilih
+) {
+
+  let selesai = 0;
+
+  const total = 3;
+
+
+  function cekSelesai() {
+
+    selesai++;
+
+    if (
+      selesai === total
+    ) {
+
+      document
+        .getElementById(
+          "jadwalGuru"
+        )
+        .focus();
+
+    }
+
+  }
+
+
+  const guruSelect =
+    document.getElementById(
+      "jadwalGuru"
+    );
+
+
+  guruSelect.innerHTML = `
+    <option value="">
+      Memuat guru...
+    </option>
+  `;
+
+
+  google.script.run
+
+    .withSuccessHandler(
+      function(data) {
+
+        guruSelect.innerHTML = `
+          <option value="">
+            Pilih guru
+          </option>
+        `;
+
+
+        if (
+          Array.isArray(data)
+        ) {
+
+          data.forEach(
+            function(guru) {
+
+              const option =
+                document.createElement(
+                  "option"
+                );
+
+
+              option.value =
+                guru.id_guru || "";
+
+
+              option.textContent =
+                guru.nama_guru || "";
+
+
+              if (
+                String(
+                  guru.id_guru || ""
+                ) ===
+                String(
+                  guruTerpilih || ""
+                )
+              ) {
+
+                option.selected =
+                  true;
+
+              }
+
+
+              guruSelect.appendChild(
+                option
+              );
+
+            }
+          );
+
+        }
+
+
+        cekSelesai();
+
+      }
+    )
+
+    .withFailureHandler(
+      function(error) {
+
+        guruSelect.innerHTML = `
+          <option value="">
+            Gagal memuat guru
+          </option>
+        `;
+
+
+        console.error(error);
+
+        cekSelesai();
+
+      }
+    )
+
+    .adminGetGuruUntukJadwal();
+
+
+  const kelasSelect =
+    document.getElementById(
+      "jadwalKelas"
+    );
+
+
+  kelasSelect.innerHTML = `
+    <option value="">
+      Memuat kelas...
+    </option>
+  `;
+
+
+  google.script.run
+
+    .withSuccessHandler(
+      function(data) {
+
+        kelasSelect.innerHTML = ``;
+
+
+        if (
+          Array.isArray(data)
+        ) {
+
+          data.forEach(
+            function(kelas) {
+
+              const option =
+                document.createElement(
+                  "option"
+                );
+
+
+              option.value =
+                kelas.id_kelas || "";
+
+
+              option.textContent =
+                kelas.nama_kelas || "";
+
+
+              const kelasTerpilihArray =
+                String(kelasTerpilih || "")
+                  .split(",")
+                  .map(function(item) {
+                    return item.trim();
+                  })
+                  .filter(function(item) {
+                    return item !== "";
+                  });
+
+              if (
+                kelasTerpilihArray.indexOf(
+                  String(kelas.id_kelas || "").trim()
+                ) !== -1
+              ) {
+
+                option.selected = true;
+
+              }
+
+
+              kelasSelect.appendChild(
+                option
+              );
+
+            }
+          );
+
+        }
+
+
+        cekSelesai();
+
+      }
+    )
+
+    .withFailureHandler(
+      function(error) {
+
+        kelasSelect.innerHTML = `
+          <option value="">
+            Gagal memuat kelas
+          </option>
+        `;
+
+
+        console.error(error);
+
+        cekSelesai();
+
+      }
+    )
+
+    .adminGetKelasUntukJadwal();
+
+
+  const mapelSelect =
+    document.getElementById(
+      "jadwalMapel"
+    );
+
+
+  mapelSelect.innerHTML = `
+    <option value="">
+      Memuat mata pelajaran...
+    </option>
+  `;
+
+
+  google.script.run
+
+    .withSuccessHandler(
+      function(data) {
+
+        mapelSelect.innerHTML = `
+          <option value="">
+            Pilih mata pelajaran
+          </option>
+        `;
+
+
+        if (
+          Array.isArray(data)
+        ) {
+
+          data.forEach(
+            function(mapel) {
+
+              const option =
+                document.createElement(
+                  "option"
+                );
+
+
+              option.value =
+                mapel.id_mapel || "";
+
+
+              option.textContent =
+                mapel.nama_mapel || "";
+
+
+              if (
+                String(
+                  mapel.id_mapel || ""
+                ) ===
+                String(
+                  mapelTerpilih || ""
+                )
+              ) {
+
+                option.selected =
+                  true;
+
+              }
+
+
+              mapelSelect.appendChild(
+                option
+              );
+
+            }
+          );
+
+        }
+
+
+        cekSelesai();
+
+      }
+    )
+
+    .withFailureHandler(
+      function(error) {
+
+        mapelSelect.innerHTML = `
+          <option value="">
+            Gagal memuat mata pelajaran
+          </option>
+        `;
+
+
+        console.error(error);
+
+        cekSelesai();
+
+      }
+    )
+
+    .adminGetMapelUntukJadwal();
+
+}
+
+
+function simpanJadwal() {
+
+  const idJadwal =
+    document
+      .getElementById(
+        "jadwalId"
+      )
+      .value;
+
+
+  const hari =
+    document
+      .getElementById(
+        "jadwalHari"
+      )
+      .value;
+
+
+  const jamPelajaran =
+    document
+      .getElementById(
+        "jadwalJam"
+      )
+      .value
+      .trim();
+
+
+  const idGuru =
+    document
+      .getElementById(
+        "jadwalGuru"
+      )
+      .value;
+
+
+  const kelasSelect =
+    document.getElementById(
+      "jadwalKelas"
+    );
+
+  const idKelas =
+    Array.from(
+      kelasSelect.selectedOptions
+    )
+    .map(function(option) {
+      return String(option.value || "").trim();
+    })
+    .filter(function(value) {
+      return value !== "";
+    })
+    .join(",");
+
+
+  const idMapel =
+    document
+      .getElementById(
+        "jadwalMapel"
+      )
+      .value;
+
+
+  const button =
+    document
+      .getElementById(
+        "simpanJadwalButton"
+      );
+
+
+  if (!hari) {
+
+    tampilkanPesanJadwal(
+      "Hari wajib dipilih.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  if (!jamPelajaran) {
+
+    tampilkanPesanJadwal(
+      "Jam pelajaran wajib diisi.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  if (!idGuru) {
+
+    tampilkanPesanJadwal(
+      "Guru wajib dipilih.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  if (!idKelas) {
+
+    tampilkanPesanJadwal(
+      "Kelas wajib dipilih.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  if (!idMapel) {
+
+    tampilkanPesanJadwal(
+      "Mata pelajaran wajib dipilih.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  const data = {
+
+    id_jadwal:
+      idJadwal,
+
+    id_guru:
+      idGuru,
+
+    id_kelas:
+      idKelas,
+
+    id_mapel:
+      idMapel,
+
+    jam_pelajaran:
+      jamPelajaran,
+
+    hari:
+      hari
+
+  };
+
+
+  button.disabled =
+    true;
+
+
+  button.innerText =
+    "Menyimpan...";
+
+
+  const selesai =
+    function(result) {
+
+      if (
+        result &&
+        result.success
+      ) {
+
+        tampilkanPesanJadwal(
+          result.message,
+          "success"
+        );
+
+
+        setTimeout(
+          function() {
+
+            tutupFormJadwal();
+
+            loadJadwal();
+
+          },
+          500
+        );
+
+
+      } else {
+
+        tampilkanPesanJadwal(
+          result &&
+          result.message
+            ? result.message
+            : "Gagal menyimpan data jadwal.",
+          "error"
+        );
+
+
+        button.disabled =
+          false;
+
+
+        button.innerText =
+          "Simpan Jadwal";
+
+      }
+
+    };
+
+
+  const gagal =
+    function(error) {
+
+      tampilkanPesanJadwal(
+        "Terjadi kesalahan: " +
+        error.message,
+        "error"
+      );
+
+
+      button.disabled =
+        false;
+
+
+      button.innerText =
+        "Simpan Jadwal";
+
+    };
+
+
+  if (
+    modeJadwal === "tambah"
+  ) {
+
+    google.script.run
+      .withSuccessHandler(selesai)
+      .withFailureHandler(gagal)
+      .adminTambahJadwal(data);
+
+  } else {
+
+    google.script.run
+      .withSuccessHandler(selesai)
+      .withFailureHandler(gagal)
+      .adminEditJadwal(data);
+
+  }
+
+}
+
+
+function hapusJadwal(idJadwal) {
+
+  const yakin =
+    confirm(
+      "Yakin ingin menghapus jadwal dengan ID " +
+      idJadwal +
+      "?"
+    );
+
+
+  if (!yakin) {
+
+    return;
+
+  }
+
+
+  google.script.run
+
+    .withSuccessHandler(
+      function(result) {
+
+        if (
+          result &&
+          result.success
+        ) {
+
+          alert(
+            result.message
+          );
+
+
+          loadJadwal();
+
+        } else {
+
+          alert(
+            result &&
+            result.message
+              ? result.message
+              : "Gagal menghapus jadwal."
+          );
+
+        }
+
+      }
+    )
+
+    .withFailureHandler(
+      function(error) {
+
+        alert(
+          "Terjadi kesalahan: " +
+          error.message
+        );
+
+      }
+    )
+
+    .adminHapusJadwal(
+      idJadwal
+    );
+
+}
+
+
+function tutupFormJadwal() {
+
+  document
+    .getElementById(
+      "jadwalModal"
+    )
+    .style
+    .display =
+    "none";
+
+
+  document
+    .getElementById(
+      "simpanJadwalButton"
+    )
+    .disabled =
+    false;
+
+
+  document
+    .getElementById(
+      "simpanJadwalButton"
+    )
+    .innerText =
+    "Simpan Jadwal";
+
+}
+
+
+function tampilkanPesanJadwal(
+  pesan,
+  tipe
+) {
+
+  const element =
+    document.getElementById(
+      "jadwalMessage"
+    );
+
+
+  element.style.display =
+    "block";
+
+
+  element.className =
+    tipe === "success"
+      ? "success"
+      : "error";
+
+
+  element.innerText =
+    pesan;
+
+}
+
+
+
+// ========================================================
+// MENU AKUN
+// ========================================================
+
+function sembunyikanSemuaHalamanPortal() {
+
+  const ids = [
+    "dashboardPage",
+    "guruPage",
+    "siswaPage",
+    "kelasPage",
+    "mapelPage",
+    "jadwalPage",
+    "absensiGuruPage",
+    "absensiSiswaPage",
+    "akunPage",
+    "importPage",
+    "pengaturanPage"
+  ];
+
+  ids.forEach(function(id) {
+
+    const element =
+      document.getElementById(id);
+
+    if (element) {
+      element.style.display = "none";
+    }
+
+  });
+
+}
+
+
+function kembaliDashboardDariPortal(
+  halaman
+) {
+
+  const page =
+    document.getElementById(
+      halaman
+    );
+
+  if (page) {
+    page.style.display = "none";
+  }
+
+  const dashboard =
+    document.getElementById(
+      "dashboardPage"
+    );
+
+  if (dashboard) {
+    dashboard.style.display = "block";
+  }
+
+  loadStatistics();
+
+}
+
+
+function bukaAkun() {
+
+  sembunyikanSemuaHalamanPortal();
+
+  document
+    .getElementById("akunPage")
+    .style.display = "block";
+
+  document
+    .getElementById("akunMessage")
+    .style.display = "none";
+
+  document
+    .getElementById("akunPassword")
+    .value = "";
+
+  document
+    .getElementById("akunPasswordKonfirmasi")
+    .value = "";
+
+  google.script.run
+    .withSuccessHandler(
+      function(result) {
+
+        if (
+          result &&
+          result.success
+        ) {
+
+          document
+            .getElementById("akunUsername")
+            .value =
+            result.username || "";
+
+        } else {
+
+          tampilkanPesanPortal(
+            "akunMessage",
+            result &&
+            result.message
+              ? result.message
+              : "Gagal mengambil data akun.",
+            "error"
+          );
+
+        }
+
+      }
+    )
+    .withFailureHandler(
+      function(error) {
+
+        tampilkanPesanPortal(
+          "akunMessage",
+          "Terjadi kesalahan: " +
+          error.message,
+          "error"
+        );
+
+      }
+    )
+    .adminGetAkun();
+
+}
+
+
+function simpanAkun() {
+
+  const username =
+    document
+      .getElementById("akunUsername")
+      .value
+      .trim();
+
+  const password =
+    document
+      .getElementById("akunPassword")
+      .value;
+
+  const konfirmasi =
+    document
+      .getElementById("akunPasswordKonfirmasi")
+      .value;
+
+  const button =
+    document
+      .getElementById("simpanAkunButton");
+
+  if (!username) {
+
+    tampilkanPesanPortal(
+      "akunMessage",
+      "Username wajib diisi.",
+      "error"
+    );
+
+    return;
+
+  }
+
+  if (password !== konfirmasi) {
+
+    tampilkanPesanPortal(
+      "akunMessage",
+      "Konfirmasi password tidak sama.",
+      "error"
+    );
+
+    return;
+
+  }
+
+  if (
+    password &&
+    password.length < 6
+  ) {
+
+    tampilkanPesanPortal(
+      "akunMessage",
+      "Password baru minimal 6 karakter.",
+      "error"
+    );
+
+    return;
+
+  }
+
+  button.disabled = true;
+  button.innerText = "Menyimpan...";
+
+  google.script.run
+    .withSuccessHandler(
+      function(result) {
+
+        if (
+          result &&
+          result.success
+        ) {
+
+          document
+            .getElementById("adminUsername")
+            .innerText =
+            result.username || username;
+
+          document
+            .getElementById("akunPassword")
+            .value = "";
+
+          document
+            .getElementById("akunPasswordKonfirmasi")
+            .value = "";
+
+          tampilkanPesanPortal(
+            "akunMessage",
+            result.message ||
+            "Akun berhasil diperbarui.",
+            "success"
+          );
+
+        } else {
+
+          tampilkanPesanPortal(
+            "akunMessage",
+            result &&
+            result.message
+              ? result.message
+              : "Gagal memperbarui akun.",
+            "error"
+          );
+
+        }
+
+        button.disabled = false;
+        button.innerText =
+          "Simpan Perubahan";
+
+      }
+    )
+    .withFailureHandler(
+      function(error) {
+
+        tampilkanPesanPortal(
+          "akunMessage",
+          "Terjadi kesalahan: " +
+          error.message,
+          "error"
+        );
+
+        button.disabled = false;
+        button.innerText =
+          "Simpan Perubahan";
+
+      }
+    )
+    .adminEditAkun({
+
+      username:
+        username,
+
+      password:
+        password
+
+    });
+
+}
+
+
+// ========================================================
+// IMPORT DATA
+// ========================================================
+
+let jenisImportAktif = "GURU";
+let dataImportHeaders = [];
+let dataImportRows = [];
+
+
+function bukaImportData() {
+
+  sembunyikanSemuaHalamanPortal();
+
+  document
+    .getElementById("importPage")
+    .style.display = "block";
+
+  pilihJenisImport("GURU");
+
+  document
+    .getElementById("importFile")
+    .value = "";
+
+  document
+    .getElementById("importNamaFile")
+    .innerText =
+    "Belum ada file dipilih.";
+
+  document
+    .getElementById("importPreview")
+    .innerHTML = "";
+
+  dataImportRows = [];
+
+  document
+    .getElementById("importMessage")
+    .style.display = "none";
+
+}
+
+
+function pilihJenisImport(jenis) {
+
+  jenisImportAktif = String(jenis || "").trim().toUpperCase();
+
+  const semuaTombol = ["GURU", "SISWA", "KELAS", "MAPEL", "JADWAL"];
+  semuaTombol.forEach(function(item) {
+    const button = document.getElementById(
+      "importJenis" + item.charAt(0) + item.slice(1).toLowerCase()
+    );
+    if (button) button.classList.remove("active");
+  });
+
+  const aktif = document.getElementById(
+    "importJenis" + jenisImportAktif.charAt(0) + jenisImportAktif.slice(1).toLowerCase()
+  );
+  if (aktif) aktif.classList.add("active");
+
+  // Jangan sampai file Guru yang tadi dipilih ikut ter-import sebagai Siswa, dst.
+  dataImportHeaders = [];
+  dataImportRows = [];
+  const fileInput = document.getElementById("importFile");
+  if (fileInput) fileInput.value = "";
+  const namaFile = document.getElementById("importNamaFile");
+  if (namaFile) namaFile.innerText = "Belum ada file dipilih.";
+  const preview = document.getElementById("importPreview");
+  if (preview) preview.innerHTML = "";
+  if (typeof tampilkanPesanPortal === "function") {
+    tampilkanPesanPortal("importMessage", "", "");
+    const msg = document.getElementById("importMessage");
+    if (msg) msg.style.display = "none";
+  }
+}
+
+
+function bacaFileImport(input) {
+
+  const file = input && input.files && input.files[0];
+  if (!file) {
+    dataImportHeaders = [];
+    dataImportRows = [];
+    document.getElementById("importNamaFile").innerText = "Belum ada file dipilih.";
+    document.getElementById("importPreview").innerHTML = "";
+    return;
+  }
+
+  if (!/\.csv$/i.test(file.name)) {
+    dataImportHeaders = [];
+    dataImportRows = [];
+    document.getElementById("importPreview").innerHTML = "";
+    tampilkanPesanPortal("importMessage", "Gunakan file CSV (.csv).", "error");
+    return;
+  }
+
+  document.getElementById("importNamaFile").innerText = file.name;
+
+  const reader = new FileReader();
+  reader.onload = function(event) {
+    try {
+      const text = String(event.target.result || "").replace(/^\uFEFF/, "");
+      const parsed = parseCSVImport(text);
+      if (!parsed.length) throw new Error("CSV kosong.");
+      if (parsed.length < 2) throw new Error("CSV harus memiliki header dan minimal 1 baris data.");
+
+      dataImportHeaders = parsed[0].map(function(v) { return String(v || "").trim(); });
+      dataImportRows = parsed.slice(1).filter(function(row) {
+        return row.some(function(value) { return String(value == null ? "" : value).trim() !== ""; });
+      });
+
+      if (!dataImportRows.length) throw new Error("Tidak ada baris data setelah header.");
+
+      tampilkanPreviewImport(dataImportHeaders, dataImportRows);
+      tampilkanPesanPortal(
+        "importMessage",
+        dataImportRows.length + " baris siap diperiksa dan diimport sebagai " + jenisImportAktif + ".",
+        "success"
+      );
+
+    } catch (error) {
+      dataImportHeaders = [];
+      dataImportRows = [];
+      document.getElementById("importPreview").innerHTML = "";
+      tampilkanPesanPortal("importMessage", "File CSV tidak dapat dibaca: " + error.message, "error");
+    }
+  };
+
+  reader.readAsText(file, "UTF-8");
+}
+
+
+function parseCSVImport(
+  text
+) {
+
+  const rows = [];
+  let row = [];
+  let cell = "";
+  let quoted = false;
+
+  for (
+    let i = 0;
+    i < text.length;
+    i++
+  ) {
+
+    const char =
+      text[i];
+
+    const next =
+      text[i + 1];
+
+    if (char === '"') {
+
+      if (
+        quoted &&
+        next === '"'
+      ) {
+
+        cell += '"';
+        i++;
+
+      } else {
+
+        quoted =
+          !quoted;
+
+      }
+
+    } else if (
+      char === "," &&
+      !quoted
+    ) {
+
+      row.push(cell);
+      cell = "";
+
+    } else if (
+      (
+        char === "\n" ||
+        char === "\r"
+      ) &&
+      !quoted
+    ) {
+
+      if (
+        char === "\r" &&
+        next === "\n"
+      ) {
+        i++;
+      }
+
+      row.push(cell);
+      cell = "";
+
+      if (
+        row.some(function(value) {
+          return String(value).trim() !== "";
+        })
+      ) {
+
+        rows.push(row);
+
+      }
+
+      row = [];
+
+    } else {
+
+      cell += char;
+
+    }
+
+  }
+
+  if (
+    cell !== "" ||
+    row.length > 0
+  ) {
+
+    row.push(cell);
+
+    if (
+      row.some(function(value) {
+        return String(value).trim() !== "";
+      })
+    ) {
+
+      rows.push(row);
+
+    }
+
+  }
+
+  return rows;
+
+}
+
+
+function tampilkanPreviewImport(headers, rows) {
+  const preview = document.getElementById("importPreview");
+  if (!headers || !headers.length || !rows || !rows.length) {
+    preview.innerHTML = "<div class='portal-note'>Tidak ada data yang terbaca.</div>";
+    return;
+  }
+
+  const jumlahPreview = Math.min(rows.length, 8);
+  let html = "<div style='font-weight:bold;margin-bottom:8px'>Preview " + jumlahPreview + " dari " + rows.length + " baris</div>";
+  html += "<div style='overflow:auto;max-height:360px'><table class='portal-table'><thead><tr>";
+  headers.forEach(function(h) { html += "<th>" + escapeHtml(String(h)) + "</th>"; });
+  html += "</tr></thead><tbody>";
+  for (let i = 0; i < jumlahPreview; i++) {
+    html += "<tr>";
+    for (let c = 0; c < headers.length; c++) {
+      html += "<td>" + escapeHtml(String(rows[i][c] == null ? "" : rows[i][c])) + "</td>";
+    }
+    html += "</tr>";
+  }
+  html += "</tbody></table></div>";
+  preview.innerHTML = html;
+}
+
+function downloadTemplateImport() {
+  const templates = {
+    GURU: ["NAMA_GURU","USERNAME","PASSWORD","ROLE","KELAS_WALI","STATUS"],
+    SISWA: ["NIS","NISN","NAMA_SISWA","JK","KELAS","TEMPAT_TANGGAL_LAHIR","AGAMA","NAMA_ORANG_TUA","STATUS"],
+    KELAS: ["NAMA_KELAS","ID_WALI_KELAS","STATUS"],
+    MAPEL: ["NAMA_MAPEL","STATUS"],
+    JADWAL: ["ID_GURU","ID_KELAS","ID_MAPEL","JAM_PELAJARAN","HARI"]
+  };
+  const header = templates[jenisImportAktif] || templates.GURU;
+  const csv = header.join(",") + "\r\n";
+  const blob = new Blob(["\uFEFF" + csv], {type:"text/csv;charset=utf-8;"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "Template_Import_" + jenisImportAktif + ".csv";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+
+function jalankanImportData() {
+
+  if (
+    !dataImportHeaders ||
+    dataImportHeaders.length === 0 ||
+    !dataImportRows ||
+    dataImportRows.length === 0
+  ) {
+
+    tampilkanPesanPortal(
+      "importMessage",
+      "Pilih file CSV yang berisi data terlebih dahulu.",
+      "error"
+    );
+
+    return;
+
+  }
+
+  const button =
+    document
+      .getElementById(
+        "importButton"
+      );
+
+  const yakin =
+    confirm(
+      "Import " +
+      dataImportRows.length +
+      " baris ke " +
+      jenisImportAktif +
+      "?"
+    );
+
+  if (!yakin) {
+    return;
+  }
+
+  button.disabled = true;
+  button.innerText =
+    "Mengimport...";
+
+  google.script.run
+    .withSuccessHandler(
+      function(result) {
+
+        if (
+          result &&
+          result.success
+        ) {
+
+          tampilkanPesanPortal(
+            "importMessage",
+            result.message,
+            "success"
+          );
+
+          dataImportHeaders = [];
+          dataImportRows = [];
+
+          document
+            .getElementById(
+              "importFile"
+            )
+            .value = "";
+
+          document
+            .getElementById(
+              "importNamaFile"
+            )
+            .innerText =
+            "Import selesai.";
+
+          document
+            .getElementById(
+              "importPreview"
+            )
+            .innerHTML = "";
+
+          loadStatistics();
+
+        } else {
+
+          tampilkanPesanPortal(
+            "importMessage",
+            result &&
+            result.message
+              ? result.message
+              : "Import gagal.",
+            "error"
+          );
+
+        }
+
+        button.disabled = false;
+        button.innerText =
+          "📥 Import Data";
+
+      }
+    )
+    .withFailureHandler(
+      function(error) {
+
+        tampilkanPesanPortal(
+          "importMessage",
+          "Terjadi kesalahan: " +
+          error.message,
+          "error"
+        );
+
+        button.disabled = false;
+        button.innerText =
+          "📥 Import Data";
+
+      }
+    )
+    .adminImportData({
+
+      sheet:
+        jenisImportAktif,
+
+      headers:
+        dataImportHeaders,
+
+      rows:
+        dataImportRows
+
+    });
+
+}
+
+
+// ========================================================
+// PENGATURAN
+// ========================================================
+
+function bukaPengaturan() {
+
+  sembunyikanSemuaHalamanPortal();
+
+  document
+    .getElementById("pengaturanPage")
+    .style.display = "block";
+
+  document
+    .getElementById("pengaturanMessage")
+    .style.display = "none";
+
+  google.script.run
+    .withSuccessHandler(
+      function(result) {
+
+        if (
+          result &&
+          result.success
+        ) {
+
+          const data =
+            result.pengaturan ||
+            {};
+
+          document
+            .getElementById(
+              "pengaturanNamaSekolah"
+            )
+            .value =
+            data.namaSekolah || "";
+
+          document
+            .getElementById(
+              "pengaturanTahunAjaran"
+            )
+            .value =
+            data.tahunAjaran || "";
+
+          document
+            .getElementById(
+              "pengaturanSemester"
+            )
+            .value =
+            data.semester || "";
+
+          document
+            .getElementById(
+              "pengaturanJamMasuk"
+            )
+            .value =
+            data.jamMasuk || "";
+
+          document
+            .getElementById(
+              "pengaturanBatasAbsensi"
+            )
+            .value =
+            data.batasAbsensi || "";
+
+        } else {
+
+          tampilkanPesanPortal(
+            "pengaturanMessage",
+            result &&
+            result.message
+              ? result.message
+              : "Gagal mengambil pengaturan.",
+            "error"
+          );
+
+        }
+
+      }
+    )
+    .withFailureHandler(
+      function(error) {
+
+        tampilkanPesanPortal(
+          "pengaturanMessage",
+          "Terjadi kesalahan: " +
+          error.message,
+          "error"
+        );
+
+      }
+    )
+    .adminGetPengaturan();
+
+}
+
+
+function simpanPengaturan() {
+
+  const data = {
+
+    namaSekolah:
+      document
+        .getElementById(
+          "pengaturanNamaSekolah"
+        )
+        .value
+        .trim(),
+
+    tahunAjaran:
+      document
+        .getElementById(
+          "pengaturanTahunAjaran"
+        )
+        .value
+        .trim(),
+
+    semester:
+      document
+        .getElementById(
+          "pengaturanSemester"
+        )
+        .value,
+
+    jamMasuk:
+      document
+        .getElementById(
+          "pengaturanJamMasuk"
+        )
+        .value,
+
+    batasAbsensi:
+      document
+        .getElementById(
+          "pengaturanBatasAbsensi"
+        )
+        .value
+
+  };
+
+  if (!data.namaSekolah) {
+
+    tampilkanPesanPortal(
+      "pengaturanMessage",
+      "Nama sekolah wajib diisi.",
+      "error"
+    );
+
+    return;
+
+  }
+
+  const button =
+    document
+      .getElementById(
+        "simpanPengaturanButton"
+      );
+
+  button.disabled = true;
+  button.innerText =
+    "Menyimpan...";
+
+  google.script.run
+    .withSuccessHandler(
+      function(result) {
+
+        if (
+          result &&
+          result.success
+        ) {
+
+          tampilkanPesanPortal(
+            "pengaturanMessage",
+            result.message ||
+            "Pengaturan berhasil disimpan.",
+            "success"
+          );
+
+        } else {
+
+          tampilkanPesanPortal(
+            "pengaturanMessage",
+            result &&
+            result.message
+              ? result.message
+              : "Gagal menyimpan pengaturan.",
+            "error"
+          );
+
+        }
+
+        button.disabled = false;
+        button.innerText =
+          "Simpan Pengaturan";
+
+      }
+    )
+    .withFailureHandler(
+      function(error) {
+
+        tampilkanPesanPortal(
+          "pengaturanMessage",
+          "Terjadi kesalahan: " +
+          error.message,
+          "error"
+        );
+
+        button.disabled = false;
+        button.innerText =
+          "Simpan Pengaturan";
+
+      }
+    )
+    .adminSimpanPengaturan(
+      data
+    );
+
+}
+
+
+// ========================================================
+// PESAN PORTAL
+// ========================================================
+
+function tampilkanPesanPortal(
+  idElement,
+  pesan,
+  tipe
+) {
+
+  const element =
+    document.getElementById(
+      idElement
+    );
+
+  if (!element) {
+    return;
+  }
+
+  element.style.display =
+    "block";
+
+  element.className =
+    "portal-message " +
+    (
+      tipe === "success"
+        ? "success"
+        : "error"
+    );
+
+  element.innerText =
+    pesan;
+
+}
+
+
+// ========================================================
+// MENU BELUM AKTIF
+// ========================================================
+
+function menuBelumAktif(
+  namaMenu
+) {
+
+  alert(
+    "Menu " +
+    namaMenu +
+    " akan kita aktifkan pada tahap berikutnya."
+  );
+
+}
+
+
+// ========================================================
+// LOGOUT
+// ========================================================
+
+function logout() {
+
+
+  [
+    "akunPage",
+    "importPage",
+    "pengaturanPage"
+  ].forEach(function(id) {
+
+    const page =
+      document.getElementById(id);
+
+    if (page) {
+      page.style.display = "none";
+    }
+
+  });
+
+
+
+  document
+    .getElementById(
+      "guruPage"
+    )
+    .style
+    .display =
+    "none";
+
+
+  document
+    .getElementById(
+      "siswaPage"
+    )
+    .style
+    .display =
+    "none";
+
+
+  document
+    .getElementById(
+      "kelasPage"
+    )
+    .style
+    .display =
+    "none";
+
+
+  document
+    .getElementById(
+      "mapelPage"
+    )
+    .style
+    .display =
+    "none";
+
+
+  document
+    .getElementById(
+      "jadwalPage"
+    )
+    .style
+    .display =
+    "none";
+
+
+  document
+    .getElementById(
+      "absensiGuruPage"
+    )
+    .style
+    .display =
+    "none";
+
+
+  document
+    .getElementById(
+      "absensiSiswaPage"
+    )
+    .style
+    .display =
+    "none";
+
+
+  document
+    .getElementById(
+      "dashboardPage"
+    )
+    .style
+    .display =
+    "none";
+
+
+  document
+    .getElementById(
+      "loginPage"
+    )
+    .style
+    .display =
+    "flex";
+
+
+  document
+    .getElementById(
+      "username"
+    )
+    .value =
+    "";
+
+
+  document
+    .getElementById(
+      "password"
+    )
+    .value =
+    "";
+
+
+  document
+    .getElementById(
+      "loginMessage"
+    )
+    .className =
+    "";
+
+
+  document
+    .getElementById(
+      "loginMessage"
+    )
+    .innerText =
+    "";
+
+
+  document
+    .getElementById(
+      "loginButton"
+    )
+    .disabled =
+    false;
+
+
+  document
+    .getElementById(
+      "loginButton"
+    )
+    .innerText =
+    "🔐 Masuk";
+
+}
+
+
+// ========================================================
+// ESCAPE HTML
+// ========================================================
+
+function escapeHtml(
+  value
+) {
+
+  return String(
+    value == null
+      ? ""
+      : value
+  )
+    .replace(
+      /&/g,
+      "&amp;"
+    )
+    .replace(
+      /</g,
+      "&lt;"
+    )
+    .replace(
+      />/g,
+      "&gt;"
+    )
+    .replace(
+      /"/g,
+      "&quot;"
+    )
+    .replace(
+      /'/g,
+      "&#039;"
+    );
+
+}
+// ========================================================
+// ABSENSI SISWA
+// ========================================================
+
+// --------------------------------------------------------
+// BUKA HALAMAN ABSENSI SISWA
+// --------------------------------------------------------
+
+function bukaAbsensiSiswa() {
+
+  document.getElementById("dashboardPage").style.display = "none";
+  document.getElementById("guruPage").style.display = "none";
+  document.getElementById("siswaPage").style.display = "none";
+  document.getElementById("kelasPage").style.display = "none";
+  document.getElementById("mapelPage").style.display = "none";
+  document.getElementById("jadwalPage").style.display = "none";
+  document.getElementById("absensiGuruPage").style.display = "none";
+  document.getElementById("absensiSiswaPage").style.display = "block";
+
+  loadAbsensiSiswa();
+
+}
+
+
+// --------------------------------------------------------
+// KEMBALI DASHBOARD
+// --------------------------------------------------------
+
+function kembaliDashboardDariAbsensiSiswa() {
+
+  document.getElementById("absensiSiswaPage").style.display = "none";
+  document.getElementById("dashboardPage").style.display = "block";
+  loadStatistics();
+
+}
+
+
+// --------------------------------------------------------
+// LOAD DATA
+// --------------------------------------------------------
+
+function loadAbsensiSiswa() {
+
+  const tbody = document.getElementById("tabelAbsensiSiswa");
+
+  tbody.innerHTML = `
+    <tr>
+      <td colspan="10" style="text-align:center;padding:30px">
+        ⏳ Memuat data absensi siswa...
+      </td>
+    </tr>
+  `;
+
+  google.script.run
+    .withSuccessHandler(function(data) {
+
+      semuaAbsensiSiswa = Array.isArray(data) ? data : [];
+      tampilkanAbsensiSiswa(semuaAbsensiSiswa);
+
+    })
+    .withFailureHandler(function(error) {
+
+      tbody.innerHTML = `
+        <tr>
+          <td colspan="10" style="text-align:center;padding:30px;color:#dc2626">
+            Gagal mengambil data:<br><br>
+            ${escapeHtml(error.message)}
+          </td>
+        </tr>
+      `;
+
+    })
+    .adminGetAbsensiSiswa();
+
+}
+
+
+// --------------------------------------------------------
+// NAMA REFERENSI
+// --------------------------------------------------------
+
+function cariNamaSiswaAbsensi(id) {
+
+  const found = semuaSiswa.find(function(siswa) {
+    return String(siswa.id_siswa || "") === String(id || "");
+  });
+
+  return found
+    ? (found.nama_siswa || found.nama || found.id_siswa || id || "-")
+    : (id || "-");
+
+}
+
+
+function cariNamaGuruAbsensiSiswa(id) {
+
+  const found = semuaGuru.find(function(guru) {
+    return String(guru.id_guru || "") === String(id || "");
+  });
+
+  return found
+    ? (found.nama_guru || found.nama || found.id_guru || id || "-")
+    : (id || "-");
+
+}
+
+
+function cariNamaKelasAbsensiSiswa(id) {
+
+  const found = semuaKelas.find(function(kelas) {
+    return String(kelas.id_kelas || "") === String(id || "");
+  });
+
+  return found
+    ? (found.nama_kelas || found.nama || found.id_kelas || id || "-")
+    : (id || "-");
+
+}
+
+
+// --------------------------------------------------------
+// TAMPILKAN DATA
+// --------------------------------------------------------
+
+function tampilkanAbsensiSiswa(data) {
+
+  const tbody = document.getElementById("tabelAbsensiSiswa");
+
+  if (!data || data.length === 0) {
+
+    tbody.innerHTML = `
+      <tr>
+        <td colspan="10" style="text-align:center;padding:35px;color:#6b7280">
+          Belum ada data absensi siswa.
+          <br><br>
+          Klik <b>＋ Tambah Absensi</b> untuk mencatat absensi.
+        </td>
+      </tr>
+    `;
+
+    return;
+
+  }
+
+  tbody.innerHTML = data.map(function(absen, index) {
+
+    const status = String(absen.status || "").toUpperCase();
+    let statusClass = "badge";
+
+    if (status === "HADIR") statusClass = "badge status-hadir";
+    else if (status === "IZIN") statusClass = "badge status-izin";
+    else if (status === "SAKIT") statusClass = "badge status-sakit";
+    else if (status === "ALPA") statusClass = "badge status-alpa";
+
+    return `
+      <tr>
+        <td>${escapeHtml(absen.id_absensi || "-")}</td>
+        <td>${escapeHtml(absen.tanggal || "-")}</td>
+        <td>${escapeHtml(absen.jam || "-")}</td>
+        <td>${escapeHtml(cariNamaSiswaAbsensi(absen.id_siswa))}</td>
+        <td>${escapeHtml(cariNamaGuruAbsensiSiswa(absen.id_guru))}</td>
+        <td>${escapeHtml(cariNamaKelasAbsensiSiswa(absen.id_kelas))}</td>
+        <td>${escapeHtml(absen.jam_pelajaran || "-")}</td>
+        <td><span class="${statusClass}">${escapeHtml(status || "-")}</span></td>
+        <td>${escapeHtml(absen.keterangan || "-")}</td>
+        <td>
+          <button class="action-button edit-button" onclick="editAbsensiSiswaByIndex(${index})">Edit</button>
+          <button class="action-button delete-button" onclick="hapusAbsensiSiswaByIndex(${index})">Hapus</button>
+        </td>
+      </tr>
+    `;
+
+  }).join("");
+
+}
+
+
+// --------------------------------------------------------
+// FILTER
+// --------------------------------------------------------
+
+function filterAbsensiSiswa() {
+
+  const keyword = document
+    .getElementById("cariAbsensiSiswa")
+    .value
+    .toLowerCase()
+    .trim();
+
+  if (!keyword) {
+    tampilkanAbsensiSiswa(semuaAbsensiSiswa);
+    return;
+  }
+
+  const hasil = semuaAbsensiSiswa.filter(function(absen) {
+
+    const teks = [
+      absen.id_absensi,
+      absen.tanggal,
+      absen.jam,
+      cariNamaSiswaAbsensi(absen.id_siswa),
+      cariNamaGuruAbsensiSiswa(absen.id_guru),
+      cariNamaKelasAbsensiSiswa(absen.id_kelas),
+      absen.jam_pelajaran,
+      absen.status,
+      absen.keterangan
+    ].join(" ").toLowerCase();
+
+    return teks.indexOf(keyword) !== -1;
+
+  });
+
+  tampilkanAbsensiSiswa(hasil);
+
+}
+
+
+// --------------------------------------------------------
+// BUKA FORM
+// --------------------------------------------------------
+
+function bukaFormAbsensiSiswa() {
+
+  modeAbsensiSiswa = "tambah";
+
+  document.getElementById("absensiSiswaModalTitle").innerText = "Tambah Absensi Siswa";
+  document.getElementById("absensiSiswaId").value = "";
+
+  const sekarang = new Date();
+  const tahun = sekarang.getFullYear();
+  const bulan = String(sekarang.getMonth() + 1).padStart(2, "0");
+  const hari = String(sekarang.getDate()).padStart(2, "0");
+
+  document.getElementById("absensiSiswaTanggal").value = tahun + "-" + bulan + "-" + hari;
+  document.getElementById("absensiSiswaJam").value = sekarang.toTimeString().slice(0, 5);
+  document.getElementById("absensiSiswaJamPelajaran").value = "";
+  document.getElementById("absensiSiswaStatus").value = "HADIR";
+  document.getElementById("absensiSiswaKeterangan").value = "";
+  document.getElementById("absensiSiswaMessage").style.display = "none";
+
+  loadPilihanSiswaAbsensi();
+  loadPilihanGuruAbsensiSiswa();
+  loadPilihanKelasAbsensiSiswa();
+  loadPilihanJadwalAbsensiSiswa();
+
+  document.getElementById("absensiSiswaModal").style.display = "flex";
+
+}
+
+
+// --------------------------------------------------------
+// LOAD PILIHAN SISWA
+// --------------------------------------------------------
+
+function loadPilihanSiswaAbsensi(nilaiTerpilih) {
+
+  const select = document.getElementById("absensiSiswaSiswa");
+
+  select.innerHTML = `<option value="">Pilih siswa</option>`;
+
+  google.script.run
+    .withSuccessHandler(function(data) {
+
+      if (!Array.isArray(data)) return;
+
+      semuaSiswa = data;
+
+      data.forEach(function(siswa) {
+
+        const option = document.createElement("option");
+        const id = siswa.id_siswa || "";
+        const nama = siswa.nama_siswa || siswa.nama || id;
+        const kelas = siswa.nama_kelas || siswa.kelas || "";
+
+        option.value = id;
+        option.textContent = kelas ? nama + " - " + kelas : nama;
+        option.selected = String(id) === String(nilaiTerpilih || "");
+        select.appendChild(option);
+
+      });
+
+    })
+    .withFailureHandler(function(error) {
+      console.error(error);
+    })
+    .getSiswa();
+
+}
+
+
+// --------------------------------------------------------
+// LOAD PILIHAN GURU
+// --------------------------------------------------------
+
+function loadPilihanGuruAbsensiSiswa(nilaiTerpilih) {
+
+  const select = document.getElementById("absensiSiswaGuru");
+  select.innerHTML = `<option value="">Pilih guru</option>`;
+
+  google.script.run
+    .withSuccessHandler(function(data) {
+
+      if (!Array.isArray(data)) return;
+
+      semuaGuru = data;
+
+      data.forEach(function(guru) {
+
+        const option = document.createElement("option");
+        const id = guru.id_guru || "";
+        const nama = guru.nama_guru || guru.nama || id;
+
+        option.value = id;
+        option.textContent = nama;
+        option.selected = String(id) === String(nilaiTerpilih || "");
+        select.appendChild(option);
+
+      });
+
+    })
+    .withFailureHandler(function(error) {
+      console.error(error);
+    })
+    .getGuru();
+
+}
+
+
+// --------------------------------------------------------
+// LOAD PILIHAN KELAS
+// --------------------------------------------------------
+
+function loadPilihanKelasAbsensiSiswa(nilaiTerpilih) {
+
+  const select = document.getElementById("absensiSiswaKelas");
+  select.innerHTML = `<option value="">Pilih kelas</option>`;
+
+  google.script.run
+    .withSuccessHandler(function(data) {
+
+      if (!Array.isArray(data)) return;
+
+      semuaKelas = data;
+
+      data.forEach(function(kelas) {
+
+        const option = document.createElement("option");
+        const id = kelas.id_kelas || "";
+        const nama = kelas.nama_kelas || kelas.nama || id;
+
+        option.value = id;
+        option.textContent = nama;
+        option.selected = String(id) === String(nilaiTerpilih || "");
+        select.appendChild(option);
+
+      });
+
+    })
+    .withFailureHandler(function(error) {
+      console.error(error);
+    })
+    .getKelas();
+
+}
+
+
+// --------------------------------------------------------
+// LOAD PILIHAN JADWAL
+// --------------------------------------------------------
+
+function loadPilihanJadwalAbsensiSiswa(nilaiTerpilih) {
+
+  const select = document.getElementById("absensiSiswaJadwal");
+  select.innerHTML = `<option value="">Tidak menggunakan jadwal</option>`;
+
+  google.script.run
+    .withSuccessHandler(function(data) {
+
+      if (!Array.isArray(data)) return;
+
+      data.forEach(function(jadwal) {
+
+        const option = document.createElement("option");
+        const id = jadwal.id_jadwal || "";
+        const hari = jadwal.hari || "";
+        const jam = jadwal.jam_pelajaran || jadwal.jam || "";
+        const kelas = jadwal.nama_kelas || jadwal.kelas || "";
+        const mapel = jadwal.nama_mapel || jadwal.mapel || "";
+
+        option.value = id;
+        option.textContent = [hari, jam, kelas, mapel].filter(Boolean).join(" - ");
+        option.selected = String(id) === String(nilaiTerpilih || "");
+        select.appendChild(option);
+
+      });
+
+    })
+    .withFailureHandler(function(error) {
+      console.error(error);
+    })
+    .adminGetJadwal();
+
+}
+
+
+// --------------------------------------------------------
+// EDIT
+// --------------------------------------------------------
+
+function editAbsensiSiswaByIndex(index) {
+
+  const absen = semuaAbsensiSiswa[index];
+  if (!absen) return;
+
+  modeAbsensiSiswa = "edit";
+
+  document.getElementById("absensiSiswaModalTitle").innerText = "Edit Absensi Siswa";
+  document.getElementById("absensiSiswaId").value = absen.id_absensi || "";
+  document.getElementById("absensiSiswaTanggal").value = absen.tanggal || "";
+  document.getElementById("absensiSiswaJam").value = absen.jam || "";
+  document.getElementById("absensiSiswaJamPelajaran").value = absen.jam_pelajaran || "";
+  document.getElementById("absensiSiswaStatus").value = absen.status || "HADIR";
+  document.getElementById("absensiSiswaKeterangan").value = absen.keterangan || "";
+  document.getElementById("absensiSiswaMessage").style.display = "none";
+
+  loadPilihanSiswaAbsensi(absen.id_siswa || "");
+  loadPilihanGuruAbsensiSiswa(absen.id_guru || "");
+  loadPilihanKelasAbsensiSiswa(absen.id_kelas || "");
+  loadPilihanJadwalAbsensiSiswa(absen.id_jadwal || "");
+
+  document.getElementById("absensiSiswaModal").style.display = "flex";
+
+}
+
+
+// --------------------------------------------------------
+// SIMPAN
+// --------------------------------------------------------
+
+function simpanAbsensiSiswa() {
+
+  const idAbsensi = document.getElementById("absensiSiswaId").value;
+  const tanggal = document.getElementById("absensiSiswaTanggal").value;
+  const jam = document.getElementById("absensiSiswaJam").value;
+  const idSiswa = document.getElementById("absensiSiswaSiswa").value;
+  const idGuru = document.getElementById("absensiSiswaGuru").value;
+  const idKelas = document.getElementById("absensiSiswaKelas").value;
+  const jamPelajaran = document.getElementById("absensiSiswaJamPelajaran").value.trim();
+  const idJadwal = document.getElementById("absensiSiswaJadwal").value;
+  const status = document.getElementById("absensiSiswaStatus").value;
+  const keterangan = document.getElementById("absensiSiswaKeterangan").value.trim();
+  const button = document.getElementById("simpanAbsensiSiswaButton");
+
+  if (!tanggal) {
+    tampilkanPesanAbsensiSiswa("Tanggal wajib diisi.", "error");
+    return;
+  }
+
+  if (!idSiswa) {
+    tampilkanPesanAbsensiSiswa("Siswa wajib dipilih.", "error");
+    return;
+  }
+
+  if (!idGuru) {
+    tampilkanPesanAbsensiSiswa("Guru wajib dipilih.", "error");
+    return;
+  }
+
+  if (!idKelas) {
+    tampilkanPesanAbsensiSiswa("Kelas wajib dipilih.", "error");
+    return;
+  }
+
+  if (!status) {
+    tampilkanPesanAbsensiSiswa("Status wajib dipilih.", "error");
+    return;
+  }
+
+  const data = {
+    id_absensi: idAbsensi,
+    tanggal: tanggal,
+    jam: jam,
+    id_siswa: idSiswa,
+    id_guru: idGuru,
+    id_kelas: idKelas,
+    id_jadwal: idJadwal,
+    jam_pelajaran: jamPelajaran,
+    status: status,
+    keterangan: keterangan
+  };
+
+  button.disabled = true;
+  button.innerText = "Menyimpan...";
+
+  const selesai = function(result) {
+
+    if (result && result.success) {
+
+      tampilkanPesanAbsensiSiswa(result.message, "success");
+
+      setTimeout(function() {
+        tutupFormAbsensiSiswa();
+        loadAbsensiSiswa();
+      }, 500);
+
+    } else {
+
+      tampilkanPesanAbsensiSiswa(
+        result && result.message ? result.message : "Gagal menyimpan absensi.",
+        "error"
+      );
+
+      button.disabled = false;
+      button.innerText = "Simpan Absensi";
+
+    }
+
+  };
+
+  const gagal = function(error) {
+
+    tampilkanPesanAbsensiSiswa(
+      "Terjadi kesalahan: " + error.message,
+      "error"
+    );
+
+    button.disabled = false;
+    button.innerText = "Simpan Absensi";
+
+  };
+
+  if (modeAbsensiSiswa === "tambah") {
+
+    google.script.run
+      .withSuccessHandler(selesai)
+      .withFailureHandler(gagal)
+      .adminTambahAbsensiSiswa(data);
+
+  } else {
+
+    google.script.run
+      .withSuccessHandler(selesai)
+      .withFailureHandler(gagal)
+      .adminEditAbsensiSiswa(data);
+
+  }
+
+}
+
+
+// --------------------------------------------------------
+// HAPUS
+// --------------------------------------------------------
+
+function hapusAbsensiSiswaByIndex(index) {
+
+  const absen = semuaAbsensiSiswa[index];
+  if (!absen) return;
+
+  const yakin = confirm(
+    "Yakin ingin menghapus absensi " + absen.id_absensi + "?"
+  );
+
+  if (!yakin) return;
+
+  google.script.run
+    .withSuccessHandler(function(result) {
+
+      if (result && result.success) {
+        alert(result.message);
+        loadAbsensiSiswa();
+      } else {
+        alert(result && result.message ? result.message : "Gagal menghapus absensi.");
+      }
+
+    })
+    .withFailureHandler(function(error) {
+      alert("Terjadi kesalahan: " + error.message);
+    })
+    .adminHapusAbsensiSiswa(absen.id_absensi);
+
+}
+
+
+// --------------------------------------------------------
+// TUTUP FORM
+// --------------------------------------------------------
+
+function tutupFormAbsensiSiswa() {
+
+  document.getElementById("absensiSiswaModal").style.display = "none";
+  document.getElementById("simpanAbsensiSiswaButton").disabled = false;
+  document.getElementById("simpanAbsensiSiswaButton").innerText = "Simpan Absensi";
+
+}
+
+
+// --------------------------------------------------------
+// PESAN
+// --------------------------------------------------------
+
+function tampilkanPesanAbsensiSiswa(pesan, tipe) {
+
+  const element = document.getElementById("absensiSiswaMessage");
+
+  element.style.display = "block";
+  element.className = tipe === "success" ? "success" : "error";
+  element.innerText = pesan;
+
+}
+
+
+// ========================================================
+// ABSENSI GURU
+// ========================================================
+
+let semuaAbsensiGuru = [];
+
+let modeAbsensiGuru = "tambah";
+
+let semuaAbsensiSiswa = [];
+
+let modeAbsensiSiswa = "tambah";
+
+
+// --------------------------------------------------------
+// BUKA HALAMAN ABSENSI GURU
+// --------------------------------------------------------
+
+function bukaAbsensiGuru() {
+
+  document
+    .getElementById("dashboardPage")
+    .style.display = "none";
+
+  document
+    .getElementById("guruPage")
+    .style.display = "none";
+
+  document
+    .getElementById("siswaPage")
+    .style.display = "none";
+
+  document
+    .getElementById("kelasPage")
+    .style.display = "none";
+
+  document
+    .getElementById("absensiGuruPage")
+    .style.display = "block";
+
+  loadAbsensiGuru();
+
+}
+
+
+// --------------------------------------------------------
+// KEMBALI DASHBOARD
+// --------------------------------------------------------
+
+function kembaliDashboardDariAbsensiGuru() {
+
+  document
+    .getElementById("absensiGuruPage")
+    .style.display = "none";
+
+  document
+    .getElementById("dashboardPage")
+    .style.display = "block";
+
+  loadStatistics();
+
+}
+
+
+// --------------------------------------------------------
+// LOAD DATA
+// --------------------------------------------------------
+
+function loadAbsensiGuru() {
+
+  const tbody =
+    document.getElementById(
+      "tabelAbsensiGuru"
+    );
+
+  tbody.innerHTML = `
+
+    <tr>
+
+      <td
+        colspan="8"
+        style="
+          text-align:center;
+          padding:30px
+        "
+      >
+        ⏳ Memuat data absensi guru...
+      </td>
+
+    </tr>
+
+  `;
+
+
+  google.script.run
+
+    .withSuccessHandler(
+      function(data) {
+
+        semuaAbsensiGuru =
+          Array.isArray(data)
+            ? data
+            : [];
+
+        tampilkanAbsensiGuru(
+          semuaAbsensiGuru
+        );
+
+      }
+    )
+
+    .withFailureHandler(
+      function(error) {
+
+        tbody.innerHTML = `
+
+          <tr>
+
+            <td
+              colspan="8"
+              style="
+                text-align:center;
+                padding:30px;
+                color:#dc2626
+              "
+            >
+
+              Gagal mengambil data:
+
+              <br><br>
+
+              ${escapeHtml(
+                error.message
+              )}
+
+            </td>
+
+          </tr>
+
+        `;
+
+      }
+    )
+
+    .adminGetAbsensiGuru();
+
+}
+
+
+// --------------------------------------------------------
+// TAMPILKAN DATA
+// --------------------------------------------------------
+
+function tampilkanAbsensiGuru(data) {
+
+  const tbody =
+    document.getElementById(
+      "tabelAbsensiGuru"
+    );
+
+
+  if (
+    !data ||
+    data.length === 0
+  ) {
+
+    tbody.innerHTML = `
+
+      <tr>
+
+        <td
+          colspan="8"
+          style="
+            text-align:center;
+            padding:35px;
+            color:#6b7280
+          "
+        >
+
+          Belum ada data absensi guru.
+
+          <br><br>
+
+          Klik
+          <b>＋ Tambah Absensi</b>
+          untuk mencatat absensi.
+
+        </td>
+
+      </tr>
+
+    `;
+
+    return;
+
+  }
+
+
+  tbody.innerHTML =
+    data
+      .map(function(absen, index) {
+
+        const status =
+          String(
+            absen.status || ""
+          )
+          .toUpperCase();
+
+
+        let statusClass =
+          "badge";
+
+
+        if (
+          status === "HADIR"
+        ) {
+
+          statusClass =
+            "badge status-hadir";
+
+        } else if (
+          status === "IZIN"
+        ) {
+
+          statusClass =
+            "badge status-izin";
+
+        } else if (
+          status === "SAKIT"
+        ) {
+
+          statusClass =
+            "badge status-sakit";
+
+        } else if (
+          status === "ALPA"
+        ) {
+
+          statusClass =
+            "badge status-alpa";
+
+        }
+
+
+        return `
+
+          <tr>
+
+            <td>
+              ${escapeHtml(
+                absen.id_absensi || "-"
+              )}
+            </td>
+
+            <td>
+              ${escapeHtml(
+                absen.tanggal || "-"
+              )}
+            </td>
+
+            <td>
+              ${escapeHtml(
+                absen.jam || "-"
+              )}
+            </td>
+
+            <td>
+              <b>
+                ${escapeHtml(
+                  absen.nama_guru ||
+                  absen.guru ||
+                  absen.id_guru ||
+                  "-"
+                )}
+              </b>
+            </td>
+
+            <td>
+              ${escapeHtml(
+                absen.jam_pelajaran || "-"
+              )}
+            </td>
+
+            <td>
+
+              <span
+                class="${statusClass}"
+              >
+                ${escapeHtml(status)}
+              </span>
+
+            </td>
+
+            <td>
+              ${escapeHtml(
+                absen.keterangan || "-"
+              )}
+            </td>
+
+            <td>
+
+              <button
+                class="action-button edit-button"
+                onclick="editAbsensiGuruByIndex(${index})"
+              >
+                ✏️ Edit
+              </button>
+
+              <button
+                class="action-button delete-button"
+                onclick="hapusAbsensiGuruByIndex(${index})"
+              >
+                🗑️ Hapus
+              </button>
+
+            </td>
+
+          </tr>
+
+        `;
+
+      })
+      .join("");
+
+}
+
+
+// --------------------------------------------------------
+// FILTER
+// --------------------------------------------------------
+
+function filterAbsensiGuru() {
+
+  const keyword =
+    document
+      .getElementById(
+        "cariAbsensiGuru"
+      )
+      .value
+      .trim()
+      .toLowerCase();
+
+
+  if (!keyword) {
+
+    tampilkanAbsensiGuru(
+      semuaAbsensiGuru
+    );
+
+    return;
+
+  }
+
+
+  const hasil =
+    semuaAbsensiGuru.filter(
+      function(absen) {
+
+        const gabungan = [
+
+          absen.id_absensi,
+
+          absen.tanggal,
+
+          absen.jam,
+
+          absen.id_guru,
+
+          absen.nama_guru,
+
+          absen.guru,
+
+          absen.jam_pelajaran,
+
+          absen.id_jadwal,
+
+          absen.status,
+
+          absen.keterangan
+
+        ]
+          .join(" ")
+          .toLowerCase();
+
+
+        return gabungan
+          .includes(keyword);
+
+      }
+    );
+
+
+  tampilkanAbsensiGuru(
+    hasil
+  );
+
+}
+
+
+// --------------------------------------------------------
+// BUKA FORM TAMBAH
+// --------------------------------------------------------
+
+function bukaFormAbsensiGuru() {
+
+  modeAbsensiGuru =
+    "tambah";
+
+
+  document
+    .getElementById(
+      "absensiGuruModalTitle"
+    )
+    .innerText =
+    "Tambah Absensi Guru";
+
+
+  document
+    .getElementById(
+      "absensiGuruId"
+    )
+    .value = "";
+
+
+  const sekarang =
+    new Date();
+
+
+  const tahun =
+    sekarang.getFullYear();
+
+
+  const bulan =
+    String(
+      sekarang.getMonth() + 1
+    )
+    .padStart(2, "0");
+
+
+  const hari =
+    String(
+      sekarang.getDate()
+    )
+    .padStart(2, "0");
+
+
+  document
+    .getElementById(
+      "absensiGuruTanggal"
+    )
+    .value =
+    tahun +
+    "-" +
+    bulan +
+    "-" +
+    hari;
+
+
+  document
+    .getElementById(
+      "absensiGuruJam"
+    )
+    .value =
+    sekarang
+      .toTimeString()
+      .slice(0, 5);
+
+
+  document
+    .getElementById(
+      "absensiGuruJamPelajaran"
+    )
+    .value = "";
+
+
+  document
+    .getElementById(
+      "absensiGuruStatus"
+    )
+    .value =
+    "HADIR";
+
+
+  document
+    .getElementById(
+      "absensiGuruKeterangan"
+    )
+    .value = "";
+
+
+  document
+    .getElementById(
+      "absensiGuruMessage"
+    )
+    .style.display =
+    "none";
+
+
+  loadPilihanGuruAbsensi();
+
+
+  loadPilihanJadwalAbsensi();
+
+
+  document
+    .getElementById(
+      "absensiGuruModal"
+    )
+    .style.display =
+    "flex";
+
+}
+
+
+// --------------------------------------------------------
+// LOAD PILIHAN GURU
+// --------------------------------------------------------
+
+function loadPilihanGuruAbsensi(
+  nilaiTerpilih
+) {
+
+  const select =
+    document.getElementById(
+      "absensiGuruGuru"
+    );
+
+
+  select.innerHTML = `
+
+    <option value="">
+      Pilih guru
+    </option>
+
+  `;
+
+
+  google.script.run
+
+    .withSuccessHandler(
+      function(data) {
+
+        if (
+          !Array.isArray(data)
+        ) {
+
+          return;
+
+        }
+
+
+        data.forEach(
+          function(guru) {
+
+            const option =
+              document.createElement(
+                "option"
+              );
+
+
+            const idGuru =
+              guru.id_guru || "";
+
+
+            const namaGuru =
+              guru.nama_guru ||
+              guru.nama ||
+              idGuru;
+
+
+            option.value =
+              idGuru;
+
+
+            option.textContent =
+              namaGuru;
+
+
+            if (
+              String(idGuru) ===
+              String(nilaiTerpilih)
+            ) {
+
+              option.selected =
+                true;
+
+            }
+
+
+            select.appendChild(
+              option
+            );
+
+          }
+        );
+
+      }
+    )
+
+    .withFailureHandler(
+      function(error) {
+
+        console.error(error);
+
+      }
+    )
+
+    .adminGetGuru();
+
+}
+
+
+// --------------------------------------------------------
+// LOAD PILIHAN JADWAL
+// --------------------------------------------------------
+
+function loadPilihanJadwalAbsensi(
+  nilaiTerpilih
+) {
+
+  const select =
+    document.getElementById(
+      "absensiGuruJadwal"
+    );
+
+
+  select.innerHTML = `
+
+    <option value="">
+      Tidak menggunakan jadwal
+    </option>
+
+  `;
+
+
+  google.script.run
+
+    .withSuccessHandler(
+      function(data) {
+
+        if (
+          !Array.isArray(data)
+        ) {
+
+          return;
+
+        }
+
+
+        data.forEach(
+          function(jadwal) {
+
+            const option =
+              document.createElement(
+                "option"
+              );
+
+
+            const idJadwal =
+              jadwal.id_jadwal || "";
+
+
+            const namaMapel =
+              jadwal.nama_mapel ||
+              jadwal.mapel ||
+              "";
+
+
+            const namaKelas =
+              jadwal.nama_kelas ||
+              jadwal.kelas ||
+              "";
+
+
+            const hari =
+              jadwal.hari || "";
+
+
+            const jam =
+              jadwal.jam_pelajaran ||
+              jadwal.jam ||
+              "";
+
+
+            option.value =
+              idJadwal;
+
+
+            option.textContent =
+              [
+                hari,
+                jam,
+                namaKelas,
+                namaMapel
+              ]
+                .filter(Boolean)
+                .join(" - ");
+
+
+            if (
+              String(idJadwal) ===
+              String(nilaiTerpilih)
+            ) {
+
+              option.selected =
+                true;
+
+            }
+
+
+            select.appendChild(
+              option
+            );
+
+          }
+        );
+
+      }
+    )
+
+    .withFailureHandler(
+      function(error) {
+
+        console.error(error);
+
+      }
+    )
+
+    .adminGetJadwal();
+
+}
+
+
+// --------------------------------------------------------
+// EDIT
+// --------------------------------------------------------
+
+function editAbsensiGuruByIndex(
+  index
+) {
+
+  const absen =
+    semuaAbsensiGuru[index];
+
+
+  if (!absen) {
+
+    return;
+
+  }
+
+
+  modeAbsensiGuru =
+    "edit";
+
+
+  document
+    .getElementById(
+      "absensiGuruModalTitle"
+    )
+    .innerText =
+    "Edit Absensi Guru";
+
+
+  document
+    .getElementById(
+      "absensiGuruId"
+    )
+    .value =
+    absen.id_absensi || "";
+
+
+  document
+    .getElementById(
+      "absensiGuruTanggal"
+    )
+    .value =
+    absen.tanggal || "";
+
+
+  document
+    .getElementById(
+      "absensiGuruJam"
+    )
+    .value =
+    absen.jam || "";
+
+
+  document
+    .getElementById(
+      "absensiGuruJamPelajaran"
+    )
+    .value =
+    absen.jam_pelajaran || "";
+
+
+  document
+    .getElementById(
+      "absensiGuruStatus"
+    )
+    .value =
+    absen.status || "HADIR";
+
+
+  document
+    .getElementById(
+      "absensiGuruKeterangan"
+    )
+    .value =
+    absen.keterangan || "";
+
+
+  document
+    .getElementById(
+      "absensiGuruMessage"
+    )
+    .style.display =
+    "none";
+
+
+  loadPilihanGuruAbsensi(
+    absen.id_guru || ""
+  );
+
+
+  loadPilihanJadwalAbsensi(
+    absen.id_jadwal || ""
+  );
+
+
+  document
+    .getElementById(
+      "absensiGuruModal"
+    )
+    .style.display =
+    "flex";
+
+}
+
+
+// --------------------------------------------------------
+// SIMPAN
+// --------------------------------------------------------
+
+function simpanAbsensiGuru() {
+
+  const idAbsensi =
+    document
+      .getElementById(
+        "absensiGuruId"
+      )
+      .value;
+
+
+  const tanggal =
+    document
+      .getElementById(
+        "absensiGuruTanggal"
+      )
+      .value;
+
+
+  const jam =
+    document
+      .getElementById(
+        "absensiGuruJam"
+      )
+      .value;
+
+
+  const idGuru =
+    document
+      .getElementById(
+        "absensiGuruGuru"
+      )
+      .value;
+
+
+  const jamPelajaran =
+    document
+      .getElementById(
+        "absensiGuruJamPelajaran"
+      )
+      .value
+      .trim();
+
+
+  const idJadwal =
+    document
+      .getElementById(
+        "absensiGuruJadwal"
+      )
+      .value;
+
+
+  const status =
+    document
+      .getElementById(
+        "absensiGuruStatus"
+      )
+      .value;
+
+
+  const keterangan =
+    document
+      .getElementById(
+        "absensiGuruKeterangan"
+      )
+      .value
+      .trim();
+
+
+  const button =
+    document.getElementById(
+      "simpanAbsensiGuruButton"
+    );
+
+
+  if (!tanggal) {
+
+    tampilkanPesanAbsensiGuru(
+      "Tanggal wajib diisi.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  if (!idGuru) {
+
+    tampilkanPesanAbsensiGuru(
+      "Guru wajib dipilih.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  if (!status) {
+
+    tampilkanPesanAbsensiGuru(
+      "Status wajib dipilih.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  const data = {
+
+    id_absensi:
+      idAbsensi,
+
+    tanggal:
+      tanggal,
+
+    jam:
+      jam,
+
+    id_guru:
+      idGuru,
+
+    jam_pelajaran:
+      jamPelajaran,
+
+    id_jadwal:
+      idJadwal,
+
+    status:
+      status,
+
+    keterangan:
+      keterangan
+
+  };
+
+
+  button.disabled =
+    true;
+
+
+  button.innerText =
+    "Menyimpan...";
+
+
+  const selesai =
+    function(result) {
+
+      if (
+        result &&
+        result.success
+      ) {
+
+        tampilkanPesanAbsensiGuru(
+          result.message,
+          "success"
+        );
+
+
+        setTimeout(
+          function() {
+
+            tutupFormAbsensiGuru();
+
+            loadAbsensiGuru();
+
+          },
+          500
+        );
+
+
+      } else {
+
+        tampilkanPesanAbsensiGuru(
+          result &&
+          result.message
+            ? result.message
+            : "Gagal menyimpan absensi.",
+          "error"
+        );
+
+
+        button.disabled =
+          false;
+
+
+        button.innerText =
+          "Simpan Absensi";
+
+      }
+
+    };
+
+
+  const gagal =
+    function(error) {
+
+      tampilkanPesanAbsensiGuru(
+        "Terjadi kesalahan: " +
+        error.message,
+        "error"
+      );
+
+
+      button.disabled =
+        false;
+
+
+      button.innerText =
+        "Simpan Absensi";
+
+    };
+
+
+  if (
+    modeAbsensiGuru ===
+    "tambah"
+  ) {
+
+    google.script.run
+      .withSuccessHandler(selesai)
+      .withFailureHandler(gagal)
+      .adminTambahAbsensiGuru(data);
+
+  } else {
+
+    google.script.run
+      .withSuccessHandler(selesai)
+      .withFailureHandler(gagal)
+      .adminEditAbsensiGuru(data);
+
+  }
+
+}
+
+
+// --------------------------------------------------------
+// HAPUS
+// --------------------------------------------------------
+
+function hapusAbsensiGuruByIndex(
+  index
+) {
+
+  const absen =
+    semuaAbsensiGuru[index];
+
+
+  if (!absen) {
+
+    return;
+
+  }
+
+
+  const yakin =
+    confirm(
+      "Yakin ingin menghapus absensi " +
+      absen.id_absensi +
+      "?"
+    );
+
+
+  if (!yakin) {
+
+    return;
+
+  }
+
+
+  google.script.run
+
+    .withSuccessHandler(
+      function(result) {
+
+        if (
+          result &&
+          result.success
+        ) {
+
+          alert(
+            result.message
+          );
+
+          loadAbsensiGuru();
+
+        } else {
+
+          alert(
+            result &&
+            result.message
+              ? result.message
+              : "Gagal menghapus absensi."
+          );
+
+        }
+
+      }
+    )
+
+    .withFailureHandler(
+      function(error) {
+
+        alert(
+          "Terjadi kesalahan: " +
+          error.message
+        );
+
+      }
+    )
+
+    .adminHapusAbsensiGuru(
+      absen.id_absensi
+    );
+
+}
+
+
+// --------------------------------------------------------
+// TUTUP FORM
+// --------------------------------------------------------
+
+function tutupFormAbsensiGuru() {
+
+  document
+    .getElementById(
+      "absensiGuruModal"
+    )
+    .style.display =
+    "none";
+
+
+  document
+    .getElementById(
+      "simpanAbsensiGuruButton"
+    )
+    .disabled =
+    false;
+
+
+  document
+    .getElementById(
+      "simpanAbsensiGuruButton"
+    )
+    .innerText =
+    "Simpan Absensi";
+
+}
+
+
+// --------------------------------------------------------
+// PESAN
+// --------------------------------------------------------
+
+function tampilkanPesanAbsensiGuru(
+  pesan,
+  tipe
+) {
+
+  const element =
+    document.getElementById(
+      "absensiGuruMessage"
+    );
+
+
+  element.style.display =
+    "block";
+
+
+  element.className =
+    tipe === "success"
+      ? "success"
+      : "error";
+
+
+  element.innerText =
+    pesan;
+
+}
+</script>
+
+</body>
+
+</html>
