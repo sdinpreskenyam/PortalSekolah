@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wali Kelas - SD Inpres Kenyam</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f7fb;
+      color: #1f2937;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: white;
+      padding: 22px 18px 26px;
+      border-radius: 0 0 24px 24px;
+      box-shadow: 0 4px 15px rgba(0,0,0,.12);
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .label {
+      font-size: 13px;
+      opacity: .85;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+      letter-spacing: .6px;
+    }
+
+    .nama-guru {
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    .kelas {
+      margin-top: 7px;
+      font-size: 15px;
+      opacity: .95;
+    }
+
+    .tanggal {
+      font-size: 12px;
+      opacity: .9;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .container {
+      width: min(100% - 24px, 720px);
+      margin: -10px auto 30px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 18px;
+      padding: 18px;
+      margin-top: 16px;
+      box-shadow: 0 3px 12px rgba(15, 23, 42, .07);
+    }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .rekap {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+    }
+
+    .rekap-box {
+      background: #f8fafc;
+      border-radius: 12px;
+      padding: 11px 5px;
+      text-align: center;
+    }
+
+    .rekap-number {
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 3px;
+    }
+
+    .rekap-label {
+      font-size: 10px;
+      color: #64748b;
+    }
+
+    .student-card {
+      text-align: center;
+      padding: 22px 15px;
+      border: 1px solid #e5e7eb;
+    }
+
+    .nomor {
+      font-size: 12px;
+      color: #64748b;
+      margin-bottom: 6px;
+    }
+
+    .student-name {
+      font-size: 25px;
+      font-weight: 800;
+      color: #111827;
+      margin-bottom: 5px;
+    }
+
+    .student-jk {
+      font-size: 13px;
+      color: #64748b;
+      margin-bottom: 20px;
+    }
+
+    .status-buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .status-btn {
+      border: 0;
+      border-radius: 12px;
+      padding: 14px 8px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      background: #e5e7eb;
+      color: #374151;
+      transition: .15s;
+    }
+
+    .status-btn:active {
+      transform: scale(.97);
+    }
+
+    .status-btn.hadir {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .status-btn.izin {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .status-btn.sakit {
+      background: #dbeafe;
+      color: #1e40af;
+    }
+
+    .status-btn.alpa {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    .status-btn:disabled {
+      opacity: .55;
+      cursor: wait;
+    }
+
+    .progress-wrap {
+      margin-top: 16px;
+    }
+
+    .progress-info {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: #64748b;
+      margin-bottom: 6px;
+    }
+
+    .progress {
+      height: 8px;
+      background: #e5e7eb;
+      border-radius: 99px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0;
+      background: #2563eb;
+      transition: width .25s;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    th, td {
+      padding: 11px 8px;
+      border-bottom: 1px solid #eef2f7;
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    th {
+      color: #64748b;
+      font-size: 11px;
+      text-transform: uppercase;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 5px 8px;
+      border-radius: 99px;
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .badge-hadir {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .badge-izin {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .badge-sakit {
+      background: #dbeafe;
+      color: #1e40af;
+    }
+
+    .badge-alpa {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    .badge-belum {
+      background: #f1f5f9;
+      color: #64748b;
+    }
+
+    .message {
+      padding: 14px;
+      border-radius: 12px;
+      font-size: 13px;
+      margin-top: 14px;
+      display: none;
+    }
+
+    .message.error {
+      display: block;
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    .message.success {
+      display: block;
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .loading {
+      text-align: center;
+      padding: 35px 10px;
+      color: #64748b;
+      font-size: 14px;
+    }
+
+    .nav-buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .nav-btn {
+      border: 0;
+      border-radius: 12px;
+      padding: 12px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      background: #eef2f7;
+      color: #334155;
+    }
+
+    .nav-btn:disabled {
+      opacity: .45;
+      cursor: not-allowed;
+    }
+
+    .complete-box {
+      text-align: center;
+      padding: 28px 12px;
+    }
+
+    .complete-icon {
+      font-size: 42px;
+      margin-bottom: 8px;
+    }
+
+    .complete-title {
+      font-size: 22px;
+      font-weight: 800;
+      color: #166534;
+      margin-bottom: 7px;
+    }
+
+    .complete-text {
+      font-size: 13px;
+      color: #64748b;
+      line-height: 1.5;
+    }
+
+    .complete-btn {
+      margin-top: 16px;
+      border: 0;
+      border-radius: 12px;
+      padding: 12px 18px;
+      background: #2563eb;
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .refresh-btn {
+      width: 100%;
+      border: 0;
+      border-radius: 12px;
+      padding: 13px;
+      background: #eff6ff;
+      color: #1d4ed8;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 12px;
+    }
+
+    .empty {
+      text-align: center;
+      padding: 25px 10px;
+      color: #64748b;
+      font-size: 13px;
+    }
+
+    @media (max-width: 430px) {
+      .rekap {
+        gap: 5px;
+      }
+
+      .rekap-box {
+        padding: 9px 2px;
+      }
+
+      .student-name {
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="header">
+    <div class="header-top">
+      <div>
+        <div class="label">Wali Kelas</div>
+        <div class="nama-guru" id="namaGuru">Memuat...</div>
+        <div class="kelas" id="namaKelas">Kelas -</div>
+      </div>
+
+      <div class="tanggal" id="tanggal">-</div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="card">
+      <div class="card-title">📊 Rekap Absensi Hari Ini</div>
+
+      <div class="rekap">
+        <div class="rekap-box">
+          <div class="rekap-number" id="jumlahSiswa">0</div>
+          <div class="rekap-label">Siswa</div>
+        </div>
+
+        <div class="rekap-box">
+          <div class="rekap-number" id="hadir">0</div>
+          <div class="rekap-label">Hadir</div>
+        </div>
+
+        <div class="rekap-box">
+          <div class="rekap-number" id="izin">0</div>
+          <div class="rekap-label">Izin</div>
+        </div>
+
+        <div class="rekap-box">
+          <div class="rekap-number" id="sakit">0</div>
+          <div class="rekap-label">Sakit</div>
+        </div>
+
+        <div class="rekap-box">
+          <div class="rekap-number" id="alpa">0</div>
+          <div class="rekap-label">Alpa</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card student-card" id="studentCard">
+      <div class="loading">Memuat daftar siswa...</div>
+    </section>
+
+    <div id="message" class="message"></div>
+
+    <section class="card">
+      <div class="card-title">👥 Daftar Siswa</div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Nama Siswa</th>
+              <th>JK</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+
+          <tbody id="tabelSiswa"></tbody>
+        </table>
+      </div>
+
+      <button class="refresh-btn" onclick="muatDashboard()">
+        🔄 Segarkan Data
+      </button>
+    </section>
+
+  </main>
+
+  <script>
+    let dashboardData = null;
+    let indexSiswaAktif = 0;
+
+    /*
+     * Untuk tahap awal:
+     * ID guru dapat dikirim dari Login.html melalui:
+     *
+     * sessionStorage.setItem("idGuru", hasil.idGuru);
+     *
+     * Jika belum ada, kita pakai G010 untuk pengujian.
+     */
+    function ambilIdGuru() {
+      return (
+        sessionStorage.getItem("idGuru") ||
+        localStorage.getItem("idGuru") ||
+        "G010"
+      );
+    }
+
+    function tampilkanPesan(teks, tipe) {
+      const el = document.getElementById("message");
+
+      el.className = "message " + tipe;
+      el.textContent = teks;
+
+      setTimeout(function() {
+        el.className = "message";
+        el.textContent = "";
+      }, 3000);
+    }
+
+    function muatDashboard(resetIndex = true, setelahMuat = null) {
+      document.getElementById("studentCard").innerHTML =
+        '<div class="loading">⏳ Memuat data wali kelas...</div>';
+
+      const idGuru = ambilIdGuru();
+      const indexSebelumMuat = indexSiswaAktif;
+
+      if (
+        typeof google === "undefined" ||
+        !google.script ||
+        !google.script.run
+      ) {
+        tampilkanPesan(
+          "Halaman harus dijalankan dari Google Apps Script Web App.",
+          "error"
+        );
+        return;
+      }
+
+      google.script.run
+        .withSuccessHandler(function(hasil) {
+
+          if (!hasil || !hasil.success) {
+            tampilkanPesan(
+              hasil && hasil.message
+                ? hasil.message
+                : "Data wali kelas gagal dimuat.",
+              "error"
+            );
+
+            document.getElementById("studentCard").innerHTML =
+              '<div class="empty">Data tidak dapat dimuat.</div>';
+
+            return;
+          }
+
+          dashboardData = hasil;
+
+          if (resetIndex) {
+            indexSiswaAktif = 0;
+          } else {
+            indexSiswaAktif = Math.max(
+              0,
+              Math.min(
+                indexSebelumMuat,
+                (dashboardData.siswa || []).length - 1
+              )
+            );
+          }
+
+          tampilkanDashboard();
+
+          if (typeof setelahMuat === "function") {
+            setelahMuat();
+          }
+
+        })
+        .withFailureHandler(function(error) {
+
+          tampilkanPesan(
+            error && error.message
+              ? error.message
+              : "Terjadi kesalahan saat mengambil data.",
+            "error"
+          );
+
+          document.getElementById("studentCard").innerHTML =
+            '<div class="empty">Gagal mengambil data.</div>';
+
+        })
+        .getAbsensiHariIniWaliKelas(idGuru);
+    }
+
+    function tampilkanDashboard() {
+
+      const data = dashboardData;
+
+      document.getElementById("namaGuru").textContent =
+        data.guru && data.guru.namaGuru
+          ? data.guru.namaGuru
+          : "-";
+
+      document.getElementById("namaKelas").textContent =
+        data.kelas && data.kelas.namaKelas
+          ? "Kelas " + data.kelas.namaKelas
+          : "Kelas -";
+
+      document.getElementById("tanggal").textContent =
+        data.tanggal || "-";
+
+      document.getElementById("jumlahSiswa").textContent =
+        data.jumlahSiswa || 0;
+
+      document.getElementById("hadir").textContent =
+        data.rekap ? data.rekap.hadir : 0;
+
+      document.getElementById("izin").textContent =
+        data.rekap ? data.rekap.izin : 0;
+
+      document.getElementById("sakit").textContent =
+        data.rekap ? data.rekap.sakit : 0;
+
+      document.getElementById("alpa").textContent =
+        data.rekap ? data.rekap.alpa : 0;
+
+      tampilkanSiswaAktif();
+      tampilkanTabel();
+    }
+
+    function tampilkanSiswaAktif() {
+
+      const siswa = dashboardData.siswa || [];
+      const card = document.getElementById("studentCard");
+
+      if (!siswa.length) {
+        card.innerHTML =
+          '<div class="empty">Belum ada siswa aktif di kelas ini.</div>';
+        return;
+      }
+
+      if (indexSiswaAktif >= siswa.length) {
+        indexSiswaAktif = siswa.length - 1;
+      }
+
+      // Jika semua siswa sudah memiliki status, tetap tampilkan
+      // siswa terakhir agar wali kelas masih bisa melakukan koreksi.
+      const semuaSudahDiabsen =
+        siswa.length > 0 &&
+        siswa.every(function(item) {
+          return String(item.statusAbsensi || "BELUM")
+            .toUpperCase() !== "BELUM";
+        });
+
+      const item = siswa[indexSiswaAktif];
+
+      const status = String(
+        item.statusAbsensi || "BELUM"
+      ).toUpperCase();
+
+      card.innerHTML = `
+        <div class="nomor">
+          Siswa ${indexSiswaAktif + 1} dari ${siswa.length}
+        </div>
+
+        <div class="student-name">
+          ${escapeHtml(item.namaSiswa || "-")}
+        </div>
+
+        <div class="student-jk">
+          ${escapeHtml(item.jk || "-")}
+          ${status !== "BELUM" ? " • " + status : ""}
+        </div>
+
+        <div class="status-buttons">
+          <button
+            class="status-btn hadir"
+            onclick="simpanStatus('HADIR')">
+            ✓ HADIR
+          </button>
+
+          <button
+            class="status-btn izin"
+            onclick="simpanStatus('IZIN')">
+            I IZIN
+          </button>
+
+          <button
+            class="status-btn sakit"
+            onclick="simpanStatus('SAKIT')">
+            + SAKIT
+          </button>
+
+          <button
+            class="status-btn alpa"
+            onclick="simpanStatus('ALPA')">
+            × ALPA
+          </button>
+        </div>
+
+        <div class="progress-wrap">
+          <div class="progress-info">
+            <span>Proses absensi</span>
+            <span>${indexSiswaAktif + 1}/${siswa.length}</span>
+          </div>
+
+          <div class="progress">
+            <div
+              class="progress-bar"
+              style="width:${((indexSiswaAktif + 1) / siswa.length) * 100}%">
+            </div>
+          </div>
+
+          <div class="nav-buttons">
+            <button
+              class="nav-btn"
+              onclick="siswaSebelumnya()"
+              ${indexSiswaAktif === 0 ? "disabled" : ""}>
+              ← Sebelumnya
+            </button>
+
+            <button
+              class="nav-btn"
+              onclick="siswaBerikutnya()"
+              ${indexSiswaAktif >= siswa.length - 1 ? "disabled" : ""}>
+              Berikutnya →
+            </button>
+          </div>
+
+          ${semuaSudahDiabsen ? `
+            <div class="complete-box">
+              <div class="complete-icon">✅</div>
+              <div class="complete-title">Absensi Selesai</div>
+              <div class="complete-text">
+                Semua ${siswa.length} siswa sudah memiliki status absensi hari ini.
+                Status tetap bisa dikoreksi dengan memilih siswa lain.
+              </div>
+            </div>
+          ` : ""}
+        </div>
+      `;
+    }
+
+    function simpanStatus(status) {
+
+      const siswa = dashboardData.siswa || [];
+
+      if (!siswa.length) {
+        return;
+      }
+
+      const item = siswa[indexSiswaAktif];
+      const indexSaatIni = indexSiswaAktif;
+
+      const buttons =
+        document.querySelectorAll(".status-btn");
+
+      buttons.forEach(function(btn) {
+        btn.disabled = true;
+      });
+
+      const data = {
+        idGuru: ambilIdGuru(),
+        idSiswa: item.idSiswa,
+        status: status,
+        keterangan: ""
+      };
+
+      google.script.run
+        .withSuccessHandler(function(hasil) {
+
+          if (!hasil || !hasil.success) {
+
+            tampilkanPesan(
+              hasil && hasil.message
+                ? hasil.message
+                : "Absensi gagal disimpan.",
+              "error"
+            );
+
+            tampilkanSiswaAktif();
+            return;
+          }
+
+          // Simpan status lokal sementara agar perpindahan
+          // siswa tidak kembali ke indeks 0.
+          item.statusAbsensi = status;
+
+          tampilkanPesan(
+            item.namaSiswa + " → " + status,
+            "success"
+          );
+
+          // Ambil data terbaru dari backend, tetapi pertahankan
+          // posisi siswa yang sedang diproses.
+          muatDashboard(false, function() {
+
+            const jumlahSiswa =
+              dashboardData.siswa
+                ? dashboardData.siswa.length
+                : 0;
+
+            if (indexSaatIni < jumlahSiswa - 1) {
+
+              indexSiswaAktif =
+                indexSaatIni + 1;
+
+              tampilkanSiswaAktif();
+
+            } else {
+
+              // Sudah di siswa terakhir.
+              indexSiswaAktif =
+                Math.max(0, jumlahSiswa - 1);
+
+              tampilkanSiswaAktif();
+
+            }
+
+          });
+
+        })
+        .withFailureHandler(function(error) {
+
+          tampilkanPesan(
+            error && error.message
+              ? error.message
+              : "Gagal menyimpan absensi.",
+            "error"
+          );
+
+          tampilkanSiswaAktif();
+
+        })
+        .simpanAbsensiWaliKelas(data);
+    }
+
+    function siswaSebelumnya() {
+
+      if (
+        !dashboardData ||
+        !dashboardData.siswa ||
+        indexSiswaAktif <= 0
+      ) {
+        return;
+      }
+
+      indexSiswaAktif--;
+      tampilkanSiswaAktif();
+    }
+
+    function siswaBerikutnya() {
+
+      if (
+        !dashboardData ||
+        !dashboardData.siswa
+      ) {
+        return;
+      }
+
+      if (
+        indexSiswaAktif <
+        dashboardData.siswa.length - 1
+      ) {
+        indexSiswaAktif++;
+        tampilkanSiswaAktif();
+      }
+    }
+
+    function tampilkanTabel() {
+
+      const tbody =
+        document.getElementById("tabelSiswa");
+
+      const siswa =
+        dashboardData.siswa || [];
+
+      if (!siswa.length) {
+        tbody.innerHTML =
+          '<tr><td colspan="4" class="empty">Belum ada siswa.</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML =
+        siswa.map(function(item, index) {
+
+          const status =
+            String(
+              item.statusAbsensi || "BELUM"
+            ).toUpperCase();
+
+          return `
+            <tr>
+              <td>${index + 1}</td>
+              <td>${escapeHtml(item.namaSiswa || "-")}</td>
+              <td>${escapeHtml(item.jk || "-")}</td>
+              <td>
+                <span class="badge badge-${status.toLowerCase()}">
+                  ${status}
+                </span>
+              </td>
+            </tr>
+          `;
+
+        }).join("");
+    }
+
+    function escapeHtml(value) {
+
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    window.addEventListener("load", function() {
+      muatDashboard();
+    });
+  </script>
+
+</body>
+</html>
